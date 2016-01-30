@@ -1,21 +1,79 @@
-<?php
-//https://regex101.com/r/rM9vN6/2
-function test($email){
-    $pattern = "^([a-zA-Z0-9]+[\._-]?)+\@([a-zA-Z0-9]+\.?)+\.[a-z]{2,3}$";
-    if(mb_ereg_match($pattern, $email)){
-        return "Ok";
-    }
-    return "nope";
-}
-?>
+<!DOCTYPE html>
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#header").load("header.php");
+		$("#footer").load("footer.php");
+		$("#menu").load("menu.php");
+	});
+</script>
+<link rel="stylesheet" href="styles/style.css">
 <html>
     <head>
-        <title>Index</title>
+        <title>SchoolTool - Vocabular</title>
     </head>
     <body>
-        <h1>
-            PHP-Projekt
-        </h1>
-        <?php echo(test("ksajdfhkh@googlelgijldsfjkljflkj.com")); ?>
+		<div id="menu"></div>
+		<div id="header"></div>
+		<div id="main">
+			<h1>
+				Herzlich Willkommen!
+			</h1>
+			<br />
+			Dies ist eine Begrüssung! :-)
+			<br />
+			Nun folgen Test-Strings, um die Seite zu füllen:
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />1
+			<br />
+			Dies ist das Ende der Seite.
+		</div>
+		<div id="footer"></div>
     </body>
 </html>

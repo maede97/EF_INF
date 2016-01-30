@@ -1,0 +1,118 @@
+/* style.css
+
+@author: Matthias Busenhart
+
+*/
+
+#main {
+	/* The Main-Section where all stuff goes */
+	margin-top: 100px;
+	margin-left: 200px;
+	margin-bottom: 50px;
+	display: inline-block;
+	position: relative;
+	z-index: 1;
+	
+}
+
+#main h1 {
+	font-size: xx-large;
+	text-align: center;
+}
+
+#menu img {
+	/* Image container of main section
+	Aim: image centered */
+	width: 100px;
+	height: auto;
+	display: block;
+	margin: 10px auto 10px auto;
+}
+
+#menu {
+	/* The Menu */
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	width: 150px;
+	float: left;
+	margin-right: 10px;
+	background-color: beige;
+	border-right: 1px solid black;
+	padding-top: 75px;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+li a {
+	display: block;
+	color: #000;
+	padding: 8px 0 8px 16px;
+	text-decoration: none;
+}
+
+li a:hover {
+	background-color: #555;
+	color: white;
+}
+
+#header {
+	/* The Header
+	
+	First: position on top of page (always)
+	and text centered */
+	position: fixed;
+	text-align: center;
+	
+	/* Boundary
+	Goes over the whole page (horizontal) */
+	left: 0;
+	right: 0;
+	top: 0;
+	
+	/* Colors */
+	
+	/* Black line underneath */
+	border-bottom: 1px solid black;
+	
+	/* Font-Size */
+	font-size: large;
+	
+	background-color: white;
+	padding: 10px;
+	
+	z-index: 3;
+}
+
+#footer {
+	/* The Footer
+	
+	First: position on bottom of page (always)
+	and text centered */
+	position: fixed;
+	text-align: center;
+	
+	/* Boundary
+	Goes over the whole page (horizontal) */
+	left: 0;
+	right: 0;
+	bottom: 0;
+	
+	/* Colors */
+	background: gray;
+	color: black;
+
+	/* Black line on top */
+	border-top: 1px solid black;
+	
+	/* Font-Size */
+	font-size: large;
+	
+	padding: 10px;
+	z-index: 2;
+}
+

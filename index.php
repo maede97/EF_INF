@@ -7,6 +7,17 @@
 		$("#menu").load("menu.php");
 	});
 </script>
+
+<?php
+function fill(){
+	$out = "";
+	for($i = 1; $i<=50; $i++){
+		$out .= $i . "<br />";
+	}
+	return $out;
+}
+?>
+
 <link rel="stylesheet" href="styles/style.css">
 <html>
     <head>
@@ -16,63 +27,10 @@
 		<div id="menu"></div>
 		<div id="header"></div>
 		<div id="main">
-			<h1>
-				Herzlich Willkommen!
-			</h1>
-			<br />
-			Dies ist eine Begrüssung! :-)
-			<br />
-			Nun folgen Test-Strings, um die Seite zu füllen:
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />1
-			<br />
-			Dies ist das Ende der Seite.
+			<h1>Herzlich Willkommen!</h1>
+			<h2>Dies ist eine Begrüssung! :-)</h2>
+			<?php echo fill(); ?>
+			<h1>Dies ist das Ende der Seite.</h1>
 		</div>
 		<div id="footer"></div>
     </body>

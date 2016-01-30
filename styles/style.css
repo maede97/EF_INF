@@ -17,6 +17,9 @@
 
 #main h1 {
 	font-size: xx-large;
+}
+
+#main h1, h2 {
 	text-align: center;
 }
 

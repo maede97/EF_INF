@@ -21,25 +21,11 @@
 		getTime();
 		setInterval(getTime,1000);
 	}
-
 </script>
-
 <?php
 session_start();
-
 if($_SERVER["REQUEST_METHOD"]=="POST" && $_POST["username"] && $_POST["password"]){
-	//Get data here via $_POST["password"] etc;
-}
-?>
-
-
-<?php
-function fill(){
-	$out = "";
-	for($i = 1; $i<=50; $i++){
-		$out .= $i . "<br />";
-	}
-	return $out;
+	$_SESSION['username'] = $_POST['username'];
 }
 ?>
 
@@ -54,11 +40,23 @@ function fill(){
 			<span id="time"></span>
 		</div>
 		<div id="main">
-			<h1>Herzlich Willkommen!</h1>
+			<h1>Login</h1>
 			<hr />
-			<h2>Dies ist eine Begrüssung! :-)</h2>
-			<?php echo fill(); ?>
-			<h1>Dies ist das Ende der Seite.</h1>
+			<div id="loginform">
+				<form action="<?php $_PHP_SELF ?>" method="POST">
+					<p>
+						<label>Benutzername:</label>
+						<input type="text" name="username" maxlength="30">
+					</p>
+					<p>
+						<label>Passwort:</label>
+						<input type="password" name="password" maxlength="30">
+					</p>
+					<p>
+						<button type="submit" name="go" value="los">Login</button>
+					</p>
+				</form>
+			</div>
 		</div>
 		<div id="footer"></div>
     </body>

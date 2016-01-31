@@ -10,14 +10,26 @@
 	display: inline-block;
 	position: relative;
 	z-index: 1;
+	width: 70%;
 	
 }
 
+form input {
+	position: fixed;
+	left: 400px;
+	background-color: beige;
+}
+form button {
+	padding: 5px;
+}
+
 #main h1 {
+	/* Der Haupttitel der Seite ist riesig. */
 	font-size: xx-large;
 }
 
 #main h1, h2 {
+	/* Alle Title sind in der Mitte der Seite */
 	text-align: center;
 }
 
@@ -37,6 +49,7 @@
 	bottom: 0;
 	width: 150px;
 	float: left;
+	left: 0;
 	margin-right: 10px;
 	background-color: beige;
 	border-right: 1px solid black;
@@ -57,6 +70,27 @@ li a {
 }
 
 li a:hover {
+	background-color: #555;
+	color: white;
+}
+
+#header #logBut {
+	background-color: beige;
+	color: #000;
+	position: absolute;
+	right: 50px;
+	top: 10px;
+	text-decoration: none;
+	padding: 10px;
+}
+
+#header #time {
+	position: absolute;
+	left: 10px;
+	top: 50%;	
+}
+
+#header #logBut:hover {
 	background-color: #555;
 	color: white;
 }

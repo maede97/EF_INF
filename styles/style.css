@@ -10,8 +10,7 @@
 	display: inline-block;
 	position: relative;
 	z-index: 1;
-	width: 70%;
-	
+	width: 70%;	
 }
 
 form input {
@@ -82,6 +81,7 @@ li a:hover {
 	top: 10px;
 	text-decoration: none;
 	padding: 10px;
+	width: 100px;
 }
 
 #header #time {

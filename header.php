@@ -22,13 +22,15 @@
 	}
 */
 ?>
-<html>
-	<body>
-		<span id="time"></span>
-		<span>
-			SchoolTool - Vocabulary <br />
-			PHP-Projekt von Jeremy und Matthias
-		</span>
-		<a id="logBut" href="login.php">Login</a>
-	</body>
-</html>
+<span id="time"></span>
+<span>
+	SchoolTool - Vocabulary <br />
+	PHP-Projekt von Jeremy und Matthias
+</span>
+<?php
+session_start();
+if(!(isset($_SESSION['login']) && $_SESSION['login']!="")){
+	echo "<a id='logBut' href='login.php'>Login</a>";
+} else {
+	echo "<a id='logBut' href='profil.php'>Profil</a>";
+}

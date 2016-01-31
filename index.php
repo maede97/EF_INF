@@ -26,14 +26,20 @@
 
 <?php
 session_start();
-
-if($_SERVER["REQUEST_METHOD"]=="POST" && $_POST["username"] && $_POST["password"]){
-	//Get data here via $_POST["password"] etc;
+if(!(isset($_SESSION['login']) && $_SESSION['login']!="")){
+	header("Location: login.php");
+} else {
+	//Login successfull
 }
+
+//if($_SERVER["REQUEST_METHOD"]=="POST" && $_POST["username"] && $_POST["password"]){
+	//Get data here via $_POST["password"] etc;
+//}
 ?>
 
 
 <?php
+//Füllt die Seite mit Müll, um Ränder zu sehen.
 function fill(){
 	$out = "";
 	for($i = 1; $i<=50; $i++){

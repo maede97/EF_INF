@@ -21,17 +21,13 @@
 		getTime();
 		setInterval(getTime,1000);
 	}
+	
+
 </script>
+
 <?php
 session_start();
-if($_SERVER["REQUEST_METHOD"]=="POST" && $_POST["username"] && $_POST["password"]){
-	$_SESSION['username'] = $_POST['username'];
-	$_SESSION['login']="1";
-	header("Location: index.php");
-}
-else{
-	$_SESSION['login']="";
-}
+
 ?>
 
 <link rel="stylesheet" href="styles/style.css">
@@ -45,23 +41,11 @@ else{
 			<span id="time"></span>
 		</div>
 		<div id="main">
-			<h1>Login</h1>
+			<h1>Profil</h1>
 			<hr />
-			<div id="loginform">
-				<form action="<?php $_PHP_SELF ?>" method="POST">
-					<p>
-						<label>Benutzername:</label>
-						<input type="text" name="username" maxlength="30">
-					</p>
-					<p>
-						<label>Passwort:</label>
-						<input type="password" name="password" maxlength="30">
-					</p>
-					<p>
-						<button type="submit" name="go" value="los">Login</button>
-					</p>
-				</form>
-			</div>
+			<p>Hier steht noch nichts.</p>
+			<p>Ausser deinem Benutzernamen:</p>
+			<p><b><?php echo $_SESSION['username'] ?></b></p>
 		</div>
 		<div id="footer"></div>
     </body>

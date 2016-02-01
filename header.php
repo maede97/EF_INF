@@ -24,7 +24,7 @@
 ?>
 <span id="time"></span>
 <span>
-	SchoolTool - Vocabulary <br />
+	SchoolTool - Trainer<br />
 	PHP-Projekt von Jeremy und Matthias
 </span>
 <?php

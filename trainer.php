@@ -8,6 +8,18 @@
 		$("#next").click(function(){
 			getNextCard();
 		});
+		
+		$("#sol").keypress(function(e){
+			if(e.which==13){
+				//Check here if correct
+				
+				
+				document.getElementById("sol").value="";
+				getNextCard();
+				
+			}
+		});
+	
 		//Hide first card
 		moveLeft(0);
 		getCards();
@@ -53,6 +65,8 @@
 			moveMiddle("slow");
 		});
 	}
+	
+
 	
 	function getTime(){
 		var now = new Date();
@@ -111,6 +125,9 @@ function getTitles(){
 				<hr />
 				<span id="text"></span>
 			</div>
+			
+			<input type="text" name="solution" id="sol">
+
 		</div>
 		<div id="footer"></div>
     </body>

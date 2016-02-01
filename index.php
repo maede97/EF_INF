@@ -58,7 +58,7 @@ function showLoginInfo(){
 <link rel="stylesheet" href="styles/style.css">
 <html>
     <head>
-        <title>SchoolTool - Vocabular</title>
+        <title>SchoolTool - Home</title>
     </head>
     <body onload="startTimer()">
 		<div id="menu"></div>

@@ -35,7 +35,7 @@ if(!(isset($_SESSION['login']) && $_SESSION['login']!="")){
 <link rel="stylesheet" href="styles/style.css">
 <html>
     <head>
-        <title>SchoolTool - Vocabular</title>
+        <title>SchoolTool - Trainer</title>
     </head>
     <body onload="startTimer()">
 		<div id="menu"></div>

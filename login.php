@@ -41,7 +41,7 @@ else{
 <link rel="stylesheet" href="styles/style.css">
 <html>
     <head>
-        <title>SchoolTool - Vocabular</title>
+        <title>SchoolTool - Login</title>
     </head>
     <body onload="startTimer()">
 		<div id="menu"></div>

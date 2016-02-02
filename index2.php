@@ -5,7 +5,7 @@
 		$("#header").load("header.php");
 		$("#footer").load("footer.php");
     		$("#menu").load("menu.php");
-                $("#main").load("content/"+getParamGET("site")+".php");
+                $("#main").load("content/"+getParamGet("site")+".php");
                 startTimer();
             });
         function getTime(){
@@ -24,7 +24,9 @@
 		setInterval(getTime,1000);
 	}
         
-        function getParamGET(param) {
+        
+        
+        function getParamGet(param) {
             var found;
             window.location.search.substr(1).split("&").forEach(function(item) {
                 if (param ==  item.split("=")[0]) {
@@ -32,7 +34,11 @@
                 }
             });
             return found;
-        }         
+        }
+
+
+                
+                
 </script>
 
 <link rel="stylesheet" href="styles/style.css">

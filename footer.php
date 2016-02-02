@@ -1,1 +1,1 @@
-&copy; Jeremy Roth (hat noch nichts gemacht :P), Matthias Busenhart; 2016 KZO Wetzikon
+&copy; Jeremy Roth, Matthias Busenhart; 2016 KZO Wetzikon

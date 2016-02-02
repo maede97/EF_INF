@@ -30,7 +30,7 @@
 <?php
 session_start();
 if(!(isset($_SESSION['login']) && $_SESSION['login']!="")){
-	echo "<a id='logBut' href='login.php'>Login</a>";
+	echo "<a id='logBut' href='index.php?site=login'>Login</a>";
 } else {
-	echo "<a id='logBut' href='profil.php'>Profil</a>";
+	echo "<a id='logBut' href='index.php?site=profil'>Profil</a>";
 }

@@ -7,7 +7,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST" && $_POST["username"] && $_POST["password"
 	
 	//check here the data.
 	//Then set the header
-	header("Location: index.php?site=home");
+	header("Location: http://localhost/index.php?site=home");
 }
 else{
 	$_SESSION['login']="";
@@ -17,7 +17,7 @@ else{
 <h1>Login</h1>
 <hr />
 <div id="loginform">
-        <form action="#" method="POST">
+        <form action="content/checkLogin.php" method="POST">
                 <p>
                         <label>Benutzername:</label>
                         <input type="text" name="username" maxlength="30">

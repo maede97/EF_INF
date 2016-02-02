@@ -38,7 +38,7 @@
 <link rel="stylesheet" href="styles/style.css">
 <html>
     <head>
-        <title>SchoolTool - Trainer</title>
+        <title>SchoolTool</title>
     </head>
     <body>
 		<div id="menu"></div>

@@ -7,7 +7,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST" && $_POST["username"] && $_POST["password"
 	
 	//check here the data.
 	//Then set the header
-	header("Location: http://localhost/index.php?site=home");
+	header("Location: http://localhost/EF_INF/index.php?site=home");
 }
 else{
 	$_SESSION['login']="";

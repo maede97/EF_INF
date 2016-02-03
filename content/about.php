@@ -2,5 +2,4 @@
 <hr />
 <p>"Ein Meisterstück!"<br /><em>- NZZ</em></p>
 <br/>
-
 <p>"Ihr neuster Geniestreich."<br /><em>- Tagesanzeiger</em><p>

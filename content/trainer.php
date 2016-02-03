@@ -56,7 +56,7 @@
 				isShownSolution = false;
 			}
 			
-			$("#item_Container").animate({width: "500px", left: "-=150px"},"slow");
+			$("#item_Container").animate({width: "420px", left: "-=150px"},"slow");
 		});
 		
 

@@ -24,17 +24,18 @@
 	var aktuell = 0;
 	var solutions= null;
 	var texts = null;
+	var isShownSolution = false;
 	
 	function moveLeft(a){
-		$("#item").animate({left: '15%', opacity: '0', fontSize: "1em", height: "250px", width: "415px"}, a);
+		$("#item_Container").animate({left: '15%', opacity: '0', fontSize: "100%", height: "200px", width: "350px"}, a);
 	}
 	
 	function moveMiddle(a){
-		$("#item").animate({left: '30%', opacity: '1',fontSize: "2em", height: "300px", width: "500px"},a);
+		$("#item_Container").animate({left: '30%', opacity: '1',fontSize: "120%", height: "240px", width: "420px"},a);
 	}
 	
 	function moveRight(a){
-		$("#item").animate({left: '50%', opacity: '0', fontSize: "1em", height: "250px", width: "415px"},a);
+		$("#item_Container").animate({left: '50%', opacity: '0', fontSize: "100%", height: "200px", width: "350px"},a);
 	}
 	
 	function getCards(){
@@ -43,19 +44,27 @@
 	}
 
 	function showSolution(){
-		$("#item").animate({width: "0", left: "+=150px"},"slow");
-		$("#item").promise().done(function(){
-			//wait until card ist done turning
+		$("#item_Container").animate({left: "+=150px", width:"0"},"slow");
+		$("#item_Container").promise().done(function(){
+			//Wait until card ist done turning
 			//Then change text
-			document.getElementById("item").innerHTML = solutions[aktuell-1];
-			$("#item").animate({width: "500px", left: "-=150px"},"slow");
+			if(!isShownSolution){
+				document.getElementById("item").innerHTML = solutions[aktuell-1];
+				isShownSolution = true;
+			} else {
+				document.getElementById("item").innerHTML = texts[aktuell-1];
+				isShownSolution = false;
+			}
+			
+			$("#item_Container").animate({width: "500px", left: "-=150px"},"slow");
 		});
+		
 
 	}
 	
 	function getNextCard(){
 		moveLeft("slow");
-		$("#item").promise().done(function(){
+		$("#item_Container").promise().done(function(){
 			//wait until card is left and invisible, then new one
 			if(aktuell > texts.length-1){
 					aktuell = 0;
@@ -63,6 +72,7 @@
 			var text = texts[aktuell];
 			aktuell ++;
 			document.getElementById("item").innerHTML = text;
+			isShownSolution = false;
 			moveRight(0);
 			moveMiddle("slow");
 		});
@@ -70,11 +80,11 @@
 </script>
 
 <?php
-	session_start();
-	if(!(isset($_SESSION['login']) && $_SESSION['login']!="")){
-		//Funktioniert noch nicht!
-		//header("Location: http://localhost/EF_INF/content/logout.php");
-	}
+session_start();
+if(!(isset($_SESSION['login']) && $_SESSION['login']!="")){
+	//Funktioniert noch nicht!
+	//header("Location: http://localhost/");
+}
 
 function getTexts(){
 	//Später aus sql-statement auslesen und returnen.
@@ -92,6 +102,8 @@ function getSolutions(){
 <hr />
 Hier kommt eine Übersicht über alle Listen.
 <p>Nun folgt ein kleiner Test:</p>
-<button id="next">Lösung</button>
-<div id="item"></div>
+<button id="next">Karte drehen</button>
+<hr />
 <input type="text" name="solution" id="sol">
+<div id="item_Container">
+	<span id="item"></span</div>

@@ -6,13 +6,12 @@
 	/* The Main-Section where all stuff goes */
 	margin-top: 50px;
 	margin-bottom: 50px;
-        right: 0;
-        left: 150px;
+    right: 0;
+    left: 150px;
 	display: inline-block;
 	position: absolute;
 	z-index: 1;
-        padding: 20px;
-        
+    padding: 20px;    
 }
 
 form input {
@@ -26,14 +25,14 @@ form button {
 }
 
 #main button {
-        display: block;
+    display: block;
 	color: #000;
 	text-decoration: none;
-        background-color: beige;
+    background-color: beige;
 }
 
 #main button:hover {
-        background-color: #555;
+    background-color: #555;
 	color: white;
 }
 
@@ -42,18 +41,23 @@ form button {
 	font-size: xx-large;
 }
 
-#main #item {
+#main #item_Container {
 	/* Eine Voci-Karte */
 	position: absolute;
 	left: 50%;
 	opacity: 1;
 	border: 1px solid black;
-	font-size: 2em;
-	width: 500px;
-	height: 300px;
+	font-size: 120%;
+	width: 420px;
+	height: 240px;
 	overflow: hidden;
 	white-space: nowrap;
 	padding-top: 20px;
+}
+
+#main #item {
+	margin: 20px;
+	position: absolute;
 }
 
 #main h1, h2 {

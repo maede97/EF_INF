@@ -5,4 +5,5 @@ session_start();
 <hr />
 <p>Hier steht noch nichts.</p>
 <p>Ausser deinem Benutzernamen:</p>
-<p><b><?php echo $_SESSION['username'] ?></b></p>
+<p><b><?php echo $_SESSION['username']
+//Später: username nicht mehr vorhanden! ?></b></p>

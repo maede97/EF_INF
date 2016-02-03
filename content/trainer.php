@@ -81,9 +81,9 @@
 
 <?php
 session_start();
-if(!(isset($_SESSION['login']) && $_SESSION['login']!="")){
+if(!(isset($_SESSION['login']))){
 	//Funktioniert noch nicht!
-	//header("Location: http://localhost/");
+	header('Location: http://localhost/EF_INF/index.php?site=home');
 }
 
 function getTexts(){

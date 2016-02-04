@@ -81,7 +81,7 @@
 
 <?php
 session_start();
-if(!(isset($_SESSION['login']))){
+if(!(isset($_SESSION['user_id']))){
 	//Funktioniert noch nicht!
 	header('Location: http://localhost/EF_INF/index.php?site=home');
 }
@@ -94,7 +94,6 @@ function getTexts(){
 function getSolutions(){
 	return array("Solution der Karte 1","Solution der Karte 2","Solution der Karte 3");
 }
-
 ?>
 
        

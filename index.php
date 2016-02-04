@@ -45,7 +45,7 @@ user_id	| username | password
 
 listen
 ------
-listen_id | sprache | user_id
+listen_id | sprache | user_id | titel
 
 Dann jede neue Voci-Liste hat folgedes Format:
 
@@ -66,7 +66,6 @@ user_has_list könnte weggelassen werden
 
 TODO:
 	- Trainer.php: Eingabe nach bösen Eingaben durchsuchen (Select etc.)
-	
 */
 
 //Falls gerade Session gestartet, Datenbanken erstellen, falls noch nicht vorhanden
@@ -78,8 +77,9 @@ if(!(isset($_SESSION['started']))){
 	$listen = "CREATE TABLE IF NOT EXISTS schooltool.listen (listen_id INT(6) PRIMARY KEY AUTO_INCREMENT, "
 			."sprache VARCHAR(30) NOT NULL, "
 			."user_id INT(6) NOT NULL, "
+			."titel VARCHAR(30) NOT NULL, "
 			."FOREIGN Key(user_id) REFERENCES user(user_id));";
-	try{
+	try {
 		$db = new PDO("mysql:dbname=schooltool;host=localhost","root","");
 		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	} catch(PDOException $e){

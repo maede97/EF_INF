@@ -2,10 +2,9 @@
 <hr />
 <ul>
 	<li><a href="?site=home">Home</a></li>
-	
 	<?php
 		session_start();
-		if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){
+		if(isset($_SESSION['user_id'])){
 			echo "<li><a href='?site=trainer'>Trainer</a></li>";
 			echo "<hr />";
 			echo "<li><a href='?site=profil'>Profil</a></li>";

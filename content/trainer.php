@@ -81,9 +81,10 @@
 
 <?php
 session_start();
-if(!(isset($_SESSION['user_id']))){
+if(!isset($_SESSION['user_id'])){
 	//Funktioniert noch nicht!
-	header('Location: http://localhost/EF_INF/index.php?site=home');
+	header("Location: http://localhost/EF_INF/index.php?site=home");
+	exit;
 }
 
 function getTexts(){
@@ -91,6 +92,7 @@ function getTexts(){
 	//Genau gleich bei getTitles()
 	return array("Text der Karte 1","Text der Karte 2","Text der Karte 3");
 }
+
 function getSolutions(){
 	return array("Solution der Karte 1","Solution der Karte 2","Solution der Karte 3");
 }
@@ -105,4 +107,5 @@ Hier kommt eine Übersicht über alle Listen.
 <hr />
 <input type="text" name="solution" id="sol">
 <div id="item_Container">
-	<span id="item"></span</div>
+	<span id="item"></span>
+</div>

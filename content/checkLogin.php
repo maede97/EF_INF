@@ -19,18 +19,22 @@ if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["username"]) && isset($_PO
 				echo "Correct";
 				$_SESSION['user_id']=$result[0]['user_id'];
 				header("Location: http://localhost/EF_INF/index.php?site=home");
+				exit;
 			} else {
+				unset($_SESSION['user_id']);
 				header("Location: http://localhost/EF_INF/index.php?site=login");
-				$_SESSION['user_id']="";
+				exit;
 			}
 			
 		} else if(count($result)==0) {
 			//Kein Benutzer gefunden.
+			unset($_SESSION['user_id']);
 			header("Location: http://localhost/EF_INF/index.php?site=createAccount");
-			$_SESSION['user_id']="";
+			exit;
 		} else {
+			unset($_SESSION['user_id']);
 			header("Location: http://localhost/EF_INF/index.php?site=login");
-			$_SESSION['user_id']="";
+			exit;
 		}
 		
 	}
@@ -39,6 +43,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["username"]) && isset($_PO
 	}
 	$conn = null;
 } else{
-	$_SESSION['user_id']="";
+	unset($_SESSION['user_id']);
 }
 ?>

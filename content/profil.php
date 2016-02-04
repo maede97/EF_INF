@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['user_id']){
+if(isset($_SESSION['user_id'])){
 	$id = $_SESSION['user_id'];
 	
 	$servername = "localhost";
@@ -27,7 +27,8 @@ if(isset($_SESSION['user_id']){
 	}
 	$conn = null;
 } else {
-	header("Location: http://localhost/EF_INF/index.php?site=login");
+	header("Location: http://localhost/EF_INF/content/logout.php");
+	exit;
 }
 ?>
 <h1>Profil</h1>

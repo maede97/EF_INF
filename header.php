@@ -5,6 +5,7 @@
 	SchoolTool - Trainer<br />
 	PHP-Projekt von Jeremy und Matthias
 </span>
+<a id="homeBut" href="index.php?site=home">Home</a>
 <?php
 session_start();
 if(!(isset($_SESSION['user_id']))){

@@ -21,9 +21,9 @@ isset($_POST["password"]) && isset($_POST["password2"]) && ($_POST['password']==
 		$result = $stmt->fetchall();
 		if(!count($result)==0){
 			//Very bad
-			 header("Location: http://localhost/EF_INF/index.php?site=createAccount");
-			 $_SESSION['user_id']="";
-			 exit();
+			unset($_SESSION['user_id']);
+			header("Location: http://localhost/EF_INF/index.php?site=createAccount");
+			exit;
 		}
 		
 		
@@ -35,23 +35,28 @@ isset($_POST["password"]) && isset($_POST["password2"]) && ($_POST['password']==
 		$result = $stmt->fetchall();
 		if(count($result)==1){
 			$_SESSION['user_id']=$result[0]['user_id'];
-			header("Location: http://localhost/EF_INF/index.php?site=home");		
+			header("Location: http://localhost/EF_INF/index.php?site=home");
+			exit;
 		} else if(count($result)==0) {
 				//Kein Benutzer gefunden.
+				unset($_SESSION['user_id']);
 				header("Location: http://localhost/EF_INF/index.php?site=createAccount");
-				$_SESSION['user_id']="";
+				exit;
 		} else {
+			unset($_SESSION['user_id']);
 			header("Location: http://localhost/EF_INF/index.php?site=login");
-			$_SESSION['user_id']="";
+			exit;
 		}
 		header("Location: http://localhost/EF_INF/index.php?site=home");
+		exit;
 	}
 	catch(PDOException $e) {
 		echo "Error: " . $e->getMessage();
 	}
 	$conn = null;
 } else {
-	$_SESSION['user_id']="";
+	unset($_SESSION['user_id']);
 	header("Location: http://localhost/EF_INF/index.php?site=createAccount");
+	exit;
 }
 ?>

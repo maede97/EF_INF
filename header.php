@@ -7,8 +7,9 @@
 </span>
 <?php
 session_start();
-if(!(isset($_SESSION['user_id'])){
+if(!(isset($_SESSION['user_id']))){
 	echo "<a id='logBut' href='index.php?site=login'>Login</a>";
 } else {
 	echo "<a id='logBut' href='index.php?site=profil'>Profil</a>";
 }
+?>

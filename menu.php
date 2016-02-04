@@ -13,6 +13,7 @@
 		}
 		else {
 			echo "<li><a href='?site=login'>Login</a></li>";
+			echo "<li><a href='?site=createAccount'>Create Account</a></li>";
 		}
 	?>
         <hr />

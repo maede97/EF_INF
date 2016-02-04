@@ -41,12 +41,32 @@
 
 user
 ----
-user_id	| username	| password
+user_id	| username | password
+
+listen
+------
+listen_id | sprache | user_id
+
+Dann jede neue Voci-Liste hat folgedes Format:
+
+vocabular_[listen_id]
+---------------------
+wort_id | original | foreign
+
+[listen_id] wird dann automatisch ersetzt durch Nummer
 
 
+Weggelassen
 user_has_list
 -------------
 user_id	| listen_id
+
+user_has_list könnte weggelassen werden
+
+
+TODO:
+	- Trainer.php: Eingabe nach bösen Eingaben durchsuchen (Select etc.)
+	
 */
 
 //Falls gerade Session gestartet, Datenbanken erstellen, falls noch nicht vorhanden
@@ -54,7 +74,11 @@ session_start();
 if(!(isset($_SESSION['started']))){
 	$users = "CREATE TABLE IF NOT EXISTS schooltool.user (user_id INT(6) PRIMARY KEY AUTO_INCREMENT, "
 			."username VARCHAR(30) UNIQUE NOT NULL, "
-			."password TEXT NOT NULL);";	
+			."password TEXT NOT NULL);";
+	$listen = "CREATE TABLE IF NOT EXISTS schooltool.listen (listen_id INT(6) PRIMARY KEY AUTO_INCREMENT, "
+			."sprache VARCHAR(30) NOT NULL, "
+			."user_id INT(6) NOT NULL, "
+			."FOREIGN Key(user_id) REFERENCES user(user_id));";
 	try{
 		$db = new PDO("mysql:dbname=schooltool;host=localhost","root","");
 		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -63,6 +87,7 @@ if(!(isset($_SESSION['started']))){
 	}
 	
 	$createUsers = $db->exec($users);
+	$createListen = $db->exec($listen);
 	$db = null;
 	$_SESSION['started']='1';
 }

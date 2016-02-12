@@ -8,6 +8,7 @@
         //Trainer, Profil und Logout anzeigen, falls eingeloggt
         echo "<li><a href='?site=trainer'>Trainer</a></li>";
         echo "<hr />";
+		echo "<li><a href='?site=manage'>Verwalten</a></li>";
         echo "<li><a href='?site=profil'>Profil</a></li>";
         echo "<li><a href='content/logout.php'>Logout</a></li>";
     } else {

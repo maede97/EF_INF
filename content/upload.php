@@ -87,6 +87,10 @@ if(isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isset
 		}
 	}
 } else {
+	if(!isset($_SESSION['user_id'])){
+		header("Location: http://localhost/EF_INF/index.php?site=login");
+		exit;
+	}
 	header("Location: http://localhost/EF_INF/index.php?site=manage");
 	exit;
 }

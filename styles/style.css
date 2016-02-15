@@ -24,6 +24,20 @@ form button {
 	padding: 5px;
 }
 
+#main a {
+	background-color: beige;
+	color: #000;
+	position: relative;
+	text-decoration: none;
+	padding: 10px;
+	width: 100px;
+}
+
+#main a:hover {
+	background-color: #555;
+	color: white;
+}
+
 #main button {
     display: block;
 	color: #000;

@@ -2,7 +2,7 @@
 <hr />
 <?php
 //Idee:
-//Tabellen erzeuge, löschen, bearbeiten
+//Tabellen erzeugen, löschen, bearbeiten
 
 session_start();
 if (isset($_SESSION['user_id'])) {
@@ -21,7 +21,7 @@ if (isset($_SESSION['user_id'])) {
         $stmt = $conn->prepare("SELECT * FROM listen WHERE user_id = '$id'");
         $stmt->execute();
         $result = $stmt->fetchall();
-
+		
 		echo "<h2>Deine Tabellen:</h2>";
 		echo "<table>"; 
 		echo "<tr><th>Name:</th><th>Sprache:</th></tr>";
@@ -49,5 +49,22 @@ if (isset($_SESSION['user_id'])) {
 <h2>Ideen:</h2>
 <p>Auf Tabelle klicken --> Weiterleitung zu edit.php mit get-Param der Liste (id oder name), dort wird id/name überprüft, Liste kann bearbeitet werden.</p>
 <p>Tabellen könnnen hier gelöscht / hinzugefügt werden.</p>
-
-
+<hr />
+<h2>Tabelle hinzufügen</h2>
+<form action="http://localhost/EF_INF/content/upload.php" method="post" enctype="multipart/form-data">
+	<p>
+        <label>Sprache:</label>
+        <input type="text" name="language" maxlength="30">
+    </p>
+    <p>
+		<label>Titel:</label>
+		<input type="text" name="title" maxlength="30">
+	</p>
+	<p>
+		<label>Select file to upload:</label>
+		<input type="file" name="fileToUpload" accept="spreadsheet/xls">
+	</p>
+    <p>
+		<input type="submit" value="Upload">
+	</p>
+ </form>

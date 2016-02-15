@@ -51,6 +51,7 @@ if (isset($_SESSION['user_id'])) {
 <p>Tabellen könnnen hier gelöscht / hinzugefügt werden.</p>
 <hr />
 <h2>Tabelle hinzufügen</h2>
+<p>Beispiel: <a href="http://localhost/EF_INF/content/uploads/example.xls">Hier klicken</a></p>
 <form action="http://localhost/EF_INF/content/upload.php" method="post" enctype="multipart/form-data">
 	<p>
         <label>Sprache:</label>

@@ -6,7 +6,7 @@
     session_start();
     if (isset($_SESSION['user_id'])) {
         //Trainer, Profil und Logout anzeigen, falls eingeloggt
-        echo "<li><a href='?site=trainer'>Trainer</a></li>";
+        echo "<li><a href='?site=auswahl'>Trainer</a></li>";
         echo "<hr />";
 		echo "<li><a href='?site=manage'>Verwalten</a></li>";
         echo "<li><a href='?site=profil'>Profil</a></li>";

@@ -103,6 +103,7 @@ if (!(isset($_SESSION['started']))) {
     $db = null;
     $_SESSION['started'] = '1';
 }
+
 ?>
 
 <link rel="stylesheet" href="styles/style.css">

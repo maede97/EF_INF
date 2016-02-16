@@ -24,7 +24,7 @@ if (isset($_SESSION['user_id'])) {
 		
 		echo "<h2>Deine Tabellen:</h2>";
 		echo "<table>"; 
-		echo "<tr><th>Name:</th><th>Sprache:</th></tr>";
+		echo "<tr><th>Titel:</th><th>Sprache:</th></tr>";
 		foreach($result as $row)
 		{
 		  //Print voci-tables into html table

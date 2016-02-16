@@ -25,6 +25,8 @@
     var solutions = null;
     var texts = null;
     var isShownSolution = false;
+	
+	
 
     function moveLeft(a) {
         $("#item_Container").animate({left: '15%', opacity: '0', fontSize: "100%", height: "200px", width: "350px"}, a);
@@ -39,7 +41,7 @@
     }
 
     function getCards() {
-        solutions = <?php echo json_encode(getSolutions()); ?>;
+        solutions = <?php echo json_encode(getTranslations()); ?>;
         texts = <?php echo json_encode(getTexts()); ?>;
     }
 
@@ -58,8 +60,6 @@
 
             $("#item_Container").animate({width: "420px", left: "-=150px"}, "slow");
         });
-
-
     }
 
     function getNextCard() {
@@ -78,30 +78,74 @@
         });
     }
 </script>
-
 <?php
-session_start();
-if (!isset($_SESSION['user_id'])) {
-    //Funktioniert noch nicht!
-    header("Location: http://localhost/EF_INF/index.php?site=home");
-    exit;
+function getTexts(){
+	$id = 2;
+	$liste = 1;
+	$woerter = array();
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "schooltool";
+
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        //Select all existing tables for this user
+        $stmt = $conn->prepare("SELECT woerter.wort FROM woerter, listen WHERE listen.listen_id = '$liste' AND woerter.listen_id = '$liste' AND listen.user_id = '$id'");
+        $stmt->execute();
+        $result = $stmt->fetchall();
+		foreach($result as $paar){
+			array_push($woerter,$paar['wort']);
+		}
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+    $conn = null;
+	return $woerter;
+	return array();
 }
 
-function getTexts() {
-    //Später aus sql-statement auslesen und returnen.
-    //Genau gleich bei getTitles()
-    return array("Text der Karte 1", "Text der Karte 2", "Text der Karte 3");
-}
+function getTranslations(){
+	$id = 0;
+	$liste = 0;
+	if(isset($_SESSION) && isset($_SESSION['user_id']) && isset($_SESSION['listen'])){
+		$id = $_SESSION['user_id'];
+		$liste = $_SESSION['listen'];
+	} else {
+		header("Location: http://localhost/EF_INF/index.php?site=login");
+		exit;
+	}
+	$translations = array();
+	
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "schooltool";
 
-function getSolutions() {
-    return array("Solution der Karte 1", "Solution der Karte 2", "Solution der Karte 3");
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        //Select all existing tables for this user
+        $stmt = $conn->prepare("SELECT woerter.translation FROM woerter, listen WHERE listen.listen_id = '$liste' AND woerter.listen_id = '$liste' AND listen.user_id = '$id'");
+        $stmt->execute();
+        $result = $stmt->fetchall();
+		foreach($result as $paar){
+			array_push($translations, $paar['translation']);
+		}
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+    $conn = null;
+	return $translations;
 }
 ?>
-
-
 <h1>Trainer</h1>
 <hr />
-Hier kommt eine Übersicht über alle Listen.
+
+<!--Dies ist ein kleiner Test zur Beispielabfrage-->
 <p>Nun folgt ein kleiner Test:</p>
 <button id="next">Karte drehen</button>
 <hr />

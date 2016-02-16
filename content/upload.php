@@ -4,7 +4,7 @@ session_start();
 //Listen-Name übergeben
 //Sprachen übergeben
 include 'excel_reader.php';
-if(isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isset($_SESSION['user_id'])){
+if(isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isset($_SESSION['user_id']) && $_POST['title']!="" && $_POST['language']!=""){
 	$target_dir = "uploads/";
 	$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 	$uploadOk = 1;
@@ -52,8 +52,10 @@ if(isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isset
 				$u_id = $_SESSION['user_id'];
 				$titel = $_POST['title'];
 				$sprache = $_POST['language'];
+				//Dem User die neue Liste hinzufügen
 				$stmt = "INSERT INTO `listen`(`sprache`, `user_id`, `titel`) VALUES ('$sprache','$u_id','$titel')";
 				$conn->exec($stmt);
+				//Die neue listen_id holen
 				$stmt = "SELECT listen_id FROM listen WHERE user_id = '$u_id' AND titel='$titel' AND sprache='$sprache';";
 				$go = $conn->prepare($stmt);
 				$go->execute();
@@ -68,9 +70,11 @@ if(isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isset
 				for($i=1;$i<=$rowCount;$i++){
 					$wort = $excel->val($i,1);
 					$translation= $excel->val($i,2);
+					//Jedes Wort in Liste einfügen
 					$stmt = "INSERT INTO `woerter`(`wort`, `translation`, `listen_id`) VALUES ('$wort','$translation','$listen_id');";
 					$conn->exec($stmt);
 				}
+				//Datei wieder löschen
 				unlink($target_file);
 
 				

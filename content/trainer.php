@@ -54,9 +54,7 @@
     }
 
     function getCards() {
-		//Session starten
-		<?php session_start(); ?>
-		//Die Arrays mit den Wörtern holen
+		<?php session_start(); //Start the Session?>
 		solutions = <?php echo json_encode(getTranslations()); ?>;
 		texts = <?php echo json_encode(getTexts()); ?>;
     }
@@ -128,7 +126,6 @@ function getTexts(){
 	return $woerter;
 }
 function getTranslations(){
-
 	$id = 0;
 	$liste = 0;
 	if(isset($_SESSION) && isset($_SESSION['user_id']) && isset($_SESSION['listen'])){

@@ -67,8 +67,8 @@ if (!(isset($_SESSION['started']))) {
             . "titel VARCHAR(30) NOT NULL, "
             . "FOREIGN Key(user_id) REFERENCES user(user_id));";
 	$woerter = "CREATE TABLE IF NOT EXISTS schooltool.woerter (wort_id INT(6) PRIMARY KEY AUTO_INCREMENT, "
-            . "wort VARCHAR(30) NOT NULL, "
-			. "translation VARCHAR(30) NOT NULL, "
+            . "wort VARCHAR(60) NOT NULL, "
+			. "translation VARCHAR(60) NOT NULL, "
             . "listen_id INT(6) NOT NULL, "
             . "FOREIGN Key(listen_id) REFERENCES listen(listen_id));";
     try {

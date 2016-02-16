@@ -24,7 +24,6 @@ if(isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isset
 	}
 	// Check if $uploadOk is set to 0 by an error
 	if ($uploadOk == 0) {
-	// if everything is ok, try to upload file
 		header("Location: http://localhost/EF_INF/index.php?site=manage");
 	} else {	
 		if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
@@ -76,8 +75,6 @@ if(isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isset
 				}
 				//Datei wieder löschen
 				unlink($target_file);
-
-				
 			} catch (PDOException $e) {
 				echo "Error: " . $e->getMessage();
 			}

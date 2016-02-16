@@ -41,8 +41,11 @@
     }
 
     function getCards() {
-        solutions = <?php echo json_encode(getTranslations()); ?>;
-        texts = <?php echo json_encode(getTexts()); ?>;
+		//Session starten
+		<?php session_start(); ?>
+		//Die Arrays mit den Wörtern holen
+		solutions = <?php echo json_encode(getTranslations()); ?>;
+		texts = <?php echo json_encode(getTexts()); ?>;
     }
 
     function showSolution() {
@@ -80,8 +83,14 @@
 </script>
 <?php
 function getTexts(){
-	$id = 2;
-	$liste = 1;
+	//Default-Werte
+	$id = 0;
+	$liste = 0;
+	if(isset($_SESSION) && isset($_SESSION['user_id']) && isset($_SESSION['listen'])){
+		//Auf richtige Werte stellen
+		$id = $_SESSION['user_id'];
+		$liste = $_SESSION['listen'];
+	}
 	$woerter = array();
     $servername = "localhost";
     $username = "root";
@@ -92,30 +101,26 @@ function getTexts(){
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        //Select all existing tables for this user
+        //Select all words from the word-list
         $stmt = $conn->prepare("SELECT woerter.wort FROM woerter, listen WHERE listen.listen_id = '$liste' AND woerter.listen_id = '$liste' AND listen.user_id = '$id'");
         $stmt->execute();
         $result = $stmt->fetchall();
+		//Jedes neue Wort dem wort-Array hinzufügen
 		foreach($result as $paar){
 			array_push($woerter,$paar['wort']);
 		}
     } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
     }
     $conn = null;
 	return $woerter;
-	return array();
 }
-
 function getTranslations(){
+
 	$id = 0;
 	$liste = 0;
 	if(isset($_SESSION) && isset($_SESSION['user_id']) && isset($_SESSION['listen'])){
 		$id = $_SESSION['user_id'];
 		$liste = $_SESSION['listen'];
-	} else {
-		header("Location: http://localhost/EF_INF/index.php?site=login");
-		exit;
 	}
 	$translations = array();
 	
@@ -128,20 +133,21 @@ function getTranslations(){
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        //Select all existing tables for this user
+        //Select all translations from this word-list
         $stmt = $conn->prepare("SELECT woerter.translation FROM woerter, listen WHERE listen.listen_id = '$liste' AND woerter.listen_id = '$liste' AND listen.user_id = '$id'");
         $stmt->execute();
         $result = $stmt->fetchall();
 		foreach($result as $paar){
+			//Alle Translations dem translation-array anhängen
 			array_push($translations, $paar['translation']);
 		}
     } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
     }
     $conn = null;
 	return $translations;
 }
 ?>
+
 <h1>Trainer</h1>
 <hr />
 

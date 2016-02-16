@@ -9,26 +9,7 @@
         $("#menu").load("menu.php");
         //Content wird über GET gesteuert
         $("#main").load("content/" + getParamGET("site") + ".php");
-        startTimer();
     });
-
-    function getTime() {
-        //Aktuelles Datum als String in span time schreiben
-        var now = new Date();
-        var hours = now.getHours();
-        var minutes = now.getMinutes();
-        var seconds = now.getSeconds();
-        var timeValue = ((hours < 10) ? "0" : "") + hours;
-        timeValue += ((minutes < 10) ? ":0" : ":") + minutes;
-        timeValue += ((seconds < 10) ? ":0" : ":") + seconds;
-        document.getElementById("time").innerHTML = timeValue;
-    }
-
-    function startTimer() {
-        //Jede Sekunde die Funktion getTime() ausführen
-        getTime();
-        setInterval(getTime, 1000);
-    }
 
     function getParamGET(param) {
         //Die GET-Parameter extrahieren, den Paramter der der Variable param entspricht zurückgeben
@@ -113,9 +94,7 @@ if (!(isset($_SESSION['started']))) {
     </head>
     <body>
         <div id="menu"></div>
-        <div id="header">
-            <span id="time"></span>
-        </div>
+        <div id="header"></div>
         <div id="main"></div>
         <div id="footer"></div>
     </body>

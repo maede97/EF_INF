@@ -7,9 +7,23 @@
 
         $("#sol").keypress(function (e) {
             if (e.which == 13) {
-                //Check here if correct				
-                document.getElementById("sol").value = "";
-                getNextCard();
+                //Check here if correct
+				//solutions[aktuell-1]
+				//texts[aktuell-1]
+				if(solutions[aktuell-1]==document.getElementById("sol").value){
+					//Correct
+					document.getElementById("sol").value = "";
+					document.getElementById("sol").style.background = "beige";
+					getNextCard();
+				} else {
+					//Not correct
+					wrong++;
+					if(wrong==3){
+						showSolution();
+					}
+					document.getElementById("sol").value = "";
+					document.getElementById("sol").style.background = "red";
+				}
             }
         });
 
@@ -25,9 +39,8 @@
     var solutions = null;
     var texts = null;
     var isShownSolution = false;
+	var wrong = 0;
 	
-	
-
     function moveLeft(a) {
         $("#item_Container").animate({left: '15%', opacity: '0', fontSize: "100%", height: "200px", width: "350px"}, a);
     }
@@ -60,7 +73,6 @@
                 document.getElementById("item").innerHTML = texts[aktuell - 1];
                 isShownSolution = false;
             }
-
             $("#item_Container").animate({width: "420px", left: "-=150px"}, "slow");
         });
     }
@@ -79,6 +91,7 @@
             moveRight(0);
             moveMiddle("slow");
         });
+		wrong=0;
     }
 </script>
 <?php
@@ -151,11 +164,8 @@ function getTranslations(){
 <h1>Trainer</h1>
 <hr />
 
-<!--Dies ist ein kleiner Test zur Beispielabfrage-->
-<p>Nun folgt ein kleiner Test:</p>
-<button id="next">Karte drehen</button>
-<hr />
-<input type="text" name="solution" id="sol">
-<div id="item_Container">
+<p><div id="item_Container">
     <span id="item"></span>
-</div>
+</div></p>
+<p><button id="next">Karte drehen</button></p>
+<p><input type="text" name="solution" id="sol"></p>

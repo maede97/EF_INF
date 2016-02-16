@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <script src="scripts/jquery.js"></script>
-<span id="time"></span>
 <span>
     SchoolTool - Trainer<br />
     PHP-Projekt von Jeremy und Matthias

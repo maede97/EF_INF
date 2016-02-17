@@ -40,9 +40,15 @@
   listen_id | sprache | user_id | titel
 
   woerter
-  ---------------------
+  -------
   wort_id | wort | translation | listen_id
-
+  
+  forum
+  -----
+  entry_id | title | message | user_id | art | datum
+  
+  Forum.art = 0, falls Eintrag von einem User, sonst 1
+  
  */
 
 //Falls gerade Session gestartet, Datenbanken erstellen, falls noch nicht vorhanden

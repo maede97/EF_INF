@@ -18,5 +18,6 @@
 	<li>App-Anbindung</li>
 	<li>Theme individuell anpassen und freigeben</li>
 	<li>Nachrichten an andere User</li>
+	<li>Besucher-Counter</li>
 </ul>
 <hr />

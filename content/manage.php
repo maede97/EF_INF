@@ -21,20 +21,23 @@ if (isset($_SESSION['user_id'])) {
         $stmt = $conn->prepare("SELECT * FROM listen WHERE user_id = '$id'");
         $stmt->execute();
         $result = $stmt->fetchall();
-		
-		echo "<h2>Deine Tabellen:</h2>";
-		echo "<table>"; 
-		echo "<tr><th>Titel:</th><th>Sprache:</th></tr>";
-		foreach($result as $row)
-		{
-		  //Print voci-tables into html table
-		  echo "<tr><td>"; 
-		  echo $row['titel'];
-		  echo "</td><td>";   
-		  echo $row['sprache'];
-		  echo "</td></tr>";  
+		if(count($result)==0){
+			echo "<h2>Du besitzt noch keine Tabellen.</h2>";
+		} else {
+			echo "<h2>Deine Tabellen:</h2>";
+			echo "<table>"; 
+			echo "<tr><th>Titel:</th><th>Sprache:</th></tr>";
+			foreach($result as $row)
+			{
+			  //Print voci-tables into html table
+			  echo "<tr><td>"; 
+			  echo $row['titel'];
+			  echo "</td><td>";   
+			  echo $row['sprache'];
+			  echo "</td></tr>";  
+			}
+			echo "</table>";
 		}
-		echo "</table>";
 		
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
@@ -62,17 +65,21 @@ function showSelectionDialog(){
         $stmt = $conn->prepare("SELECT * FROM listen WHERE user_id = '$id'");
         $stmt->execute();
         $result = $stmt->fetchall();
-		echo "<p><form method='GET' name='liste' action='http://localhost/EF_INF/content/pdf.php'>";
-		echo "<select name='liste'>";
-		foreach($result as $row)
-		{
-		  //Print voci-tables into html table
-		  echo "<option value=".$row['listen_id'].">".$row['titel']." - ";
-		  echo $row['sprache']."</option>";
+		if(count($result)==0){
+			echo "<p>Du besitzt noch keine Tabellen.</p>";
+		} else {
+			echo "<p><form method='GET' name='liste' action='http://localhost/EF_INF/content/pdf.php'>";
+			echo "<select name='liste'>";
+			foreach($result as $row)
+			{
+			  //Print voci-tables into html table
+			  echo "<option value=".$row['listen_id'].">".$row['titel']." - ";
+			  echo $row['sprache']."</option>";
+			}
+			echo "</select>";
+			echo "<input type='submit' value='PDF erhalten' title='PDF anfordern'>";
+			echo "</form></p>";
 		}
-		echo "</select>";
-		echo "<input type='submit' value='PDF erhalten'>";
-		echo "</form></p>";
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
@@ -91,7 +98,7 @@ function showSelectionDialog(){
 <hr />
 <a name="addList"></a>
 <h2>Tabelle hinzufügen</h2>
-<p>Beispiel: <a href="http://localhost/EF_INF/content/uploads/example.xls">Hier klicken</a></p>
+<p>Beispiel: <a href="http://localhost/EF_INF/content/uploads/example.xls" title="Beispiel herunterladen">Hier klicken</a></p>
 <form action="http://localhost/EF_INF/content/upload.php" method="post" enctype="multipart/form-data">
 	<p>
         <p>Sprache:</p>
@@ -106,6 +113,6 @@ function showSelectionDialog(){
 		<input type="file" name="fileToUpload" accept="spreadsheet/xls">
 	</p>
     <p>
-		<input type="submit" value="Upload">
+		<input type="submit" value="Upload" title="Hochladen">
 	</p>
  </form>

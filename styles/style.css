@@ -15,12 +15,29 @@
 	padding-bottom: 50px;
 }
 
+#main #forum_left {
+	float: left;
+	width: 49%;
+	border-right: 1px solid black;
+	height: 100%;
+	padding-right: 10px;
+}
+#main #forum_right {
+	float: left;
+	width: 49%;
+	height: 100%;
+	padding-left: 10px;
+}
+#main #forum_parent {
+	height: 100%;
+}
+
 a[name] {
 	/* Alle Anker ausblenden */
 	visibility: hidden;
 }
 
-form input {
+form input, textarea {
 	left: 400px;
 	background-color: beige;
 }
@@ -45,7 +62,7 @@ form button {
 	border: 1px solid #555;
 }
 
-#main button, input{
+#main button, input, textarea {
     display: block;
 	color: #000;
 	text-decoration: none;

@@ -6,7 +6,7 @@ session_start();
 include 'excel_reader.php';
 if(isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isset($_SESSION['user_id']) && $_POST['title']!="" && $_POST['language']!=""){
 	//Check if user gave a file
-	if(!(isset($_FILE['fileToUpload']))){
+	if(!(isset($_FILES['fileToUpload']))){
 		$uploadOk=0;
 		header("Location: http://localhost/EF_INF/index.php?site=manage&error=10#addList");
 		exit;
@@ -106,6 +106,13 @@ if(isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isset
 				$u_id = $_SESSION['user_id'];
 				$titel = $_POST['title'];
 				$sprache = $_POST['language'];
+				//öäü entfernen und umwandeln
+				$titel = str_replace("ö","&ouml;",$titel);
+				$sprache = str_replace("ö","&ouml;",$sprache);
+				$titel = str_replace("ü","&uuml;",$titel);
+				$sprache = str_replace("ü","&uuml;",$sprache);
+				$titel = str_replace("ä","&auml;",$titel);
+				$sprache = str_replace("ä","&auml;",$sprache);
 				//Dem User die neue Liste hinzufügen
 				$stmt = "INSERT INTO `listen`(`sprache`, `user_id`, `titel`) VALUES ('$sprache','$u_id','$titel')";
 				$conn->exec($stmt);

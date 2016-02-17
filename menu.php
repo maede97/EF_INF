@@ -18,5 +18,7 @@
     }
     ?>
     <hr />
+	<li><a href="?site=forum">Forum</a></li>
     <li><a href="?site=about">About</a></li>
+	<li><a href="http://localhost/phpmyadmin">PHPmyAdmin</a></li>
 </ul>

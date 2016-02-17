@@ -15,6 +15,11 @@
 	padding-bottom: 50px;
 }
 
+a[name] {
+	/* Alle Anker ausblenden */
+	visibility: hidden;
+}
+
 form input {
 	left: 400px;
 	background-color: beige;

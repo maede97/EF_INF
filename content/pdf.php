@@ -65,7 +65,7 @@ if(isset($_SESSION['user_id']) && isset($_GET['liste'])){
 			}
         } else {
             //NO PDF
-			header("Location: http://localhost/EF_INF/index.php?site=manage");
+			header("Location: http://localhost/EF_INF/index.php?site=manage&error=0#printList");
 			exit;
         }
     } catch (PDOException $e) {

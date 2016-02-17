@@ -84,10 +84,12 @@ function showSelectionDialog(){
 <p>Auf Tabelle klicken --> Weiterleitung zu edit.php mit Session-Param der Liste (id), dort wird id überprüft, Liste kann bearbeitet werden.</p>
 <p>Tabellen können hier gelöscht werden.</p>
 <hr />
+<a name="printList"></a>
 <h2>Tabellen ausdrucken</h2>
 <p>Hier können Tabellen in PDF's verwandelt werden, um sie dann auszudrucken.</p>
 <?php showSelectionDialog(); ?>
 <hr />
+<a name="addList"></a>
 <h2>Tabelle hinzufügen</h2>
 <p>Beispiel: <a href="http://localhost/EF_INF/content/uploads/example.xls">Hier klicken</a></p>
 <form action="http://localhost/EF_INF/content/upload.php" method="post" enctype="multipart/form-data">

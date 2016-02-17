@@ -87,7 +87,8 @@ function getErrorMessage(){
 		'Du kannst nur XLS-Dateien hochladen.',
 		'Deine Datei ist zu gross.',
 		'Wir unterstützen im Moment nur Listen mit bis zu 100 Wörter.',
-		'Du besitzt schon eine Liste mit demselben Titel.\nBitte wähle einen anderen.'
+		'Du besitzt schon eine Liste mit demselben Titel.\nBitte wähle einen anderen.',
+		'Bitte füge eine Datei hinzu.'
 	);
 
 	if(isset($_GET['error'])){

@@ -1,12 +1,19 @@
 <h1>Home</h1>
 <hr />
 <p>Herzlich Willkommen auf unserer Seite!</p>
-<p>Auf der linken Seite findest du das Menu.</p>
-<?php
-session_start();
-if (isset($_SESSION['user_id'])) {
-    echo "<p>Dort findest du den Vokabulartrainer!</p>";
-} else {
-    echo "<p>Bitte logge dich ein, um den Vokabulartrainer zu verwenden.</p>";
-}
-?>
+<hr />
+<h2>Features</h2>
+<ul style="list-style-type:disc; padding-left:15px;">
+    <li>Kontos</li>
+	<li>Unbegrenzte Anzahl Vocabular-Listen</li>
+	<li>Import aus Excel-97-Dateien</li>
+	<li>Export zu PDF</li>
+	<li>Online-Voci-Trainer</li>
+</ul>
+<hr />
+<h2>Geplante Features</h2>
+<ul style="list-style-type:disc; padding-left: 15px;">
+	<li>Listen anderen Benutzern freigeben</li>
+	<li>App-Anbindung</li>
+</ul>
+<hr />

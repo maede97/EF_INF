@@ -101,6 +101,9 @@ function getTexts(){
 		//Auf richtige Werte stellen
 		$id = $_SESSION['user_id'];
 		$liste = $_SESSION['listen'];
+	} else {
+		header("Location: http://localhost/EF_INF/index.php?site=login&error=4");
+		exit;
 	}
 	$woerter = array();
     $servername = "localhost";
@@ -131,6 +134,9 @@ function getTranslations(){
 	if(isset($_SESSION) && isset($_SESSION['user_id']) && isset($_SESSION['listen'])){
 		$id = $_SESSION['user_id'];
 		$liste = $_SESSION['listen'];
+	} else {
+		header("Location: http://localhost/EF_INF/index.php?site=login&error=4");
+		exit;
 	}
 	$translations = array();
 	

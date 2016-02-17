@@ -41,7 +41,8 @@ if (isset($_SESSION['user_id'])) {
     }
     $conn = null;
 } else {
-    header("Location: http://localhost/EF_INF/content/logout.php");
+    header("Location: http://localhost/EF_INF/index.php?site=login");
+	//Funktioniert nicht!
     exit;
 }
 
@@ -79,9 +80,9 @@ function showSelectionDialog(){
 }
 ?>
 <hr />
-<h2>Ideen:</h2>
+<h2>Ideen: (noch nicht umgesetzt)</h2>
 <p>Auf Tabelle klicken --> Weiterleitung zu edit.php mit Session-Param der Liste (id), dort wird id überprüft, Liste kann bearbeitet werden.</p>
-<p>Tabellen können hier gelöscht / hinzugefügt werden.</p>
+<p>Tabellen können hier gelöscht werden.</p>
 <hr />
 <h2>Tabellen ausdrucken</h2>
 <p>Hier können Tabellen in PDF's verwandelt werden, um sie dann auszudrucken.</p>

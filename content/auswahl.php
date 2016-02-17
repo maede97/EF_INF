@@ -2,7 +2,7 @@
 session_start();
 if (!isset($_SESSION['user_id'])) {
     //Funktioniert noch nicht!
-    header("Location: http://localhost/EF_INF/index.php?site=login");
+    header("Location: http://localhost/EF_INF/index.php?site=login&error=4");
     exit;
 } else {
 	$id = $_SESSION['user_id'];

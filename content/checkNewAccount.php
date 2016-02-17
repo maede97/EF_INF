@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["username"]) &&
         if (!count($result) == 0) {
             //Very bad
             unset($_SESSION['user_id']);
-            header("Location: http://localhost/EF_INF/index.php?site=createAccount");
+            header("Location: http://localhost/EF_INF/index.php?site=createAccount&error=5");
             exit;
         }
 
@@ -43,11 +43,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["username"]) &&
         } else if (count($result) == 0) {
             //Kein Benutzer gefunden.
             unset($_SESSION['user_id']);
-            header("Location: http://localhost/EF_INF/index.php?site=createAccount");
+            header("Location: http://localhost/EF_INF/index.php?site=createAccount&error=0");
             exit;
         } else {
             unset($_SESSION['user_id']);
-            header("Location: http://localhost/EF_INF/index.php?site=login");
+            header("Location: http://localhost/EF_INF/index.php?site=login&error=0");
             exit;
         }
         header("Location: http://localhost/EF_INF/index.php?site=home");
@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["username"]) &&
     $conn = null;
 } else {
     unset($_SESSION['user_id']);
-    header("Location: http://localhost/EF_INF/index.php?site=createAccount");
+    header("Location: http://localhost/EF_INF/index.php?site=createAccount&error=1");
     exit;
 }
 ?>

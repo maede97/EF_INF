@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['user_id'])) {
+if (isset($_SESSION) && isset($_SESSION['user_id'])) {
     $id = $_SESSION['user_id'];
 
     $servername = "localhost";
@@ -26,7 +26,8 @@ if (isset($_SESSION['user_id'])) {
     }
     $conn = null;
 } else {
-    header("Location: http://localhost/EF_INF/content/logout.php");
+    header("Location: http://localhost/EF_INF/index.php?site=login");
+	//Funktioniert nicht --> Endlosschleife!!!
     exit;
 }
 ?>

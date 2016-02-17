@@ -9,6 +9,11 @@
         $("#menu").load("menu.php");
         //Content wird über GET gesteuert
         $("#main").load("content/" + getParamGET("site") + ".php");
+		
+		var error = '<?php echo getErrorMessage(); ?>';
+		if(error!=""){
+			alert(error);
+		}
     });
 
     function getParamGET(param) {
@@ -34,28 +39,14 @@
   ------
   listen_id | sprache | user_id | titel
 
-  Dann jede neue Voci-Liste hat folgedes Format:
-
-  vocabular_[listen_id]
+  woerter
   ---------------------
-  wort_id | original | foreign
+  wort_id | wort | translation | listen_id
 
-  [listen_id] wird dann automatisch ersetzt durch Nummer
-
-
-  Weggelassen
-  user_has_list
-  -------------
-  user_id	| listen_id
-
-  user_has_list könnte weggelassen werden
-
-
-  TODO:
-  - Trainer.php: Eingabe nach bösen Eingaben durchsuchen (Select etc.)
  */
 
 //Falls gerade Session gestartet, Datenbanken erstellen, falls noch nicht vorhanden
+
 session_start();
 if (!(isset($_SESSION['started']))) {
     $users = "CREATE TABLE IF NOT EXISTS schooltool.user (user_id INT(6) PRIMARY KEY AUTO_INCREMENT, "
@@ -83,6 +74,26 @@ if (!(isset($_SESSION['started']))) {
 	$createWoerter = $db->exec($woerter);
     $db = null;
     $_SESSION['started'] = '1';
+}
+
+function getErrorMessage(){
+	$errorMessage = array(
+		'Ein Fehler ist aufgetreten.',
+		'Du musst alle Felder ausfüllen.',
+		'Dein Passwort ist falsch.',
+		'Dieser Benutzer existiert nicht.\nDu kannst nun einen neuen Benutzer anlegen.',
+		'Du musst eingeloggt sein, um diese Funktion nützen zu können.',
+		'Dieser Benutzer existiert bereits.',
+		'Du kannst nur XLS-Dateien hochladen.',
+		'Deine Datei ist zu gross.',
+		'Wir unterstützen im Moment nur Listen mit bis zu 100 Wörter.',
+		'Du besitzt schon eine Liste mit demselben Titel.\nBitte wähle einen anderen.'
+	);
+
+	if(isset($_GET['error'])){
+		return $errorMessage[$_GET['error']]; 
+	}
+	return "";
 }
 
 ?>

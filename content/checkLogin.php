@@ -34,18 +34,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["username"]) && isset($
                 //Falsches Passwort, eventuelle Sessions zurücksetzen
                 unset($_SESSION['user_id']);
                 //Zurück zu Login-Page
-                header("Location: http://localhost/EF_INF/index.php?site=login");
+                header("Location: http://localhost/EF_INF/index.php?site=login&error=2");
                 exit;
             }
         } else if (count($result) == 0) {
             //Kein Benutzer gefunden.
             unset($_SESSION['user_id']);
-            header("Location: http://localhost/EF_INF/index.php?site=createAccount");
+            header("Location: http://localhost/EF_INF/index.php?site=createAccount&error=3");
+			
             exit;
         } else {
             //Sonst irgend was
             unset($_SESSION['user_id']);
-            header("Location: http://localhost/EF_INF/index.php?site=login");
+            header("Location: http://localhost/EF_INF/index.php?site=login&error=0");
             exit;
         }
     } catch (PDOException $e) {
@@ -54,9 +55,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["username"]) && isset($
     //Verbindung zurücksetzen
     $conn = null;
 } else {
-    //Keine Daten per POSt geschickt, zurück zu Login
+    //Keine Daten per POST geschickt, zurück zu Login
     unset($_SESSION['user_id']);
-    header("Location: http://localhost/EF_INF/index.php?site=login");
+    header("Location: http://localhost/EF_INF/index.php?site=login&error=1");
     exit;
 }
 ?>

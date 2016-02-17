@@ -89,7 +89,7 @@ if(isset($_SESSION['user_id']) && isset($_GET['liste'])){
 		}
 	$pdf->Output("$title.pdf","I");
 } else {
-	header("Location: http://localhost/EF_INF/index.php?site=login");
+	header("Location: http://localhost/EF_INF/index.php?site=login&error=4");
 	exit;
 }
 ?>

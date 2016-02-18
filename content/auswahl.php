@@ -20,6 +20,14 @@ if (!isset($_SESSION['user_id'])) {
         $stmt = $conn->prepare("SELECT * FROM listen WHERE user_id = '$id'");
         $stmt->execute();
         $result = $stmt->fetchall();
+		if(count($result)==0){
+			echo "<h1>Achtung!</h1>";
+			echo "<hr />";
+			echo "<p>Du besitzt noch keine Tabellen.</p>";
+			echo "<p>Du kannst sie hier hinzufügen:</p>";
+			echo "<a href='http://localhost/EF_INF/index.php?site=manage#addList'>Liste hinzufügen</a>";
+			exit;
+		}
 		echo "<h1>Vorbereitung</h1>";
 		echo "<hr />";
 		echo "<h2>Bitte wähle eine Tabelle</h2>";

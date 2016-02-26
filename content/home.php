@@ -19,5 +19,6 @@
 	<li>Theme individuell anpassen und freigeben</li>
 	<li>Nachrichten an andere User</li>
 	<li>Besucher-Counter</li>
+	<li>Passwort ändern auf Profil-Seite</li>
 </ul>
 <hr />

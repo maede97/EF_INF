@@ -1,3 +1,14 @@
+<script src="scripts/jquery.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+		document.getElementById("newEntrySpan").style.display = "none";
+        $("#addEntry").click(function () {
+			document.getElementById("newEntrySpan").style.display = "block";
+			document.getElementById("addEntry").style.display = "none";
+		});
+	});
+</script>
+
 <?php
 session_start();
 
@@ -65,6 +76,9 @@ function getAnnouncements(){
 
 function newEntry(){
 	if(isset($_SESSION['user_id'])){
+		//Print a span with a form to enter a new entry for the forum
+		echo "<button id='addEntry'>Neuen Eintrag</button>";
+		echo "<span id='newEntrySpan'>";
 		echo "<h2>Eintrag verfassen</h2>";
 		echo "<hr />";
 		echo "<form action='http://localhost/EF_INF/content/forumEntry.php' method='POST'>";
@@ -81,6 +95,7 @@ function newEntry(){
         echo "</p>";
 		echo "</form>";
 		echo "<hr />";
+		echo "</span>";
 	}
 }
 ?>

@@ -1,4 +1,5 @@
-/* style.css
+/* 
+style.css
 @author: Matthias Busenhart
 */
 
@@ -185,19 +186,11 @@ li a:hover {
 }
 
 #header a:hover {
+	/* Buttons in the header */
 	background-color: #555;
 	color: white;
 	border: 1px solid #555;
 }
-
-#header #time {
-	position: absolute;
-	left: 10px;
-	top: 50%;
-        padding: 10px;
-}
-
-
 
 #header {
 	/* The Header

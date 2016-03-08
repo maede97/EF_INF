@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["username"]) &&
+if (($_SERVER["REQUEST_METHOD"] == "POST") && isset($_POST["username"]) &&
         isset($_POST["password"]) && isset($_POST["password2"]) && ($_POST['password'] == $_POST['password2'])) {
     //Und strings filtern!
 	$username_data = trim($_POST['username']);

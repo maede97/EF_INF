@@ -1,6 +1,10 @@
 <?php
 session_start();
 if(isset($_SESSION['user_id']) && isset($_POST) && isset($_POST['titel']) && isset($_POST['message'])){
+	if(($_POST['titel']=="") && ($_POST['messsage']=="")){
+		header("Location: http://localhost/EF_INF/index.php?site=forum&error=1");
+		exit;
+	}
 	$servername = "localhost";
     $username = "root";
     $password = "";

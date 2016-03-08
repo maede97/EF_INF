@@ -121,7 +121,14 @@ function getTexts(){
         $result = $stmt->fetchall();
 		//Jedes neue Wort dem wort-Array hinzufügen
 		foreach($result as $paar){
-			array_push($woerter,$paar['wort']);
+			$wort = $paar['wort'];
+			$wort = str_replace("ö","oe",$wort);
+			$wort = str_replace("ü","ue",$wort);
+			$wort = str_replace("ä","ae",$wort);
+			$wort = str_replace("Ö","Oe",$wort);
+			$wort = str_replace("Ü","Ue",$wort);
+			$wort = str_replace("Ä","Ae",$wort);
+			array_push($woerter,$wort);
 		}
     } catch (PDOException $e) {
     }
@@ -155,7 +162,14 @@ function getTranslations(){
         $result = $stmt->fetchall();
 		foreach($result as $paar){
 			//Alle Translations dem translation-array anhängen
-			array_push($translations, $paar['translation']);
+			$translation = $paar['translation'];
+			$translation = str_replace("ö","oe",$translation);
+			$translation = str_replace("ü","ue",$translation);
+			$translation = str_replace("ä","ae",$translation);
+			$translation = str_replace("Ö","Oe",$translation);
+			$translation = str_replace("Ü","Ue",$translation);
+			$translation = str_replace("Ä","Ae",$translation);
+			array_push($translations, $translation);
 		}
     } catch (PDOException $e) {
     }

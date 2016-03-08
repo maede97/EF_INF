@@ -88,7 +88,7 @@ function showSelectionDialog(){
 ?>
 <hr />
 <h2>Ideen: (noch nicht umgesetzt)</h2>
-<p>Auf Tabelle klicken --> Weiterleitung zu edit.php mit Session-Param der Liste (id), dort wird id überprüft, Liste kann bearbeitet werden.</p>
+<p>Auf Tabelle klicken --> Weiterleitung zu <em>edit.php</em> mit Session-Param der Liste (<em>id</em>), dort wird <em>id</em> überprüft, Liste kann bearbeitet werden.</p>
 <p>Tabellen können hier gelöscht werden.</p>
 <hr />
 <a name="printList"></a>
@@ -98,7 +98,8 @@ function showSelectionDialog(){
 <hr />
 <a name="addList"></a>
 <h2>Tabelle hinzufügen</h2>
-<p>Beispiel: <a href="http://localhost/EF_INF/content/uploads/example.xls" title="Beispiel herunterladen">Hier klicken</a></p>
+<p>Achtung: Die Tabelle darf keine Umlaute enthalten!</p>
+<p>Vorlage: <a href="http://localhost/EF_INF/content/uploads/example.xls" title="Vorlage herunterladen">Hier klicken</a></p>
 <form action="http://localhost/EF_INF/content/upload.php" method="post" enctype="multipart/form-data">
 	<p>
         <p>Sprache:</p>
@@ -109,7 +110,7 @@ function showSelectionDialog(){
 		<input type="text" name="title" maxlength="30">
 	</p>
 	<p>
-		<p>Select file to upload:</p>
+		<p>Wähle die Datei:</p>
 		<input type="file" name="fileToUpload" accept="spreadsheet/xls">
 	</p>
     <p>

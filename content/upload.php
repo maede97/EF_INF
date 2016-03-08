@@ -132,6 +132,18 @@ if(isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isset
 				for($i=1;$i<=$rowCount;$i++){
 					$wort = $excel->val($i,1);
 					$translation= $excel->val($i,2);
+					$wort = str_replace("ö","oe",$wort);
+					$translation = str_replace("ö","oe",$translation);
+					$wort = str_replace("ü","ue",$wort);
+					$translation = str_replace("ü","ue",$translation);
+					$wort = str_replace("ä","ae",$wort);
+					$translation = str_replace("ä","ae",$translation);
+					$wort = str_replace("Ö","Oe",$wort);
+					$translation = str_replace("Ö","Oe",$translation);
+					$wort = str_replace("Ü","Ue",$wort);
+					$translation = str_replace("Ü","Ue",$translation);
+					$wort = str_replace("Ä","Ae",$wort);
+					$translation = str_replace("Ä","Ae",$translation);
 					//Jedes Wort in Liste einfügen
 					$stmt = "INSERT INTO `woerter`(`wort`, `translation`, `listen_id`) VALUES ('$wort','$translation','$listen_id');";
 					$conn->exec($stmt);

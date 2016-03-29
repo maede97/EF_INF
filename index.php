@@ -59,7 +59,7 @@ if (!(isset($_SESSION['started']))) {
             . "FOREIGN Key(user_id) REFERENCES user(user_id));";
 	$woerter = "CREATE TABLE IF NOT EXISTS schooltool.woerter (wort_id INT(6) PRIMARY KEY AUTO_INCREMENT, "
             . "wort VARCHAR(60) NOT NULL, "
-			. "translation VARCHAR(60) NOT NULL, "
+            . "translation VARCHAR(60) NOT NULL, "
             . "listen_id INT(6) NOT NULL, "
             . "FOREIGN Key(listen_id) REFERENCES listen(listen_id));";
     try {
@@ -71,7 +71,7 @@ if (!(isset($_SESSION['started']))) {
     //Beide SQL-Befehle ausführen
     $createUsers = $db->exec($users);
     $createListen = $db->exec($listen);
-$createWoerter = $db->exec($woerter);
+    $createWoerter = $db->exec($woerter);
     $db = null;
     $_SESSION['started'] = '1';
 }

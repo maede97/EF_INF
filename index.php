@@ -43,12 +43,6 @@
   -------
   wort_id | wort | translation | listen_id
   
-  forum
-  -----
-  entry_id | title | message | user_id | art | datum
-  
-  Forum.art = 0, falls Eintrag von einem User, sonst 1
-  
  */
 
 //Falls gerade Session gestartet, Datenbanken erstellen, falls noch nicht vorhanden
@@ -68,13 +62,6 @@ if (!(isset($_SESSION['started']))) {
 			. "translation VARCHAR(60) NOT NULL, "
             . "listen_id INT(6) NOT NULL, "
             . "FOREIGN Key(listen_id) REFERENCES listen(listen_id));";
-	$forum = "CREATE TABLE IF NOT EXISTS schooltool.forum (entry_id INT(6) PRIMARY KEY AUTO_INCREMENT, "
-			. "title VARCHAR(30) NOT NULL, "
-			. "message TEXT NOT NULL, "
-			. "user_id INT(6) NOT NULL, "
-			. "art INT(2) NOT NULL, "
-			. "datum TIMESTAMP NOT NULL, "
-			. "FOREIGN KEY(user_id) REFERENCES user(user_id));";
     try {
         $db = new PDO("mysql:dbname=schooltool;host=localhost", "root", "");
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -84,8 +71,7 @@ if (!(isset($_SESSION['started']))) {
     //Beide SQL-Befehle ausführen
     $createUsers = $db->exec($users);
     $createListen = $db->exec($listen);
-	$createWoerter = $db->exec($woerter);
-	$createForum = $db->exec($forum);
+$createWoerter = $db->exec($woerter);
     $db = null;
     $_SESSION['started'] = '1';
 }

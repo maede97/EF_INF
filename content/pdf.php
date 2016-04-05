@@ -60,8 +60,8 @@ if(isset($_SESSION['user_id']) && isset($_GET['liste'])){
 			//Alle Wörter zu einer Liste hinzufügen
 			$woerter = $translations = array();
 			foreach($result as $paar){
-				array_push($woerter,$paar['wort']);
-				array_push($translations,$paar['translation']);
+				array_push($woerter,html_entity_decode($paar['wort']));
+				array_push($translations,html_entity_decode($paar['translation']));
 			}
         } else {
             //NO PDF
@@ -78,8 +78,10 @@ if(isset($_SESSION['user_id']) && isset($_GET['liste'])){
 	$pdf->AliasNbPages();
 	$pdf->AddPage();
 	$pdf->SetFillColor(150);
+		//Wörter in PDF einfüllen
 		for($i=0;$i<count($woerter);$i++){
 			$filler = ($i+1) % 2;
+			//Fett:
 			$pdf->SetFont('Times','B',12);
 			$pdf->Cell(95,10,$woerter[$i],0,0,'',$filler);
 			$pdf->SetFont('Times','',12);

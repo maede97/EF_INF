@@ -60,7 +60,7 @@
     }
 
     function showSolution() {
-        $("#item_Container").hide("slow");
+        $("#item_Container").animate({opacity: '0'},"slow");
         $("#item_Container").promise().done(function () {
             //Wait until card ist done turning
             //Then change text
@@ -71,7 +71,7 @@
                 document.getElementById("item").innerHTML = texts[aktuell - 1];
                 isShownSolution = false;
             }
-            $("#item_Container").show("slow");
+            $("#item_Container").animate({opacity: '1'},"slow");
         });
     }
 
@@ -121,13 +121,7 @@ function getTexts(){
         $result = $stmt->fetchall();
 		//Jedes neue Wort dem wort-Array hinzufügen
 		foreach($result as $paar){
-			$wort = $paar['wort'];
-			$wort = str_replace("ö","oe",$wort);
-			$wort = str_replace("ü","ue",$wort);
-			$wort = str_replace("ä","ae",$wort);
-			$wort = str_replace("Ö","Oe",$wort);
-			$wort = str_replace("Ü","Ue",$wort);
-			$wort = str_replace("Ä","Ae",$wort);
+			$wort = utf8_encode($paar['wort']);
 			array_push($woerter,$wort);
 		}
     } catch (PDOException $e) {
@@ -162,13 +156,7 @@ function getTranslations(){
         $result = $stmt->fetchall();
 		foreach($result as $paar){
 			//Alle Translations dem translation-array anhängen
-			$translation = $paar['translation'];
-			$translation = str_replace("ö","oe",$translation);
-			$translation = str_replace("ü","ue",$translation);
-			$translation = str_replace("ä","ae",$translation);
-			$translation = str_replace("Ö","Oe",$translation);
-			$translation = str_replace("Ü","Ue",$translation);
-			$translation = str_replace("Ä","Ae",$translation);
+			$translation = utf8_encode($paar['translation']);
 			array_push($translations, $translation);
 		}
     } catch (PDOException $e) {

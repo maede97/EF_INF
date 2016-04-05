@@ -87,10 +87,6 @@ function showSelectionDialog(){
 }
 ?>
 <hr />
-<h2>Ideen: (noch nicht umgesetzt)</h2>
-<p>Auf Tabelle klicken --> Weiterleitung zu <em>edit.php</em> mit Session-Param der Liste (<em>id</em>), dort wird <em>id</em> überprüft, Liste kann bearbeitet werden.</p>
-<p>Tabellen können hier gelöscht werden.</p>
-<hr />
 <a name="printList"></a>
 <h2>Tabellen ausdrucken</h2>
 <p>Hier können Tabellen in PDF's verwandelt werden, um sie dann auszudrucken.</p>
@@ -98,7 +94,6 @@ function showSelectionDialog(){
 <hr />
 <a name="addList"></a>
 <h2>Tabelle hinzufügen</h2>
-<p>Achtung: Die Tabelle darf keine Umlaute enthalten!</p>
 <p>Vorlage: <a href="http://localhost/EF_INF/content/uploads/example.xls" title="Vorlage herunterladen">Hier klicken</a></p>
 <form action="http://localhost/EF_INF/content/upload.php" method="post" enctype="multipart/form-data">
 	<p>

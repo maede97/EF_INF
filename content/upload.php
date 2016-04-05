@@ -2,7 +2,7 @@
 
 session_start();
 //PHPExcel implementieren
-include '/opt/lampp/htdocs/EF_INF/content/PHPExcel/PHPExcel/IOFactory.php';
+include '.\\PHPExcel\\PHPExcel\\IOFactory.php';
 
 //Falls alle POST-Daten gesetzt
 if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isset($_SESSION['user_id']) && $_POST['title'] != "" && $_POST['language'] != "") {
@@ -113,12 +113,8 @@ if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isse
                 $titel = $_POST['title'];
                 $sprache = $_POST['language'];
                 //öäü entfernen und umwandeln
-                $titel = str_replace("ö", "&ouml;", $titel);
-                $sprache = str_replace("ö", "&ouml;", $sprache);
-                $titel = str_replace("ü", "&uuml;", $titel);
-                $sprache = str_replace("ü", "&uuml;", $sprache);
-                $titel = str_replace("ä", "&auml;", $titel);
-                $sprache = str_replace("ä", "&auml;", $sprache);
+                $titel = htmlentities($titel);
+				$sprache = htmlentities($sprache);
                 //Dem User die neue Liste hinzufügen
                 $stmt = "INSERT INTO `listen`(`sprache`, `user_id`, `titel`) VALUES ('$sprache','$u_id','$titel')";
                 $conn->exec($stmt);
@@ -138,26 +134,16 @@ if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isse
                 for ($i = 1; $i <= $rowCount; $i++) {
                     $wort = $objPHPExcel->getActiveSheet()->getCellByColumnAndRow(0, $i);
                     $translation = $objPHPExcel->getActiveSheet()->getCellByColumnAndRow(1, $i);
-                    echo $wort. "<br />";
-                    echo $translation."<br />";
-                    //$wort = utf8_encode($wort);
-                    //$translation = utf8_decode($translation);
+                    $wort = utf8_decode($wort);
+                    $translation = utf8_decode($translation);
                     echo $wort. "<br />";
                     echo $translation."<br />";
                     //$wort = htmlspecialchars($wort);
                     //$translation = htmlspecialchars($translation);
-                    $wort = str_replace("ö","&ouml;",$wort);
-                    $translation = str_replace("ö","&ouml;",$translation);
-                    $wort = str_replace("ü","&uuml;",$wort);
-                    $translation = str_replace("ü","&uuml;",$translation);
-                    $wort = str_replace("ä","&auml;",$wort);
-                    $translation = str_replace("ä","&auml;",$translation);
-                    $wort = str_replace("Ö","Oe",$wort);
-                    $translation = str_replace("Ö","Oe",$translation);
-                    $wort = str_replace("Ü","Ue",$wort);
-                    $translation = str_replace("Ü","Ue",$translation);
-                    $wort = str_replace("Ä","Ae",$wort);
-                    $translation = str_replace("Ä","Ae",$translation);
+					
+					//$wort = htmlentities($wort);
+					//$translation = htmlentities($translation);
+					
                     //Jedes Wort in Liste einfügen
                     $stmt = "INSERT INTO `woerter`(`wort`, `translation`, `listen_id`) VALUES ('$wort','$translation','$listen_id');";
                     $conn->exec($stmt);
@@ -165,7 +151,7 @@ if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isse
                 
                 //Datei wieder löschen
                 unlink($target_file);
-                exit;
+                //exit;
             } catch (PDOException $e) {
                 echo "Error: " . $e->getMessage();
             }

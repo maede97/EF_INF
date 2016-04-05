@@ -1,4 +1,6 @@
-<img src="res/kzo_logo.png">
+<!DOCTYPE html>
+<!-- KZO-Logo: Bei Klick geht in neuem Fenster (target="_blank") die KZO-Seite auf. -->
+<a href="http://kzo.ch" target="_blank"><img src="res/kzo_logo.png"></a>
 <hr />
 <ul>
     <li><a href="?site=home">Home</a></li>

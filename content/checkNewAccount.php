@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 if (($_SERVER["REQUEST_METHOD"] == "POST") && isset($_POST["username"]) &&
         isset($_POST["password"]) && isset($_POST["password2"]) && ($_POST['password'] == $_POST['password2'])) {
@@ -28,8 +27,6 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && isset($_POST["username"]) &&
             header("Location: http://localhost/EF_INF/index.php?site=createAccount&error=5");
             exit;
         }
-
-
         $stmt = $conn->prepare("INSERT INTO user (username, password) VALUES ('$username_data', '$password_data')");
         $stmt->execute();
 

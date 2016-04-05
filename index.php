@@ -100,7 +100,7 @@ function getErrorMessage(){
 
 ?>
 
-<link rel="stylesheet" href="styles/style.css">
+<link rel="stylesheet" href="styles/style.css" />
 <html>
     <head>
         <title>SchoolTool</title>

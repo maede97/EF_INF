@@ -60,7 +60,7 @@
     }
 
     function showSolution() {
-        $("#item_Container").animate({left: "+=150px", width: "0"}, "slow");
+        $("#item_Container").hide("slow");
         $("#item_Container").promise().done(function () {
             //Wait until card ist done turning
             //Then change text
@@ -71,7 +71,7 @@
                 document.getElementById("item").innerHTML = texts[aktuell - 1];
                 isShownSolution = false;
             }
-            $("#item_Container").animate({width: "420px", left: "-=150px"}, "slow");
+            $("#item_Container").show("slow");
         });
     }
 

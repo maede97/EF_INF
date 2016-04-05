@@ -1,6 +1,6 @@
 /* 
 style.css
-@author: Matthias Busenhart
+@author: Matthias Busenhart, Jeremy Roth
 */
 
 #main {
@@ -14,23 +14,6 @@ style.css
 	z-index: 1;
     padding: 20px;  
 	padding-bottom: 50px;
-}
-
-#main #forum_left {
-	float: left;
-	width: 49%;
-	border-right: 1px solid black;
-	height: 100%;
-	padding-right: 10px;
-}
-#main #forum_right {
-	float: left;
-	width: 49%;
-	height: 100%;
-	padding-left: 10px;
-}
-#main #forum_parent {
-	height: 100%;
 }
 
 a[name] {

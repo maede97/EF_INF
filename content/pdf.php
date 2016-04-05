@@ -73,8 +73,6 @@ if(isset($_SESSION['user_id']) && isset($_GET['liste'])){
     }
     $conn = null;
 	
-	
-
 	//Instanciation of inherited class
 	$pdf=new PDF();
 	$pdf->AliasNbPages();

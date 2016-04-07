@@ -111,7 +111,7 @@ function getTranslations(){
     }
 
     function showSolution() {
-        $("#item_Container").animate({opacity: '0'},"slow");
+        $("#item_Container").animate({opacity: '0'},"middle");
         $("#item_Container").promise().done(function () {
             //Wait until card ist done turning
             //Then change text
@@ -122,12 +122,12 @@ function getTranslations(){
                 document.getElementById("item").innerHTML = texts[aktuell - 1];
                 isShownSolution = false;
             }
-            $("#item_Container").animate({opacity: '1'},"slow");
+            $("#item_Container").animate({opacity: '1'},"middle");
         });
     }
 
     function getNextCard() {
-        moveLeft("slow");
+        moveLeft("middle");
         $("#item_Container").promise().done(function () {
             //wait until card is left and invisible, then new one
             if (aktuell > texts.length - 1) {
@@ -138,7 +138,7 @@ function getTranslations(){
             document.getElementById("item").innerHTML = text;
             isShownSolution = false;
             moveRight(0);
-            moveMiddle("slow");
+            moveMiddle("middle");
         });
 		wrong=0;
     }

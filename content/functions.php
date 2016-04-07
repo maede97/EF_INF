@@ -74,6 +74,25 @@ class DB
 		return $stmt->fetchall();
 	}
 	
+	//Gibt Passwort des Users zurück
+	function selectPasswordFromId($user_id)
+	{
+		$stmt = $this->connection->prepare("SELECT password FROM user WHERE user_id = :id");
+		$stmt->bindParam(':id',$user_id);
+		$stmt->execute();
+		return $stmt->fetchall();
+	}
+	
+	//Ändert Passwort eines Benutzers
+	function updatePassword($user_id, $password)
+	{
+		$stmt = $this->connection->prepare("UPDATE user SET password = :password WHERE user_id = :id");
+		$stmt->bindParam(':password',$password);
+		$stmt->bindParam(':id',$user_id);
+		$stmt->execute();
+		return true;
+	}
+	
 	//Gibt alle Listen zur user_ID zurück
 	function selectListsFromId($user_id)
 	{
@@ -153,9 +172,5 @@ class DB
 		$stmt->execute();
 		return $stmt->fetchall();
 	}
-	
 }
-
-
-
 ?>

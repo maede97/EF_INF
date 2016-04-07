@@ -25,3 +25,24 @@ if (isset($_SESSION) && isset($_SESSION['user_id'])) {
 <p>Hier steht noch nichts.</p>
 <p>Ausser deinem Benutzernamen:</p>
 <p><b><?php echo $username; ?></b></p>
+<hr />
+<h2>Neues Passwort wählen</h2>
+<div id="newPassForm">
+    <form action="content/changePassword.php" method="POST">
+        <p>
+            <label>Altes Passwort:</label>
+            <input type="password" name="old" maxlength="30">
+        </p>
+        <p>
+            <label>Neues Passwort:</label>
+            <input type="password" name="new" maxlength="30">
+        </p>
+        <p>
+            <label>Neues Passwort wiederholen:</label>
+            <input type="password" name="new2" maxlength="30">
+        </p>
+        <p>
+            <button type="submit" name="go" value="los">Bestätigen</button>
+        </p>
+    </form>
+</div>

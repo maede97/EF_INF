@@ -172,5 +172,32 @@ class DB
 		$stmt->execute();
 		return $stmt->fetchall();
 	}
+	
+	//Löscht alle Wörter einer Liste
+	function deleteWords($listen_id)
+	{
+		$stmt = $this->connection->prepare("DELETE FROM woerter WHERE listen_id = :id");
+		$stmt->bindParam(':id', $listen_id);
+		$stmt->execute();
+		return true;
+	}
+	
+	//Löscht alle Listen eines Benutzers
+	function deleteLists($user_id)
+	{
+		$stmt = $this->connection->prepare("DELETE FROM listen WHERE user_id = :id");
+		$stmt->bindParam(':id', $user_id);
+		$stmt->execute();
+		return true;
+	}
+	
+	//Löscht Benutzers
+	function deleteUser($user_id)
+	{
+		$stmt = $this->connection->prepare("DELETE FROM user WHERE user_id = :id");
+		$stmt->bindParam(':id', $user_id);
+		$stmt->execute();
+		return true;
+	}
 }
 ?>

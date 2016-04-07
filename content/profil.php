@@ -26,6 +26,10 @@ if (isset($_SESSION) && isset($_SESSION['user_id'])) {
 <p>Ausser deinem Benutzernamen:</p>
 <p><b><?php echo $username; ?></b></p>
 <hr />
+<h2>Account löschen</h2>
+<p>Willst du deinen Account endgültig löschen?</p>
+<p><a href="content/deleteAccount.php">Bestätigen</a></p>
+<hr />
 <h2>Neues Passwort wählen</h2>
 <div id="newPassForm">
     <form action="content/changePassword.php" method="POST">

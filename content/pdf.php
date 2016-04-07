@@ -1,4 +1,5 @@
 <?php
+include("functions.php");
 require_once("fpdf.php");
 class PDF extends FPDF{
 	//Kopfzeile
@@ -32,46 +33,23 @@ if(isset($_SESSION['user_id']) && isset($_GET['liste'])){
 	$id = $_SESSION['user_id'];
 	$liste = $_GET['liste'];
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "schooltool";
+	$db = new DB();
+	$result = $db->selectListTitleFromId($id,$liste);
 
-    try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        //Check if User exists:
-        $stmt = $conn->prepare("SELECT listen_id FROM listen WHERE user_id = '$id' AND listen_id = '$liste'");
-        $stmt->execute();
-        $result = $stmt->fetchall();
-        if (count($result) == 1) {
-			//Get Title
-			$stmt = $conn->prepare("SELECT titel FROM listen WHERE user_id = '$id' AND listen_id = '$liste'");
-			$stmt->execute();
-			$result = $stmt->fetchall();
-			global $title;
-			$title = $result[0]['titel'];
-			
-            //Make PDF
-			$stmt = $conn->prepare("SELECT wort, translation FROM woerter WHERE listen_id = '$liste'");
-			$stmt->execute();
-			$result = $stmt->fetchall();
-			//Alle Wörter zu einer Liste hinzufügen
-			$woerter = $translations = array();
-			foreach($result as $paar){
-				array_push($woerter,html_entity_decode($paar['wort']));
-				array_push($translations,html_entity_decode($paar['translation']));
-			}
-        } else {
-            //NO PDF
-			header("Location: http://localhost/EF_INF/index.php?site=manage&error=0#printList");
-			exit;
-        }
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
-    }
-    $conn = null;
+	//Global, dass auch danach im Header der Titel steht
+	global $title;
+	$title = $result[0]['titel'];
+	
+	//Make PDF
+	$result = $db->selectWordsFromId($liste);
+	//Alle Wörter zu einer Liste hinzufügen
+	$woerter = $translations = array();
+	foreach($result as $paar){
+		array_push($woerter,html_entity_decode($paar['wort']));
+		array_push($translations,html_entity_decode($paar['translation']));
+	}
+    
+	$db->closeConnection();
 	
 	//Instanciation of inherited class
 	$pdf=new PDF();

@@ -1,48 +1,31 @@
 <h1>Verwalten</h1>
 <hr />
 <?php
-//Idee:
-//Tabellen erzeugen, löschen, bearbeiten
-
+include("functions.php");
 session_start();
 if (isset($_SESSION['user_id'])) {
     $id = $_SESSION['user_id'];
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "schooltool";
-
-    try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        //Select all existing tables for this user
-        $stmt = $conn->prepare("SELECT * FROM listen WHERE user_id = '$id'");
-        $stmt->execute();
-        $result = $stmt->fetchall();
-		if(count($result)==0){
-			echo "<h2>Du besitzt noch keine Tabellen.</h2>";
-		} else {
-			echo "<h2>Deine Tabellen:</h2>";
-			echo "<table>"; 
-			echo "<tr><th>Titel:</th><th>Sprache:</th></tr>";
-			foreach($result as $row)
-			{
-			  //Print voci-tables into html table
-			  echo "<tr><td>"; 
-			  echo $row['titel'];
-			  echo "</td><td>";   
-			  echo $row['sprache'];
-			  echo "</td></tr>";  
-			}
-			echo "</table>";
+	$db = new DB();
+	$result = $db->selectListsFromId($id);
+	if(count($result)==0){
+		echo "<h2>Du besitzt noch keine Tabellen.</h2>";
+	} else {
+		echo "<h2>Deine Tabellen:</h2>";
+		echo "<table>"; 
+		echo "<tr><th>Titel:</th><th>Sprache:</th></tr>";
+		foreach($result as $row)
+		{
+			//Print voci-tables into html table
+			echo "<tr><td>"; 
+			echo $row['titel'];
+			echo "</td><td>";   
+			echo $row['sprache'];
+			echo "</td></tr>";  
 		}
-		
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
-    }
-    $conn = null;
+		echo "</table>";
+	}
+	$db->closeConnection();
 } else {
     header("Location: http://localhost/EF_INF/index.php?site=login");
 	//Funktioniert nicht!
@@ -52,38 +35,24 @@ if (isset($_SESSION['user_id'])) {
 function showSelectionDialog(){
 	$id = $_SESSION['user_id'];
 	
-	$servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "schooltool";
-
-    try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        //Select all existing tables for this user
-        $stmt = $conn->prepare("SELECT * FROM listen WHERE user_id = '$id'");
-        $stmt->execute();
-        $result = $stmt->fetchall();
-		if(count($result)==0){
+	$db = new DB();
+	$result = $db->selectListsFromId($id);
+	if(count($result)==0){
 			echo "<p>Du besitzt noch keine Tabellen.</p>";
-		} else {
-			echo "<p><form method='GET' name='liste' action='http://localhost/EF_INF/content/pdf.php'>";
-			echo "<select name='liste'>";
-			foreach($result as $row)
-			{
-			  //Print voci-tables into html table
-			  echo "<option value=".$row['listen_id'].">".$row['titel']." - ";
-			  echo $row['sprache']."</option>";
-			}
-			echo "</select>";
-			echo "<input type='submit' value='PDF erhalten' title='PDF anfordern'>";
-			echo "</form></p>";
+	} else {
+		echo "<p><form method='GET' name='liste' action='http://localhost/EF_INF/content/pdf.php'>";
+		echo "<select name='liste'>";
+		foreach($result as $row)
+		{
+		  //Print voci-tables into html table
+		  echo "<option value=".$row['listen_id'].">".$row['titel']." - ";
+		  echo $row['sprache']."</option>";
 		}
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
-    }
-    $conn = null;
+		echo "</select>";
+		echo "<input type='submit' value='PDF erhalten' title='PDF anfordern'>";
+		echo "</form></p>";
+	}
+	$db->closeConnection();
 }
 ?>
 <hr />

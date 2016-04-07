@@ -1,4 +1,55 @@
-﻿<script src="scripts/jquery.js"></script>
+﻿<?php
+include("functions.php");
+function getTexts(){
+	//Default-Werte
+	$id = null;
+	$liste = null;
+	if(isset($_SESSION) && isset($_SESSION['user_id']) && isset($_SESSION['listen'])){
+		//Auf richtige Werte stellen
+		$id = $_SESSION['user_id'];
+		$liste = $_SESSION['listen'];
+	} else {
+		header("Location: http://localhost/EF_INF/index.php?site=login&error=4");
+		exit;
+	}
+	$woerter = array();
+    
+	$db = new DB();
+	$result = $db->selectWords($id, $liste);
+	//Jedes neue Wort dem wort-Array hinzufügen
+	foreach($result as $paar){
+		$wort = utf8_encode($paar['wort']);
+		array_push($woerter,$wort);
+	}
+  
+    $db->closeConnection();
+	return $woerter;
+}
+function getTranslations(){
+	$id = null;
+	$liste = null;
+	if(isset($_SESSION) && isset($_SESSION['user_id']) && isset($_SESSION['listen'])){
+		$id = $_SESSION['user_id'];
+		$liste = $_SESSION['listen'];
+	} else {
+		header("Location: http://localhost/EF_INF/index.php?site=login&error=4");
+		exit;
+	}
+	$translations = array();
+	
+	$db = new DB();
+	$result = $db->selectTranslations($id, $liste);    
+	foreach($result as $paar){
+		//Alle Translations dem translation-array anhängen
+		$translation = utf8_encode($paar['translation']);
+		array_push($translations, $translation);
+	}
+    $db->closeConnection();
+	return $translations;
+}
+?>
+
+<script src="scripts/jquery.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $("#next").click(function () {
@@ -92,79 +143,6 @@
 		wrong=0;
     }
 </script>
-<?php
-function getTexts(){
-	//Default-Werte
-	$id = 0;
-	$liste = 0;
-	if(isset($_SESSION) && isset($_SESSION['user_id']) && isset($_SESSION['listen'])){
-		//Auf richtige Werte stellen
-		$id = $_SESSION['user_id'];
-		$liste = $_SESSION['listen'];
-	} else {
-		header("Location: http://localhost/EF_INF/index.php?site=login&error=4");
-		exit;
-	}
-	$woerter = array();
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "schooltool";
-
-    try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        //Select all words from the word-list
-        $stmt = $conn->prepare("SELECT woerter.wort FROM woerter, listen WHERE listen.listen_id = '$liste' AND woerter.listen_id = '$liste' AND listen.user_id = '$id'");
-        $stmt->execute();
-        $result = $stmt->fetchall();
-		//Jedes neue Wort dem wort-Array hinzufügen
-		foreach($result as $paar){
-			$wort = utf8_encode($paar['wort']);
-			array_push($woerter,$wort);
-		}
-    } catch (PDOException $e) {
-    }
-    $conn = null;
-	return $woerter;
-}
-function getTranslations(){
-	$id = 0;
-	$liste = 0;
-	if(isset($_SESSION) && isset($_SESSION['user_id']) && isset($_SESSION['listen'])){
-		$id = $_SESSION['user_id'];
-		$liste = $_SESSION['listen'];
-	} else {
-		header("Location: http://localhost/EF_INF/index.php?site=login&error=4");
-		exit;
-	}
-	$translations = array();
-	
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "schooltool";
-
-    try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        //Select all translations from this word-list
-        $stmt = $conn->prepare("SELECT woerter.translation FROM woerter, listen WHERE listen.listen_id = '$liste' AND woerter.listen_id = '$liste' AND listen.user_id = '$id'");
-        $stmt->execute();
-        $result = $stmt->fetchall();
-		foreach($result as $paar){
-			//Alle Translations dem translation-array anhängen
-			$translation = utf8_encode($paar['translation']);
-			array_push($translations, $translation);
-		}
-    } catch (PDOException $e) {
-    }
-    $conn = null;
-	return $translations;
-}
-?>
 
 <h1>Trainer</h1>
 <hr />

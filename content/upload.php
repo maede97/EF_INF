@@ -1,5 +1,5 @@
 <?php
-
+include("functions.php");
 session_start();
 //PHPExcel implementieren
 include '.\\PHPExcel\\PHPExcel\\IOFactory.php';
@@ -23,36 +23,17 @@ if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isse
         header("Location: http://localhost/EF_INF/index.php?site=manage&error=0#addList");
         exit;
     }
+	$u_id = $_SESSION['user_id'];
+	$titel = $_POST['title'];
+	$db = new DB();
+    $result = $db->selectListId($u_id, $titel);
 
-    //check if user has already a list with this name
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "schooltool";
-
-    try {
-        //Eine Verbindung aufbauen
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        //User bekommt neue Tabellen_ID
-        $u_id = $_SESSION['user_id'];
-        $titel = $_POST['title'];
-        //Listen holen
-        $stmt = "SELECT listen_id FROM listen WHERE user_id = '$u_id' AND titel='$titel'";
-        $go = $conn->prepare($stmt);
-        $go->execute();
-        $result = $go->fetchall();
-        if (count($result) != 0) {
-            $uploadOk = 0;
-            unlink($target_file);
-            header("Location: http://localhost/EF_INF/index.php?site=manage&error=10#addList");
-            exit;
-        }
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
-    }
-    //Verbindung zurücksetzen
-    $conn = null;
+	if (count($result) != 0) {
+		$uploadOk = 0;
+		unlink($target_file);
+		header("Location: http://localhost/EF_INF/index.php?site=manage&error=10#addList");
+		exit;
+	}
 
     // Check file size
     if ($_FILES["fileToUpload"]["size"] > 500000) {
@@ -98,65 +79,40 @@ if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isse
                 exit;
             }
 
-            //Daten für Datenbank
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "schooltool";
+			//User bekommt neue Tabellen_ID
+			$u_id = $_SESSION['user_id'];
+			$titel = $_POST['title'];
+			$sprache = $_POST['language'];
+			//öäü entfernen und umwandeln
+			$titel = htmlentities($titel);
+			$sprache = htmlentities($sprache);
+			//Dem User die neue Liste hinzufügen
+			$db->addList($sprache, $u_id, $titel);
+			//Die neue listen_id holen
+			$result = $db->selectListId($u_id, $titel);
+			if (count($result) == 1) {
+				$listen_id = $result[0]['listen_id'];
+			} else {
+				header("Location: http://localhost/EF_INF/index.php?site=manage&error=20#addList");
+				exit;
+			}
 
-            try {
-                //Eine Verbindung aufbauen
-                $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                //User bekommt neue Tabellen_ID
-                $u_id = $_SESSION['user_id'];
-                $titel = $_POST['title'];
-                $sprache = $_POST['language'];
-                //öäü entfernen und umwandeln
-                $titel = htmlentities($titel);
-				$sprache = htmlentities($sprache);
-                //Dem User die neue Liste hinzufügen
-                $stmt = "INSERT INTO `listen`(`sprache`, `user_id`, `titel`) VALUES ('$sprache','$u_id','$titel')";
-                $conn->exec($stmt);
-                //Die neue listen_id holen
-                $stmt = "SELECT listen_id FROM listen WHERE user_id = '$u_id' AND titel='$titel' AND sprache='$sprache';";
-                $go = $conn->prepare($stmt);
-                $go->execute();
-                $result = $go->fetchall();
-                if (count($result) == 1) {
-                    $listen_id = $result[0]['listen_id'];
-                } else {
-                    header("Location: http://localhost/EF_INF/index.php?site=manage&error=20#addList");
-                    exit;
-                }
-
-                //Daten in Tabelle einfügen
-                for ($i = 1; $i <= $rowCount; $i++) {
-                    $wort = $objPHPExcel->getActiveSheet()->getCellByColumnAndRow(0, $i);
-                    $translation = $objPHPExcel->getActiveSheet()->getCellByColumnAndRow(1, $i);
-                    $wort = utf8_decode($wort);
-                    $translation = utf8_decode($translation);
-                    echo $wort. "<br />";
-                    echo $translation."<br />";
-                    //$wort = htmlspecialchars($wort);
-                    //$translation = htmlspecialchars($translation);
-					
-					//$wort = htmlentities($wort);
-					//$translation = htmlentities($translation);
-					
-                    //Jedes Wort in Liste einfügen
-                    $stmt = "INSERT INTO `woerter`(`wort`, `translation`, `listen_id`) VALUES ('$wort','$translation','$listen_id');";
-                    $conn->exec($stmt);
-                }
-                
-                //Datei wieder löschen
-                unlink($target_file);
-                //exit;
-            } catch (PDOException $e) {
-                echo "Error: " . $e->getMessage();
-            }
-            //Verbindung zurücksetzen
-            $conn = null;
+			//Daten in Tabelle einfügen
+			for ($i = 1; $i <= $rowCount; $i++) {
+				$wort = $objPHPExcel->getActiveSheet()->getCellByColumnAndRow(0, $i);
+				$translation = $objPHPExcel->getActiveSheet()->getCellByColumnAndRow(1, $i);
+				$wort = utf8_decode($wort);
+				$translation = utf8_decode($translation);
+				
+				//Jedes Wort in Liste einfügen
+				$db->addWord($wort, $translation, $listen_id);
+			}
+			
+			//Datei wieder löschen
+			unlink($target_file);
+			//exit;
+			$db->closeConnection();
+			
             header("Location: http://localhost/EF_INF/index.php?site=manage");
             exit;
         } else {
@@ -164,6 +120,8 @@ if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isse
             exit;
         }
     }
+	
+	
 } else {
     if (!isset($_SESSION['user_id'])) {
         header("Location: http://localhost/EF_INF/index.php?site=login&error=4");

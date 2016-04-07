@@ -1,30 +1,19 @@
 <?php
+include("functions.php");
 session_start();
 if (isset($_SESSION) && isset($_SESSION['user_id'])) {
     $id = $_SESSION['user_id'];
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "schooltool";
+    $db= new DB();
 
-    try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        //Check if User exists:
-        $stmt = $conn->prepare("SELECT username FROM user WHERE user_id = '$id'");
-        $stmt->execute();
-        $result = $stmt->fetchall();
-        if (count($result) == 1) {
-            $username = $result[0]['username'];
-        } else {
-            $username = "Error!";
-        }
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
-    }
-    $conn = null;
+    $result = $db->selectUsernameFromId($id);
+	if (count($result) == 1) {
+		$username = $result[0]['username'];
+	} else {
+		$username = "Error!";
+	}
+    
+    $db->closeConnection();
 } else {
     header("Location: http://localhost/EF_INF/index.php?site=login");
 	//Funktioniert nicht --> Endlosschleife!!!

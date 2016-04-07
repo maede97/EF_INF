@@ -68,7 +68,7 @@ if (!(isset($_SESSION['started']))) {
     } catch (PDOException $e) {
         echo $e->getMessage();
     }
-    //Beide SQL-Befehle ausführen
+    //3 SQL-Befehle ausführen
     $createUsers = $db->exec($users);
     $createListen = $db->exec($listen);
     $createWoerter = $db->exec($woerter);
@@ -104,6 +104,7 @@ function getErrorMessage(){
 <html>
     <head>
         <title>SchoolTool</title>
+		<link rel="shortcut icon" href="favicon.ico">
     </head>
     <body>
         <div id="menu"></div>

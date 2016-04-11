@@ -1,3 +1,12 @@
+:root {
+	/* Kind-of variables
+	Allow us to simply change the whole color-schema */
+	--main-color: beige;
+	--hover-color: #555;
+	--hover-text-color: white;
+	--border-all: 1px solid black;
+}
+
 #main {
 	/* The Main-Section where all stuff goes */
 	margin-top: 50px;
@@ -18,7 +27,7 @@ a[name] {
 
 form input, textarea {
 	left: 400px;
-	background-color: beige;
+	background-color: var(--main-color);
 }
 
 form button {
@@ -26,29 +35,29 @@ form button {
 }
 
 #main a {
-	background-color: beige;
+	background-color: var(--main-color);
 	color: #000;
 	position: relative;
 	text-decoration: none;
 	padding: 10px;
 	width: 100px;
-	border: 1px solid black;
+	border: var(--border-all);
 }
 
 #main a:hover {
-	background-color: #555;
-	color: white;
-	border: 1px solid #555;
+	background-color: var(--hover-color);
+	color: var(--hover-text-color);
+	border: 1px solid var(--hover-color);
 }
 
 #main button, input, textarea {
     display: block;
 	color: #000;
 	text-decoration: none;
-    background-color: beige;
+    background-color: var(--main-color);
 	margin: 10px;
 	padding: 10px;
-	border: 1px solid black;
+	border: var(--border-all);
 }
 
 #main button {
@@ -56,9 +65,9 @@ form button {
 }
 
 #main button:hover, input:hover{
-    background-color: #555;
-	color: white;
-	border: 1px solid #555;
+    background-color: var(--hover-color);
+	color: var(--hover-text-color);
+	border: 1px solid var(--hover-color);
 }
 
 #main h1 {
@@ -67,15 +76,15 @@ form button {
 }
 
 #sol {
-	background-color: beige;
+	background-color: var(--main-color);
 	width: 400px;
 	margin: 40px;
 	position: fixed;
 	top: 50%;
-	border: 1px solid black;
+	border: var(--border-all);
 }
 #sol:hover {
-	background-color: beige;
+	background-color: var(--main-color);
 	color: #000;
 }
 
@@ -84,7 +93,7 @@ form button {
 	position: absolute;
 	left: 50%;
 	opacity: 1;
-	border: 1px solid black;
+	border: var(--border-all);
 	font-size: 120%;
 	width: 420px;
 	height: 240px;
@@ -121,8 +130,8 @@ form button {
 	float: left;
 	left: 0;
 	margin-right: 10px;
-	background-color: beige;
-	border-right: 1px solid black;
+	background-color: var(--main-color);
+	border-right: var(--border-all);
 	padding-top: 75px;
 }
 
@@ -140,14 +149,14 @@ li a {
 }
 
 li a:hover {
-	background-color: #555;
-	color: white;
+	background-color: var(--hover-color);
+	color: var(--hover-text-color);
 	
 }
 
 #header a {
-	border: 1px solid black;
-	background-color: beige;
+	border: var(--border-all);
+	background-color: var(--main-color);
 	color: #000;
 	position: absolute;
 	top: 10px;
@@ -165,9 +174,9 @@ li a:hover {
 
 #header a:hover {
 	/* Buttons in the header */
-	background-color: #555;
-	color: white;
-	border: 1px solid #555;
+	background-color: var(--hover-color);
+	color: var(--hover-text-color);
+	border: 1px solid var(--hover-color);
 }
 
 #header {
@@ -187,7 +196,7 @@ li a:hover {
 	/* Colors */
 	
 	/* Black line underneath */
-	border-bottom: 1px solid black;
+	border-bottom: var(--border-all);
 	
 	/* Font-Size */
 	font-size: large;
@@ -217,7 +226,7 @@ li a:hover {
 	color: black;
 
 	/* Black line on top */
-	border-top: 1px solid black;
+	border-top: var(--border-all);
 	
 	/* Font-Size */
 	font-size: large;

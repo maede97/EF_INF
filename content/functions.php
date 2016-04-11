@@ -1,5 +1,33 @@
 <?php
 /*
+Zuerst folgen ein paar vereinzelte Funktionen,
+danach folgt die Klasse DB.
+*/
+
+function getErrorMessage($errorParam)
+{
+	if($errorParam == null)
+	{
+		return "";
+	}
+	$errorMessages = array(
+		0=> 'Ein Fehler ist aufgetreten.',
+		1=> 'Du musst alle Felder ausfüllen.',
+		2=> 'Dein Passwort ist falsch.',
+		3=> 'Dieser Benutzer existiert nicht.\nDu kannst nun einen neuen Benutzer anlegen.',
+		4=> 'Du musst eingeloggt sein, um diese Funktion nützen zu können.',
+		5=> 'Dieser Benutzer existiert bereits.',
+		6=> 'Du kannst nur XLS-Dateien hochladen.',
+		7=> 'Deine Datei ist zu gross.',
+		8=> 'Wir unterstützen im Moment nur Listen mit bis zu 100 Wörter.',
+		9=> 'Du besitzt schon eine Liste mit demselben Titel.\nBitte wähle einen anderen.',
+		10=> 'Bitte füge eine Datei hinzu.',
+		11=> 'Du besitzt noch keine Tabellen.'
+	);
+	return $errorMessages[$errorParam];
+}
+
+/*
 Diese Klasse beinhaltet alle Befehle für die Verbindung zur Datenbank.
 */
 class DB
@@ -37,6 +65,41 @@ class DB
 		$this->connection = null;
 	}
 	
+	//Erzeugt User-Tabelle
+	function generateUserTable()
+	{
+		$stmt = $this->connection->prepare("CREATE TABLE IF NOT EXISTS schooltool.user (user_id INT(6) PRIMARY KEY AUTO_INCREMENT, "
+            . "username VARCHAR(30) UNIQUE NOT NULL, "
+            . "password TEXT NOT NULL, "
+			. "theme INT(6));");
+		$stmt->execute();
+		return true;
+	}
+	
+	//Erzeugt Listen-Tabelle
+	function generateListTable()
+	{
+		$stmt = $this->connection->prepare("CREATE TABLE IF NOT EXISTS schooltool.listen (listen_id INT(6) PRIMARY KEY AUTO_INCREMENT, "
+            . "sprache VARCHAR(30) NOT NULL, "
+            . "user_id INT(6) NOT NULL, "
+            . "titel VARCHAR(30) NOT NULL, "
+            . "FOREIGN Key(user_id) REFERENCES user(user_id));");
+		$stmt->execute();
+		return true;
+	}
+	
+	//Erzeugt Woerter-Tabelle
+	function generateWordTable()
+	{
+		$stmt = $this->connection->prepare("CREATE TABLE IF NOT EXISTS schooltool.woerter (wort_id INT(6) PRIMARY KEY AUTO_INCREMENT, "
+            . "wort VARCHAR(60) NOT NULL, "
+            . "translation VARCHAR(60) NOT NULL, "
+            . "listen_id INT(6) NOT NULL, "
+            . "FOREIGN Key(listen_id) REFERENCES listen(listen_id));");
+		$stmt->execute();
+		return true;
+	}
+	
 	//Gibt die user_ID zum angegebenen User zurück
 	function selectIdFromUsername($user)
 	{
@@ -50,6 +113,15 @@ class DB
 	function selectUsernameFromId($id)
 	{
 		$stmt = $this->connection->prepare("SELECT username FROM user WHERE user_id = :id");
+		$stmt->bindParam(':id',$id);
+		$stmt->execute();
+		return $stmt->fetchall();
+	}
+	
+	//Gibt das Theme zur ID zurück
+	function getTheme($id)
+	{
+		$stmt = $this->connection->prepare("SELECT theme FROM user WHERE user_id = :id");
 		$stmt->bindParam(':id',$id);
 		$stmt->execute();
 		return $stmt->fetchall();

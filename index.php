@@ -1,22 +1,23 @@
-﻿<!DOCTYPE html>
+﻿<?php
+include("content/functions.php");
+//Falls gerade Session gestartet, Datenbanken erstellen, falls noch nicht vorhanden
+//Für weitere Infos zu den Tabellen, sehe man sich unser Lastenheft an
+session_start();
+if (!(isset($_SESSION['started']))) {
+    $db = new DB();
+	$db->generateUserTable();
+	$db->generateListTable();
+	$db->generateWordTable();
+	$db->closeConnection();
+	
+    $_SESSION['started'] = '1';
+}
+?>
+
+<!DOCTYPE html>
 <script src="scripts/jquery.js"></script>
 <script type="text/javascript">
-    //Wenn Dokument geladen wird
-    $(document).ready(function () {
-        //Daten an Stelle im Dokument laden
-        $("#header").load("header.php");
-        $("#footer").load("footer.php");
-        $("#menu").load("menu.php");
-        //Content wird über GET gesteuert
-        $("#main").load("content/" + getParamGET("site") + ".php");
-		
-		var error = '<?php echo getErrorMessage(); ?>';
-		if(error!=""){
-			alert(error);
-		}
-    });
-
-    function getParamGET(param) {
+	function getParamGET(param) {
         //Die GET-Parameter extrahieren, den Paramter der der Variable param entspricht zurückgeben
         var found;
         window.location.search.substr(1).split("&").forEach(function (item) {
@@ -26,80 +27,30 @@
         });
         return found;
     }
+    //Wenn Dokument geladen wird
+    $(document).ready(function () {
+        //Daten an Stelle im Dokument laden
+        $("#header").load("header.php");
+        $("#footer").load("footer.php");
+        $("#menu").load("menu.php");
+        //Content wird über GET gesteuert
+        $("#main").load("content/" + getParamGET("site") + ".php");
+		//Sehr hässlicher Code
+		var error = "<?php
+		if(isset($_GET['error'])){
+			echo getErrorMessage($_GET['error']);
+		} else {
+			echo "";
+		}?>";
+		if(error!=""){
+			alert(error);
+		}
+    });
+
+    
 </script>
 
-<?php
-/* Tabellen-Namen mit Kolumnen:
-
-  user
-  ----
-  user_id	| username | password
-
-  listen
-  ------
-  listen_id | sprache | user_id | titel
-
-  woerter
-  -------
-  wort_id | wort | translation | listen_id
-  
- */
-
-//Falls gerade Session gestartet, Datenbanken erstellen, falls noch nicht vorhanden
-
-session_start();
-if (!(isset($_SESSION['started']))) {
-    $users = "CREATE TABLE IF NOT EXISTS schooltool.user (user_id INT(6) PRIMARY KEY AUTO_INCREMENT, "
-            . "username VARCHAR(30) UNIQUE NOT NULL, "
-            . "password TEXT NOT NULL);";
-    $listen = "CREATE TABLE IF NOT EXISTS schooltool.listen (listen_id INT(6) PRIMARY KEY AUTO_INCREMENT, "
-            . "sprache VARCHAR(30) NOT NULL, "
-            . "user_id INT(6) NOT NULL, "
-            . "titel VARCHAR(30) NOT NULL, "
-            . "FOREIGN Key(user_id) REFERENCES user(user_id));";
-	$woerter = "CREATE TABLE IF NOT EXISTS schooltool.woerter (wort_id INT(6) PRIMARY KEY AUTO_INCREMENT, "
-            . "wort VARCHAR(60) NOT NULL, "
-            . "translation VARCHAR(60) NOT NULL, "
-            . "listen_id INT(6) NOT NULL, "
-            . "FOREIGN Key(listen_id) REFERENCES listen(listen_id));";
-    try {
-        $db = new PDO("mysql:dbname=schooltool;host=localhost", "root", "");
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch (PDOException $e) {
-        echo $e->getMessage();
-    }
-    //3 SQL-Befehle ausführen
-    $createUsers = $db->exec($users);
-    $createListen = $db->exec($listen);
-    $createWoerter = $db->exec($woerter);
-    $db = null;
-    $_SESSION['started'] = '1';
-}
-
-function getErrorMessage(){
-	$errorMessage = array(
-		'Ein Fehler ist aufgetreten.',
-		'Du musst alle Felder ausfüllen.',
-		'Dein Passwort ist falsch.',
-		'Dieser Benutzer existiert nicht.\nDu kannst nun einen neuen Benutzer anlegen.',
-		'Du musst eingeloggt sein, um diese Funktion nützen zu können.',
-		'Dieser Benutzer existiert bereits.',
-		'Du kannst nur XLS-Dateien hochladen.',
-		'Deine Datei ist zu gross.',
-		'Wir unterstützen im Moment nur Listen mit bis zu 100 Wörter.',
-		'Du besitzt schon eine Liste mit demselben Titel.\nBitte wähle einen anderen.',
-		'Bitte füge eine Datei hinzu.',
-		'Du besitzt noch keine Tabellen.'
-	);
-
-	if(isset($_GET['error'])){
-		return $errorMessage[$_GET['error']]; 
-	}
-	return "";
-}
-
-?>
-
+<!-- Das Stylesheet wird danach per PHP-Echo aufgerufen. Damit kann das Theme gewählt werden. -->
 <link rel="stylesheet" href="styles/style.css" />
 <html>
     <head>

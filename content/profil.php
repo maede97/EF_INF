@@ -12,6 +12,8 @@ if (isset($_SESSION) && isset($_SESSION['user_id'])) {
 	} else {
 		$username = "Error!";
 	}
+	
+	$theme = $db->getTheme($id)[0]['theme'];
     
     $db->closeConnection();
 } else {
@@ -24,7 +26,9 @@ if (isset($_SESSION) && isset($_SESSION['user_id'])) {
 <hr />
 <p>Hier steht noch nichts.</p>
 <p>Ausser deinem Benutzernamen:</p>
-<p><b><?php echo $username; ?></b></p>
+<p><b><?php echo $username;?></b></p>
+<p>Und deiner Theme-ID:</p>
+<p><b><?php echo $theme;?></b></p>
 <hr />
 <h2>Account löschen</h2>
 <p>Willst du deinen Account endgültig löschen?</p>

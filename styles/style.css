@@ -1,3 +1,8 @@
+table {
+	color: var(--main-text-color);
+	//Hier kommt der STYLE fürs TABLE
+}
+
 #main {
     /* The Main-Section where all stuff goes */
     margin-top: 50px;

@@ -1,236 +1,220 @@
-:root {
-	/* Kind-of variables
-	Allow us to simply change the whole color-schema */
-	--main-color: beige;
-	--hover-color: #555;
-	--hover-text-color: white;
-	--border-all: 1px solid black;
-}
-
 #main {
-	/* The Main-Section where all stuff goes */
-	margin-top: 50px;
-	margin-bottom: 50px;
+    /* The Main-Section where all stuff goes */
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 150px;
     right: 0;
     left: 150px;
-	display: inline-block;
-	position: absolute;
-	z-index: 1;
+    display: inline-block;
+    position: absolute;
+    z-index: 2;
     padding: 20px;  
-	padding-bottom: 50px;
+    padding-bottom: 50px;
+    color: var(--main-text-color);
+    font-family: var(--font);
+}
+
+#back {
+    z-index: 1;
+    background-color: var(--main-background-color);
+    height: 100%;
+    width: 100%;
+    position: fixed;
 }
 
 a[name] {
-	/* Alle Anker ausblenden */
-	visibility: hidden;
+    /* Alle Anker ausblenden */
+    visibility: hidden;
 }
 
 form input, textarea {
-	left: 400px;
-	background-color: var(--main-color);
+    left: 400px;
+    background-color: var(--button-color);
 }
 
 form button {
-	padding: 5px;
+    padding: 5px;
 }
 
 #main a {
-	background-color: var(--main-color);
-	color: #000;
-	position: relative;
-	text-decoration: none;
-	padding: 10px;
-	width: 100px;
-	border: var(--border-all);
+    background-color: var(--button-color);
+    color: var(--main-text-color);
+    position: relative;
+    text-decoration: none;
+    padding: 10px;
+    width: 100px;
+    border: var(--border-all);
 }
 
 #main a:hover {
-	background-color: var(--hover-color);
-	color: var(--hover-text-color);
-	border: 1px solid var(--hover-color);
+    background-color: var(--hover-color);
+    color: var(--hover-text-color);
+    border: 1px solid var(--hover-color);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 #main button, input, textarea {
     display: block;
-	color: #000;
-	text-decoration: none;
-    background-color: var(--main-color);
-	margin: 10px;
-	padding: 10px;
-	border: var(--border-all);
+    color: var(--main-text-color);
+    text-decoration: none;
+    background-color: var(--button-color);
+    margin: 10px;
+    padding: 10px;
+    border: var(--border-all);
 }
 
 #main button {
-	position: absolute;
+    position: absolute;
 }
 
 #main button:hover, input:hover{
     background-color: var(--hover-color);
-	color: var(--hover-text-color);
-	border: 1px solid var(--hover-color);
+    color: var(--hover-text-color);
+    border: 1px solid var(--hover-color);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 #main h1 {
-	/* Der Haupttitel der Seite ist riesig. */
-	font-size: xx-large;
+    /* Der Haupttitel der Seite ist riesig. */
+    font-size: xx-large;
 }
 
 #sol {
-	background-color: var(--main-color);
-	width: 400px;
-	margin: 40px;
-	position: fixed;
-	top: 50%;
-	border: var(--border-all);
+    background-color: var(--button-color);
+    width: 400px;
+    margin: 40px;
+    position: fixed;
+    top: 50%;
+    border: var(--border-all);
 }
 #sol:hover {
-	background-color: var(--main-color);
-	color: #000;
+    background-color: var(--hover-color);
+    color: var(--main-text-color);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 #main #item_Container {
-	/* Eine Voci-Karte */
-	position: absolute;
-	left: 50%;
-	opacity: 1;
-	border: var(--border-all);
-	font-size: 120%;
-	width: 420px;
-	height: 240px;
-	overflow: hidden;
-	white-space: nowrap;
-	padding-top: 20px;
+    /* Eine Voci-Karte */
+    position: absolute;
+    left: 50%;
+    opacity: 1;
+    border: var(--border-all);
+    font-size: 120%;
+    width: 420px;
+    height: 240px;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-top: 20px;
 }
 
 #main #item {
-	margin: 20px;
-	position: absolute;
+    margin: 20px;
+    position: absolute;
 }
 
 #main h1, h2 {
-	/* Alle Title sind in der Mitte der Seite */
-	text-align: center;
+    /* Alle Title sind in der Mitte der Seite */
+    text-align: center;
 }
 
 #menu img {
-	/* Image container of main section
-	Aim: image centered */
-	width: 100px;
-	height: auto;
-	display: block;
-	margin: 10px auto 10px auto;
+    /* Image container of main section
+    Aim: image centered */
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 10px auto 10px auto;
 }
 
 #menu {
-	/* The Menu */
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	width: 150px;
-	float: left;
-	left: 0;
-	margin-right: 10px;
-	background-color: var(--main-color);
-	border-right: var(--border-all);
-	padding-top: 75px;
+    /* The Menu */
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 150px;
+    float: left;
+    left: 0;
+    margin-right: 10px;
+    background-color: var(--menu-background-color);
+    border-right: var(--border-all);
+    padding-top: 75px;
+    color: var(--menu-text-color);
+    font-family: var(--font);
+    z-index: 3;
 }
 
 ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 li a {
-	display: block;
-	color: #000;
-	padding: 8px 0 8px 16px;
-	text-decoration: none;
+    display: block;
+    color: var(--main-text-color);
+    padding: 8px 0 8px 16px;
+    text-decoration: none;
 }
 
 li a:hover {
-	background-color: var(--hover-color);
-	color: var(--hover-text-color);
-	
+    background-color: var(--hover-color);
+    color: var(--hover-text-color);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
+
 }
 
 #header a {
-	border: var(--border-all);
-	background-color: var(--main-color);
-	color: #000;
-	position: absolute;
-	top: 10px;
-	text-decoration: none;
-	padding: 10px;
-	width: 100px;
+    border: var(--border-all);
+    background-color: var(--button-color);
+    color: var(--header-text-color);
+    position: absolute;
+    top: 10px;
+    text-decoration: none;
+    padding: 10px;
+    width: 100px;
 }
 
 #header #logBut {
-	right: 50px;
+    right: 50px;
 }
 #header #homeBut {
-	right: 180px;
+    right: 180px;
 }
 
 #header a:hover {
-	/* Buttons in the header */
-	background-color: var(--hover-color);
-	color: var(--hover-text-color);
-	border: 1px solid var(--hover-color);
+    /* Buttons in the header */
+    background-color: var(--hover-color);
+    color: var(--hover-text-color);
+    border: 1px solid var(--hover-color);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 #header {
-	/* The Header
-	
-	First: position on top of page (always)
-	and text centered */
-	position: fixed;
-	text-align: center;
-	
-	/* Boundary
-	Goes over the whole page (horizontal) */
-	left: 0;
-	right: 0;
-	top: 0;
-	
-	/* Colors */
-	
-	/* Black line underneath */
-	border-bottom: var(--border-all);
-	
-	/* Font-Size */
-	font-size: large;
-	
-	background-color: white;
-	padding: 10px;
-	
-	z-index: 3;
+    position: fixed;
+    text-align: center;
+    left: 0;
+    right: 0;
+    top: 0;
+    border-bottom: var(--border-all);
+    font-size: large;
+    background-color: var(--header-background-color);
+    padding: 10px;
+    z-index: 5;
+    color: var(--header-text-color);
+    font-family: var(--font);
 }
 
 #footer {
-	/* The Footer
-	
-	First: position on bottom of page (always)
-	and text centered */
-	position: fixed;
-	text-align: center;
-	
-	/* Boundary
-	Goes over the whole page (horizontal) */
-	left: 0;
-	right: 0;
-	bottom: 0;
-	
-	/* Colors */
-	background: gray;
-	color: black;
-
-	/* Black line on top */
-	border-top: var(--border-all);
-	
-	/* Font-Size */
-	font-size: large;
-	
-	padding: 10px;
-	z-index: 2;
+    position: fixed;
+    text-align: center;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--footer-background-color);
+    color: var(--main-text-color);
+    border-top: var(--border-all);
+    font-size: large;
+    padding: 10px;
+    z-index: 4;
+    font-family: var(--font);
 }

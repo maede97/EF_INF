@@ -4,21 +4,21 @@ session_start();
 if (isset($_SESSION) && isset($_SESSION['user_id'])) {
     $id = $_SESSION['user_id'];
 
-    $db= new DB();
+    $db = new DB();
 
     $result = $db->selectUsernameFromId($id);
-	if (count($result) == 1) {
-		$username = $result[0]['username'];
-	} else {
-		$username = "Error!";
-	}
-	
-	$theme = $db->getTheme($id)[0]['theme'];
-    
+    if (count($result) == 1) {
+        $username = $result[0]['username'];
+    } else {
+        $username = "Error!";
+    }
+
+    $theme = getThemeName($db->getTheme($id)[0]['theme']);
+
     $db->closeConnection();
 } else {
     header("Location: http://localhost/EF_INF/index.php?site=login");
-	//Funktioniert nicht --> Endlosschleife!!!
+    //Funktioniert nicht --> Endlosschleife!!!
     exit;
 }
 ?>
@@ -26,9 +26,9 @@ if (isset($_SESSION) && isset($_SESSION['user_id'])) {
 <hr />
 <p>Hier steht noch nichts.</p>
 <p>Ausser deinem Benutzernamen:</p>
-<p><b><?php echo $username;?></b></p>
-<p>Und deiner Theme-ID:</p>
-<p><b><?php echo $theme;?></b></p>
+<p><b><?php echo $username; ?></b></p>
+<p>Und deinem Theme:</p>
+<p><b><?php echo $theme; ?></b></p>
 <hr />
 <h2>Account löschen</h2>
 <p>Willst du deinen Account endgültig löschen?</p>

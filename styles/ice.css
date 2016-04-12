@@ -1,0 +1,16 @@
+:root {
+    /* Kind-of variables
+    Allow us to simply change the whole color-schema */
+    --main-text-color: #5498cf;
+    --main-background-color: white;
+    --hover-color: lightblue;
+    --hover-text-color: white;
+    --border-all: 1px solid black;
+    --footer-background-color: #bce5ff;
+    --header-background-color: #98c9e8;
+    --header-text-color: white;
+    --menu-text-color: white;
+    --menu-background-color: #bce5ff;
+    --font: Calibri, cursive;
+    --button-color: #bce5ff;
+}

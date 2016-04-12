@@ -1,51 +1,53 @@
 ﻿<?php
 include("functions.php");
-function getTexts(){
-	//Default-Werte
-	$id = null;
-	$liste = null;
-	if(isset($_SESSION) && isset($_SESSION['user_id']) && isset($_SESSION['listen'])){
-		//Auf richtige Werte stellen
-		$id = $_SESSION['user_id'];
-		$liste = $_SESSION['listen'];
-	} else {
-		header("Location: http://localhost/EF_INF/index.php?site=login&error=4");
-		exit;
-	}
-	$woerter = array();
-    
-	$db = new DB();
-	$result = $db->selectWords($id, $liste);
-	//Jedes neue Wort dem wort-Array hinzufügen
-	foreach($result as $paar){
-		$wort = utf8_encode($paar['wort']);
-		array_push($woerter,$wort);
-	}
-  
+
+function getTexts() {
+    //Default-Werte
+    $id = null;
+    $liste = null;
+    if (isset($_SESSION) && isset($_SESSION['user_id']) && isset($_SESSION['listen'])) {
+        //Auf richtige Werte stellen
+        $id = $_SESSION['user_id'];
+        $liste = $_SESSION['listen'];
+    } else {
+        header("Location: http://localhost/EF_INF/index.php?site=login&error=4");
+        exit;
+    }
+    $woerter = array();
+
+    $db = new DB();
+    $result = $db->selectWords($id, $liste);
+    //Jedes neue Wort dem wort-Array hinzufügen
+    foreach ($result as $paar) {
+        $wort = utf8_encode($paar['wort']);
+        array_push($woerter, $wort);
+    }
+
     $db->closeConnection();
-	return $woerter;
+    return $woerter;
 }
-function getTranslations(){
-	$id = null;
-	$liste = null;
-	if(isset($_SESSION) && isset($_SESSION['user_id']) && isset($_SESSION['listen'])){
-		$id = $_SESSION['user_id'];
-		$liste = $_SESSION['listen'];
-	} else {
-		header("Location: http://localhost/EF_INF/index.php?site=login&error=4");
-		exit;
-	}
-	$translations = array();
-	
-	$db = new DB();
-	$result = $db->selectTranslations($id, $liste);    
-	foreach($result as $paar){
-		//Alle Translations dem translation-array anhängen
-		$translation = utf8_encode($paar['translation']);
-		array_push($translations, $translation);
-	}
+
+function getTranslations() {
+    $id = null;
+    $liste = null;
+    if (isset($_SESSION) && isset($_SESSION['user_id']) && isset($_SESSION['listen'])) {
+        $id = $_SESSION['user_id'];
+        $liste = $_SESSION['listen'];
+    } else {
+        header("Location: http://localhost/EF_INF/index.php?site=login&error=4");
+        exit;
+    }
+    $translations = array();
+
+    $db = new DB();
+    $result = $db->selectTranslations($id, $liste);
+    foreach ($result as $paar) {
+        //Alle Translations dem translation-array anhängen
+        $translation = utf8_encode($paar['translation']);
+        array_push($translations, $translation);
+    }
     $db->closeConnection();
-	return $translations;
+    return $translations;
 }
 ?>
 
@@ -59,22 +61,22 @@ function getTranslations(){
         $("#sol").keypress(function (e) {
             if (e.which == 13) {
                 //Check here if correct
-				//solutions[aktuell-1]
-				//texts[aktuell-1]
-				if(solutions[aktuell-1]==document.getElementById("sol").value){
-					//Correct
-					document.getElementById("sol").value = "";
-					document.getElementById("sol").style.background = "beige";
-					getNextCard();
-				} else {
-					//Not correct
-					wrong++;
-					if(wrong==3){
-						showSolution();
-					}
-					document.getElementById("sol").value = "";
-					document.getElementById("sol").style.background = "red";
-				}
+                //solutions[aktuell-1]
+                //texts[aktuell-1]
+                if (solutions[aktuell - 1] == document.getElementById("sol").value) {
+                    //Correct
+                    document.getElementById("sol").value = "";
+                    document.getElementById("sol").style.background = "beige";
+                    getNextCard();
+                } else {
+                    //Not correct
+                    wrong++;
+                    if (wrong == 3) {
+                        showSolution();
+                    }
+                    document.getElementById("sol").value = "";
+                    document.getElementById("sol").style.background = "red";
+                }
             }
         });
 
@@ -90,8 +92,8 @@ function getTranslations(){
     var solutions = null;
     var texts = null;
     var isShownSolution = false;
-	var wrong = 0;
-	
+    var wrong = 0;
+
     function moveLeft(a) {
         $("#item_Container").animate({left: '15%', opacity: '0', fontSize: "100%", height: "200px", width: "350px"}, a);
     }
@@ -105,13 +107,13 @@ function getTranslations(){
     }
 
     function getCards() {
-		<?php session_start(); //Start the Session?>
-		solutions = <?php echo json_encode(getTranslations()); ?>;
-		texts = <?php echo json_encode(getTexts()); ?>;
+<?php session_start(); //Start the Session ?>
+        solutions = <?php echo json_encode(getTranslations()); ?>;
+        texts = <?php echo json_encode(getTexts()); ?>;
     }
 
     function showSolution() {
-        $("#item_Container").animate({opacity: '0'},"middle");
+        $("#item_Container").animate({opacity: '0'}, "middle");
         $("#item_Container").promise().done(function () {
             //Wait until card ist done turning
             //Then change text
@@ -122,7 +124,7 @@ function getTranslations(){
                 document.getElementById("item").innerHTML = texts[aktuell - 1];
                 isShownSolution = false;
             }
-            $("#item_Container").animate({opacity: '1'},"middle");
+            $("#item_Container").animate({opacity: '1'}, "middle");
         });
     }
 
@@ -140,7 +142,7 @@ function getTranslations(){
             moveRight(0);
             moveMiddle("middle");
         });
-		wrong=0;
+        wrong = 0;
     }
 </script>
 

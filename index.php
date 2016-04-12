@@ -5,19 +5,27 @@ include("content/functions.php");
 session_start();
 if (!(isset($_SESSION['started']))) {
     $db = new DB();
-	$db->generateUserTable();
-	$db->generateListTable();
-	$db->generateWordTable();
-	$db->closeConnection();
-	
+    $db->generateUserTable();
+    $db->generateListTable();
+    $db->generateWordTable();
+    
+    $db->closeConnection();
+
     $_SESSION['started'] = '1';
 }
+$theme = 0;
+if(isset($_SESSION['user_id'])){
+    $db = new DB();
+    $theme = $db->getTheme($_SESSION['user_id'])[0]['theme'];
+    $db->closeConnection();
+}
+echo '<link rel="stylesheet" href="styles/'. getThemeName($theme) . '.css" />';
 ?>
 
 <!DOCTYPE html>
 <script src="scripts/jquery.js"></script>
 <script type="text/javascript">
-	function getParamGET(param) {
+    function getParamGET(param) {
         //Die GET-Parameter extrahieren, den Paramter der der Variable param entspricht zurückgeben
         var found;
         window.location.search.substr(1).split("&").forEach(function (item) {
@@ -35,29 +43,27 @@ if (!(isset($_SESSION['started']))) {
         $("#menu").load("menu.php");
         //Content wird über GET gesteuert
         $("#main").load("content/" + getParamGET("site") + ".php");
-		//Sehr hässlicher Code
-		var error = "<?php
-		if(isset($_GET['error'])){
-			echo getErrorMessage($_GET['error']);
-		} else {
-			echo "";
-		}?>";
-		if(error!=""){
-			alert(error);
-		}
+        //Sehr hässlicher Code
+        var error = "<?php
+if (isset($_GET['error'])) {
+    echo getErrorMessage($_GET['error']);
+} else {
+    echo "";
+}
+?>";
+        if (error != "") {
+            alert(error);
+        }
     });
-
-    
 </script>
-
-<!-- Das Stylesheet wird danach per PHP-Echo aufgerufen. Damit kann das Theme gewählt werden. -->
 <link rel="stylesheet" href="styles/style.css" />
 <html>
     <head>
         <title>SchoolTool</title>
-		<link rel="shortcut icon" href="favicon.ico">
+        <link rel="shortcut icon" href="favicon.ico">
     </head>
     <body>
+        <div id="back"></div>
         <div id="menu"></div>
         <div id="header"></div>
         <div id="main"></div>

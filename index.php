@@ -20,6 +20,7 @@ if(isset($_SESSION['user_id'])){
     $db->closeConnection();
 }
 echo '<link rel="stylesheet" href="styles/'. getThemeName($theme) . '.css" />';
+echo '<link rel="stylesheet" href="styles/style.css" />';
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +57,6 @@ if (isset($_GET['error'])) {
         }
     });
 </script>
-<link rel="stylesheet" href="styles/style.css" />
 <html>
     <head>
         <title>SchoolTool</title>

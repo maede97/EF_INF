@@ -1,17 +1,17 @@
 :root {
     /* Kind-of variables
     Allow us to simply change the whole color-schema */
-    --main-text-color: #5498cf;
+    --main-text-color: #965c00;
     --main-background-color: white;
     --hover-color: lightblue;
     --hover-text-color: white;
     --border-all: 1px solid black;
-    --footer-background-color: #bce5ff;
-	--footer-text-color: white;
-    --header-background-color: #98c9e8;
-    --header-text-color: white;
+    --footer-background-color: #247f16;
+	--footer-text-color: black;
+    --header-background-color: #b5f4ab;
+    --header-text-color: brown;
     --menu-text-color: white;
-    --menu-background-color: #bce5ff;
+    --menu-background-color: #8ddb81;
     --font: Calibri, cursive;
-    --button-color: #bce5ff;
+    --button-color: beige;
 }

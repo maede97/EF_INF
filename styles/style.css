@@ -12,6 +12,7 @@
     padding-bottom: 50px;
     color: var(--main-text-color);
     font-family: var(--font);
+	min-width:600px;
 }
 
 #right {
@@ -243,7 +244,7 @@ li a:hover {
     right: 0;
     bottom: 0;
     background: var(--footer-background-color);
-    color: var(--main-text-color);
+    color: var(--footer-text-color);
     border-top: var(--border-all);
     font-size: large;
     padding: 10px;

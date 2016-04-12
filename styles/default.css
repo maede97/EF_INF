@@ -1,16 +1,16 @@
 :root {
     /* Kind-of variables
     Allow us to simply change the whole color-schema */
-    --main-text-color: red;
-    --main-background-color: gold;
-    --hover-color: lightblue;
-    --hover-text-color: violet;
-    --border-all: 10px solid violet;
-    --footer-background-color: green;
-    --header-background-color: lightgreen;
-    --header-text-color: blue;
-    --menu-text-color: blue;
+    --main-text-color: black;
+    --main-background-color: white;
+    --hover-color: #555;
+    --hover-text-color: white;
+    --border-all: 1px solid black;
+    --footer-background-color: gray;
+    --header-background-color: beige;
+    --header-text-color: black;
+    --menu-text-color: black;
     --menu-background-color: beige;
-    --font: Comic Sans, Comic Sans MS, cursive;
-    --button-color: pink;
+    --font: Calibri, cursive;
+    --button-color: beige;
 }

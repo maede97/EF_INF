@@ -30,6 +30,27 @@ if (isset($_SESSION) && isset($_SESSION['user_id'])) {
 <p>Und deinem Theme:</p>
 <p><b><?php echo $theme; ?></b></p>
 <hr />
+<h2>Theme wählen</h2>
+<?php
+$themes = getThemeName("", true);
+echo "<form method='post' name='form' action='content/changeTheme.php'>";
+echo "<select name='theme'>";
+$counter = 0;
+foreach ($themes as $th) {
+	echo "<option value=" . $counter;
+	$db = new DB();
+	if($db->getTheme($id)[0]['theme']==$counter){
+		echo " selected";
+	}
+	$db->closeConnection();
+	echo ">".$th."</option>";
+	$counter++;
+}
+echo "</select>";
+echo "<input type='submit' value='Ändern'>";
+echo "</form>";
+?>
+<hr />
 <h2>Account löschen</h2>
 <p>Willst du deinen Account endgültig löschen?</p>
 <p><a href="content/deleteAccount.php">Bestätigen</a></p>

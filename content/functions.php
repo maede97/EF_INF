@@ -26,13 +26,17 @@ function getErrorMessage($errorParam) {
     return $errorMessages[$errorParam];
 }
 
-function getThemeName($themeID)
+function getThemeName($themeID, $all = false)
 {
     $themeArray = array(
         0 => 'default',
         1 => 'blue',
-        2 => 'ice'
+        2 => 'ice',
+		3 => 'augenkrebs'
     );
+	if($all){
+		return $themeArray;
+	}
     if($themeID == null || $themeID > count($themeArray)){
         return "default";
     }
@@ -132,10 +136,9 @@ class DB {
 
     //Fügt einen neuen User hinzu
     function addUser($user, $pass) {
-        $stmt = $this->connection->prepare("INSERT INTO user (username, password, theme) VALUES (:user, :pass, :theme)");
+        $stmt = $this->connection->prepare("INSERT INTO user (username, password, theme) VALUES (:user, :pass, 1)");
         $stmt->bindParam(':user', $user);
         $stmt->bindParam(':pass', $pass);
-        $stmt->bindParam(':theme', 1);
         $stmt->execute();
         return true;
     }

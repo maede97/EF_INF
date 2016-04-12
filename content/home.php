@@ -14,4 +14,5 @@
     <li>Import aus Excel-Dateien (<em>*.xls</em> / <em>*.xlsx</em>)</li>
     <li>Export zu PDF</li>
     <li>Online-Voci-Trainer</li>
+	<li>Verschiedene Designs</li>
 </ul>	

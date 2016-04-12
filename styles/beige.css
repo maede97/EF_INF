@@ -3,16 +3,16 @@
     Allow us to simply change the whole color-schema */
     --main-text-color: black;
     --main-background-color: white;
-    --hover-color: #009999;
+    --hover-color: #555;
     --hover-text-color: white;
     --border-all: 1px solid black;
-    --footer-background-color: black;
-	--footer-text-color: white;
-    --header-background-color: #404040;
-    --header-text-color: white;
-    --menu-text-color: white;
-    --menu-background-color: gray;
+    --footer-background-color: gray;
+	--footer-text-color: black;
+    --header-background-color: white;
+    --header-text-color: black;
+    --menu-text-color: black;
+    --menu-background-color: beige;
     --font: Calibri, cursive;
-    --button-color: #b9b9b9;
+    --button-color: beige;
 	--button-text-color: black;
 }

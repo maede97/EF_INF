@@ -6,12 +6,24 @@ table {
 	border-radius: 5px;
 }
 
-table th, td
+table th
 {
 	text-align: left;
-	border-color: var(--main-text-color);
-	border-style: solid;
-	border-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
+}
+
+table td
+{
+	text-align: left;
+	padding: 4px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+
+table td:hover
+{
+	background-color: var(--hover-color);
 }
 
 
@@ -29,7 +41,6 @@ table th, td
     padding-bottom: 50px;
     color: var(--main-text-color);
     font-family: var(--font);
-	min-width:600px;
 }
 
 #right {
@@ -87,7 +98,7 @@ form button {
 
 #main button, input, textarea {
     display: block;
-    color: var(--main-text-color);
+    color: var(--button-text-color);
     text-decoration: none;
     background-color: var(--button-color);
     margin: 10px;
@@ -113,7 +124,7 @@ form button {
 
 #main select, select option {
 	background-color: var(--button-color);
-	color: var(--main-text-color);
+	color: var(--button-text-color);
 	border: var(--border-all);
 	height: 50px;
 	width: 100px;
@@ -199,7 +210,7 @@ ul {
 
 li a {
     display: block;
-    color: var(--main-text-color);
+    color: var(--menu-text-color);
     padding: 8px 0 8px 16px;
     text-decoration: none;
 }
@@ -214,7 +225,7 @@ li a:hover {
 #header a {
     border: var(--border-all);
     background-color: var(--button-color);
-    color: var(--header-text-color);
+    color: var(--button-text-color);
     position: absolute;
     top: 10px;
     text-decoration: none;

@@ -29,11 +29,12 @@ function getErrorMessage($errorParam) {
 function getThemeName($themeID, $all = false)
 {
     $themeArray = array(
-        0 => 'default',
-        1 => 'blue',
-        2 => 'ice',
-		3 => 'green',
-		4 => 'augenkrebs'
+		0 => 'default',
+        1 => 'beige',
+        2 => 'blue',
+        3 => 'ice',
+		4 => 'green',
+		5 => 'augenkrebs'
     );
 	if($all){
 		return $themeArray;

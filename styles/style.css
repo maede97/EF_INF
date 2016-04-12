@@ -1,34 +1,5 @@
-table {
-	color: var(--main-text-color);
-	border-color: var(--main-text-color);
-	border-style: solid;
-	border-width: 1px;
-	border-radius: 5px;
-}
-
-table th
-{
-	text-align: left;
-	border-bottom-style: solid;
-	border-bottom-width: 2px;
-}
-
-table td
-{
-	text-align: left;
-	padding: 4px;
-	border-bottom-style: solid;
-	border-bottom-width: 1px;
-}
-
-table td:hover
-{
-	background-color: var(--hover-color);
-}
-
-
+/* All Stlyes for the Main-Section */
 #main {
-    /* The Main-Section where all stuff goes */
     margin-top: 50px;
     margin-bottom: 50px;
     margin-right: 150px;
@@ -41,42 +12,6 @@ table td:hover
     padding-bottom: 50px;
     color: var(--main-text-color);
     font-family: var(--font);
-}
-
-#right {
-    width: 150px;
-    right: 0;
-    position: fixed;
-    height: 100%;
-    border: var(--border-all);
-    z-index: 3;
-    background-color: var(--menu-background-color);
-}
-
-#back {
-    z-index: 1;
-    background-color: var(--main-background-color);
-    height: 100%;
-    width: 100%;
-    position: fixed;
-}
-
-a, input, select, button, #item_Container {
-    border-radius: 5px;
-}
-
-a[name] {
-    /* Alle Anker ausblenden */
-    visibility: hidden;
-}
-
-form input, textarea {
-    left: 400px;
-    background-color: var(--button-color);
-}
-
-form button {
-    padding: 5px;
 }
 
 #main a {
@@ -130,25 +65,10 @@ form button {
 	width: 100px;
 }
 
-
 #main select:hover {
 	background-color: var(--hover-color);
 	color: var(--hover-text-color);
 	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
-}
-
-#sol {
-    background-color: var(--button-color);
-    width: 400px;
-    margin: 40px;
-    position: fixed;
-    top: 50%;
-    border: var(--border-all);
-}
-#sol:hover {
-    background-color: var(--hover-color);
-    color: var(--main-text-color);
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 #main #item_Container {
@@ -175,15 +95,27 @@ form button {
     text-align: center;
 }
 
-#menu img {
-    /* Image container of main section
-    Aim: image centered */
-    width: 100px;
-    height: auto;
-    display: block;
-    margin: 10px auto 10px auto;
+/* The Style for the right, empty div */
+#right {
+    width: 150px;
+    right: 0;
+    position: fixed;
+    height: 100%;
+    border: var(--border-all);
+    z-index: 3;
+    background-color: var(--menu-background-color);
 }
 
+/* The Style for the background-div */
+#back {
+    z-index: 1;
+    background-color: var(--main-background-color);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}
+
+/* The Style for the menu */
 #menu {
     /* The Menu */
     position: fixed;
@@ -202,24 +134,30 @@ form button {
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
 }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-li a {
+#menu img {
+    /* Image container of main section
+    Aim: image centered */
+    width: 100px;
+    height: auto;
     display: block;
-    color: var(--menu-text-color);
-    padding: 8px 0 8px 16px;
-    text-decoration: none;
+    margin: 10px auto 10px auto;
 }
 
-li a:hover {
-    background-color: var(--hover-color);
-    color: var(--hover-text-color);
+/* The Style for the header */
+#header {
+    position: fixed;
+    text-align: center;
+    left: 0;
+    right: 0;
+    top: 0;
+    border-bottom: var(--border-all);
+    font-size: large;
+    background-color: var(--header-background-color);
+    padding: 10px;
+    z-index: 6;
+    color: var(--header-text-color);
+    font-family: var(--font);
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
-
 }
 
 #header a {
@@ -248,22 +186,7 @@ li a:hover {
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
 }
 
-#header {
-    position: fixed;
-    text-align: center;
-    left: 0;
-    right: 0;
-    top: 0;
-    border-bottom: var(--border-all);
-    font-size: large;
-    background-color: var(--header-background-color);
-    padding: 10px;
-    z-index: 6;
-    color: var(--header-text-color);
-    font-family: var(--font);
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
-}
-
+/* The Style for the Footer */
 #footer {
     position: fixed;
     text-align: center;
@@ -277,5 +200,85 @@ li a:hover {
     padding: 10px;
     z-index: 5;
     font-family: var(--font);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+/* The Style for the table (manage.php) */
+table {
+	color: var(--main-text-color);
+	border-color: var(--main-text-color);
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 5px;
+}
+
+table th
+{
+	text-align: left;
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
+}
+
+table td
+{
+	text-align: left;
+	padding: 4px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+
+/* Style for round corners */
+a, input, select, button, #item_Container {
+    border-radius: 5px;
+}
+
+/* Style for menu-entries */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li a {
+    display: block;
+    color: var(--menu-text-color);
+    padding: 8px 0 8px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: var(--hover-color);
+    color: var(--hover-text-color);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
+
+}
+
+/* Style for anchors */
+a[name] {
+    visibility: hidden;
+}
+
+/* Style for forms */
+form input, textarea {
+    left: 400px;
+    background-color: var(--button-color);
+}
+
+form button {
+    padding: 5px;
+}
+
+/* Style for Trainer */
+#sol {
+    background-color: var(--button-color);
+    width: 400px;
+    margin: 40px;
+    position: fixed;
+    top: 50%;
+    border: var(--border-all);
+}
+#sol:hover {
+    background-color: var(--hover-color);
+    color: var(--main-text-color);
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
 }

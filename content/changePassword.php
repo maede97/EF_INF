@@ -5,7 +5,7 @@ session_start();
 if (($_SERVER["REQUEST_METHOD"] == "POST") && isset($_POST["old"]) &&
         isset($_POST["new"]) && isset($_POST["new2"]) && isset($_SESSION['user_id'])) {
     if ($_POST['new'] != $_POST['new2']) {
-        header("Location: ../index.php?site=profil&error=0");
+        header("Location: ../index.php?site=profil&error=12");
         exit;
     }
     $user_id = $_SESSION['user_id'];
@@ -15,7 +15,7 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && isset($_POST["old"]) &&
     if (($result[0]['password'] == sha1($_POST['old'])) && ($_POST['new'] == $_POST['new2'])) {
         $db->updatePassword($user_id, sha1($_POST['new']));
     } else {
-        header("Location: ../index.php?site=profil&error=0");
+        header("Location: ../index.php?site=profil&error=12");
         exit;
     }
     $db->closeConnection();

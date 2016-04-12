@@ -6,6 +6,7 @@
  */
 
 function getErrorMessage($errorParam) {
+	// Gibt eine Fehler-Nachricht zum jeweiligen Parameter zurück
     $errorMessages = array(
         0 => 'Ein Fehler ist aufgetreten.',
         1 => 'Du musst alle Felder ausfüllen.',
@@ -13,12 +14,13 @@ function getErrorMessage($errorParam) {
         3 => 'Dieser Benutzer existiert nicht.\nDu kannst nun einen neuen Benutzer anlegen.',
         4 => 'Du musst eingeloggt sein, um diese Funktion nützen zu können.',
         5 => 'Dieser Benutzer existiert bereits.',
-        6 => 'Du kannst nur XLS-Dateien hochladen.',
+        6 => 'Du kannst nur XLS- und XLSX-Dateien hochladen.',
         7 => 'Deine Datei ist zu gross.',
         8 => 'Wir unterstützen im Moment nur Listen mit bis zu 100 Wörter.',
         9 => 'Du besitzt schon eine Liste mit demselben Titel.\nBitte wähle einen anderen.',
         10 => 'Bitte füge eine Datei hinzu.',
-        11 => 'Du besitzt noch keine Tabellen.'
+        11 => 'Du besitzt noch keine Tabellen.',
+		12 => 'Die Passwörter stimmen nicht überein.'
     );
     if ($errorParam == null || $errorParam > count($errorMessages)) {
         return "";
@@ -28,6 +30,8 @@ function getErrorMessage($errorParam) {
 
 function getThemeName($themeID, $all = false)
 {
+	//Gibt den Theme-Namen zurück
+	//Falls $all==true: der ganze Array wird zurückgegeben
     $themeArray = array(
 		0 => 'default',
         1 => 'beige',

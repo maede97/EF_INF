@@ -18,7 +18,7 @@ if (isset($_SESSION) && isset($_SESSION['user_id'])) {
     $db->closeConnection();
 } else {
     header("Location: ?site=login");
-    //Funktioniert nicht --> Endlosschleife!!!
+    //Funktioniert nicht --> Endlosschleife?!?
     exit;
 }
 ?>
@@ -28,10 +28,12 @@ if (isset($_SESSION) && isset($_SESSION['user_id'])) {
 <p>Ausser deinem Benutzernamen:</p>
 <p><b><?php echo $username; ?></b></p>
 <p>Und deine Darstellung:</p>
+<!-- Erster Buchstabe gross -->
 <p><b><?php echo ucfirst($theme); ?></b></p>
 <hr />
 <h2>Darstellung wählen</h2>
 <?php
+//Den Spinner für das Theme printen
 $themes = getThemeName("", true);
 echo "<form method='post' name='form' action='content/changeTheme.php'>";
 echo "<select name='theme'>";
@@ -43,6 +45,7 @@ foreach ($themes as $th) {
 		echo " selected";
 	}
 	$db->closeConnection();
+	//Erster Buchstabe des Theme-Namens gross
 	echo ">".ucfirst($th)."</option>";
 	$counter++;
 }

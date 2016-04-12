@@ -66,12 +66,13 @@ if (isset($_SESSION['user_id']) && isset($_GET['liste'])) {
         //Fett:
         $pdf->SetFont('Times', 'B', 12);
         $pdf->Cell(95, 10, $woerter[$i], 0, 0, '', $filler);
+		//Nicht Fett
         $pdf->SetFont('Times', '', 12);
         $pdf->Cell(95, 10, $translations[$i], 0, 1, '', $filler);
     }
     $pdf->Output("$title.pdf", "I");
 } else {
-    header("Location: ../index.php?site=login&error=4");
+    header("Location: ../index.php?site=login&error=0");
     exit;
 }
 ?>

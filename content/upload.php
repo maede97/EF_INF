@@ -3,7 +3,7 @@
 include("functions.php");
 session_start();
 //PHPExcel implementieren
-include '.\\PHPExcel\\PHPExcel\\IOFactory.php';
+include 'PHPExcel/PHPExcel/IOFactory.php';
 
 //Falls alle POST-Daten gesetzt
 if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isset($_SESSION['user_id']) && $_POST['title'] != "" && $_POST['language'] != "") {
@@ -30,9 +30,10 @@ if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isse
     $result = $db->selectListId($u_id, $titel);
 
     if (count($result) != 0) {
+		//Falls irgendein Fehler (in der DB) aufgetreten ist
         $uploadOk = 0;
         unlink($target_file);
-        header("Location: ../index.php?site=manage&error=10#addList");
+        header("Location: ../index.php?site=manage&error=0#addList");
         exit;
     }
 
@@ -46,7 +47,7 @@ if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isse
 
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
-        header("Location: ../index.php?site=manage&error=1#addList");
+        header("Location: ../index.php?site=manage&error=0#addList");
         exit;
     } else {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
@@ -59,10 +60,11 @@ if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isse
             if (!($fileExtension == "xls" || $fileExtension == "xlsx")) {
                 $uploadOk = 0;
                 unlink($target_file);
-                //header("Location: ../index.php?site=manage&error=6#addList");
+                header("Location: ../index.php?site=manage&error=6#addList");
                 exit;
             }
-
+			
+			//Init PHPExcel
             $reader = PHPExcel_IOFactory::createReader($excelFileType);
 
             $reader->setReadDataOnly(true);
@@ -74,9 +76,11 @@ if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isse
             //rowCount = Alle Zeilen
             $rowCount = $objPHPExcel->getActiveSheet()->getHighestRow();
 
+			//Falls zuviele Zeilen
+			//Gab ein Problem früher im Trainer
             if ($rowCount > 100) {
                 unlink($target_file);
-                header("Location: ../index.php?site=manage&error=9#addList");
+                header("Location: ../index.php?site=manage&error=8#addList");
                 exit;
             }
 
@@ -94,12 +98,14 @@ if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isse
             if (count($result) == 1) {
                 $listen_id = $result[0]['listen_id'];
             } else {
-                header("Location: ../index.php?site=manage&error=20#addList");
+				//Somesinge wrente wronge
+                header("Location: ../index.php?site=manage&error=0#addList");
                 exit;
             }
 
             //Daten in Tabelle einfügen
             for ($i = 1; $i <= $rowCount; $i++) {
+				//Daten holen
                 $wort = $objPHPExcel->getActiveSheet()->getCellByColumnAndRow(0, $i);
                 $translation = $objPHPExcel->getActiveSheet()->getCellByColumnAndRow(1, $i);
                 $wort = utf8_decode($wort);
@@ -117,11 +123,13 @@ if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isse
             header("Location: ../index.php?site=manage");
             exit;
         } else {
+			//Falls uploadOK = 0
             header("Location: ../index.php?site=manage&error=0#addList");
             exit;
         }
     }
 } else {
+	//Irgend ein Fehler im POST-Array oder so
     if (!isset($_SESSION['user_id'])) {
         header("Location: ../index.php?site=login&error=4");
         exit;

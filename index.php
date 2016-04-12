@@ -5,6 +5,7 @@ include("content/functions.php");
 session_start();
 if (!(isset($_SESSION['started']))) {
     $db = new DB();
+	// Alle Tabellen erzeugen, falls sie noch nicht vorhanden sind.
     $db->generateUserTable();
     $db->generateListTable();
     $db->generateWordTable();
@@ -15,10 +16,12 @@ if (!(isset($_SESSION['started']))) {
 }
 $theme = 0;
 if(isset($_SESSION['user_id'])){
+	//Das vom Benutzer gewählte Theme abfragen
     $db = new DB();
     $theme = $db->getTheme($_SESSION['user_id'])[0]['theme'];
     $db->closeConnection();
 }
+//Das korrekte Theme-Style-Sheet und das immer-geltende-Style-sheet laden
 echo '<link rel="stylesheet" href="styles/'. getThemeName($theme) . '.css" />';
 echo '<link rel="stylesheet" href="styles/style.css" />';
 ?>
@@ -44,14 +47,17 @@ echo '<link rel="stylesheet" href="styles/style.css" />';
         $("#menu").load("menu.php");
         //Content wird über GET gesteuert
         $("#main").load("content/" + getParamGET("site") + ".php");
-        //Sehr hässlicher Code
+        //Sehr hässlicher Code:
+		//Per PHP wird eventuell eine Error-Nachricht ge-echo-t, diese wird dann mit dem Java-Script per Alert ausgegeben.
         var error = "<?php
-if (isset($_GET['error'])) {
-    echo getErrorMessage($_GET['error']);
-} else {
-    echo "";
-}
-?>";
+		if (isset($_GET['error'])) {
+			echo getErrorMessage($_GET['error']);
+		} else {
+			//Falls keine Fehler-Meldung angezeigt werden muss, wird ein leerer String zurück gegeben.
+			echo "";
+		}
+		?>";
+		//Falls der hässliche Teil keinen leeren String zurückgegeben hat, mache einen alert
         if (error != "") {
             alert(error);
         }

@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["theme"]) && isset($_SE
 } else {
     //Keine Daten per POST geschickt, zurück zu Login
     unset($_SESSION['user_id']);
-    header("Location: ../index.php?site=login&error=1");
+    header("Location: ../index.php?site=login&error=0");
     exit;
 }
 ?>

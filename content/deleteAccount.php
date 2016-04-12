@@ -10,7 +10,7 @@ $user_id = $_SESSION['user_id'];
   1. Wörter löschen
   2. Listen löschen
   3. User löschen
-  4. Weiterleiten auf Home
+  4. Weiterleiten auf logout.php um Session zu beenden
  */
 $db = new DB();
 $result = $db->selectListsFromId($user_id);

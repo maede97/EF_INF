@@ -11,12 +11,14 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && isset($_POST["username"]) &&
     $username_data = mysql_real_escape_string($username_data);
     $password_data = sha1($_POST['password']);
 
+	//Für Benutzer testen
     $db = new DB();
     if (!count($db->selectIdFromUsername($username_data)) == 0) {
         unset($_SESSION['user_id']);
         header("Location: ../index.php?site=createAccount&error=5");
         exit;
     }
+	//Benutzer hinzufügen, neue ID holen
     $db->addUser($username_data, $password_data);
     $result = $db->selectIdFromUsername($username_data);
     if (count($result) == 1) {

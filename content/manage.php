@@ -8,6 +8,7 @@ if (isset($_SESSION['user_id'])) {
 
     $db = new DB();
     $result = $db->selectListsFromId($id);
+	//Alle Tabellen eines Users (falls vorhanden) ausgeben
     if (count($result) == 0) {
         echo "<h2>Du besitzt noch keine Tabellen.</h2>";
     } else {
@@ -32,6 +33,7 @@ if (isset($_SESSION['user_id'])) {
 }
 
 function showSelectionDialog() {
+	//Gibt Spinner für PDF-Maker aus
     $id = $_SESSION['user_id'];
 
     $db = new DB();

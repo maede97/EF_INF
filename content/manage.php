@@ -26,7 +26,7 @@ if (isset($_SESSION['user_id'])) {
     }
     $db->closeConnection();
 } else {
-    header("Location: http://localhost/EF_INF/index.php?site=login");
+    header("Location: ?site=login");
     //Funktioniert nicht!
     exit;
 }
@@ -39,7 +39,7 @@ function showSelectionDialog() {
     if (count($result) == 0) {
         echo "<p>Du besitzt noch keine Tabellen.</p>";
     } else {
-        echo "<p><form method='GET' name='liste' action='http://localhost/EF_INF/content/pdf.php'>";
+        echo "<p><form method='GET' name='liste' action='content/pdf.php'>";
         echo "<select name='liste'>";
         foreach ($result as $row) {
             //Print voci-tables into html table
@@ -61,8 +61,8 @@ function showSelectionDialog() {
 <hr />
 <a name="addList"></a>
 <h2>Tabelle hinzufügen</h2>
-<p>Vorlage: <a href="http://localhost/EF_INF/content/uploads/example.xls" title="Vorlage herunterladen">Hier klicken</a></p>
-<form action="http://localhost/EF_INF/content/upload.php" method="post" enctype="multipart/form-data">
+<p>Vorlage: <a href="content/uploads/example.xls" title="Vorlage herunterladen">Hier klicken</a></p>
+<form action="content/upload.php" method="post" enctype="multipart/form-data">
     <p>
     <p>Sprache:</p>
     <input type="text" name="language" maxlength="30">

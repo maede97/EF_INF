@@ -60,7 +60,7 @@ if (isset($_GET['error'])) {
 <html>
     <head>
         <title>SchoolTool</title>
-        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="shortcut icon" href="res/favicon.ico">
     </head>
     <body>
         <div id="back"></div>

@@ -10,7 +10,7 @@ if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isse
     //Check if user gave a file
     if (!isset($_FILES['fileToUpload'])) {
         $uploadOk = 0;
-        header("Location: http://localhost/EF_INF/index.php?site=manage&error=10#addList");
+        header("Location: ../index.php?site=manage&error=10#addList");
         exit;
     }
     $target_dir = "uploads/";
@@ -21,7 +21,7 @@ if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isse
     if (file_exists($target_file)) {
         $uploadOk = 0;
         unlink($target_file);
-        header("Location: http://localhost/EF_INF/index.php?site=manage&error=0#addList");
+        header("Location: ../index.php?site=manage&error=0#addList");
         exit;
     }
     $u_id = $_SESSION['user_id'];
@@ -32,7 +32,7 @@ if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isse
     if (count($result) != 0) {
         $uploadOk = 0;
         unlink($target_file);
-        header("Location: http://localhost/EF_INF/index.php?site=manage&error=10#addList");
+        header("Location: ../index.php?site=manage&error=10#addList");
         exit;
     }
 
@@ -40,13 +40,13 @@ if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isse
     if ($_FILES["fileToUpload"]["size"] > 500000) {
         $uploadOk = 0;
         unlink($target_file);
-        header("Location: http://localhost/EF_INF/index.php?site=manage&error=7#addList");
+        header("Location: ../index.php?site=manage&error=7#addList");
         exit;
     }
 
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
-        header("Location: http://localhost/EF_INF/index.php?site=manage&error=1#addList");
+        header("Location: ../index.php?site=manage&error=1#addList");
         exit;
     } else {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
@@ -59,7 +59,7 @@ if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isse
             if (!($fileExtension == "xls" || $fileExtension == "xlsx")) {
                 $uploadOk = 0;
                 unlink($target_file);
-                //header("Location: http://localhost/EF_INF/index.php?site=manage&error=6#addList");
+                //header("Location: ../index.php?site=manage&error=6#addList");
                 exit;
             }
 
@@ -76,7 +76,7 @@ if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isse
 
             if ($rowCount > 100) {
                 unlink($target_file);
-                header("Location: http://localhost/EF_INF/index.php?site=manage&error=9#addList");
+                header("Location: ../index.php?site=manage&error=9#addList");
                 exit;
             }
 
@@ -94,7 +94,7 @@ if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isse
             if (count($result) == 1) {
                 $listen_id = $result[0]['listen_id'];
             } else {
-                header("Location: http://localhost/EF_INF/index.php?site=manage&error=20#addList");
+                header("Location: ../index.php?site=manage&error=20#addList");
                 exit;
             }
 
@@ -114,19 +114,19 @@ if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isse
             //exit;
             $db->closeConnection();
 
-            header("Location: http://localhost/EF_INF/index.php?site=manage");
+            header("Location: ../index.php?site=manage");
             exit;
         } else {
-            header("Location: http://localhost/EF_INF/index.php?site=manage&error=0#addList");
+            header("Location: ../index.php?site=manage&error=0#addList");
             exit;
         }
     }
 } else {
     if (!isset($_SESSION['user_id'])) {
-        header("Location: http://localhost/EF_INF/index.php?site=login&error=4");
+        header("Location: ../index.php?site=login&error=4");
         exit;
     }
-    header("Location: http://localhost/EF_INF/index.php?site=manage&error=1#addList");
+    header("Location: ../index.php?site=manage&error=1#addList");
     exit;
 }
 ?> 

@@ -18,25 +18,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["username"]) && isset($
             //User_ID an Session übergeben
             $_SESSION['user_id'] = $result[0]['user_id'];
             //Auf Home-Seite weiterleiten
-            header("Location: http://localhost/EF_INF/index.php?site=home");
+            header("Location: ../index.php?site=home");
             exit;
         } else {
             //Falsches Passwort, eventuelle Sessions zurücksetzen
             unset($_SESSION['user_id']);
             //Zurück zu Login-Page
-            header("Location: http://localhost/EF_INF/index.php?site=login&error=2");
+            header("Location: ../index.php?site=login&error=2");
             exit;
         }
     } else if (count($result) == 0) {
         //Kein Benutzer gefunden.
         unset($_SESSION['user_id']);
-        header("Location: http://localhost/EF_INF/index.php?site=createAccount&error=3");
+        header("Location: ../index.php?site=createAccount&error=3");
 
         exit;
     } else {
         //Sonst irgend was
         unset($_SESSION['user_id']);
-        header("Location: http://localhost/EF_INF/index.php?site=login&error=0");
+        header("Location: ../index.php?site=login&error=0");
         exit;
     }
 
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["username"]) && isset($
 } else {
     //Keine Daten per POST geschickt, zurück zu Login
     unset($_SESSION['user_id']);
-    header("Location: http://localhost/EF_INF/index.php?site=login&error=1");
+    header("Location: ../index.php?site=login&error=1");
     exit;
 }
 ?>

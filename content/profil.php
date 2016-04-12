@@ -17,7 +17,7 @@ if (isset($_SESSION) && isset($_SESSION['user_id'])) {
 
     $db->closeConnection();
 } else {
-    header("Location: http://localhost/EF_INF/index.php?site=login");
+    header("Location: ?site=login");
     //Funktioniert nicht --> Endlosschleife!!!
     exit;
 }

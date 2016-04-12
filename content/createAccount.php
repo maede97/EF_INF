@@ -1,7 +1,7 @@
 <h1>Create Account</h1>
 <hr />
 <div id="loginform">
-    <form action="http://localhost/EF_INF/content/checkNewAccount.php" method="POST">
+    <form action="content/checkNewAccount.php" method="POST">
         <p>
             <label>Benutzername:</label>
             <input type="text" name="username" maxlength="30">

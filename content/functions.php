@@ -32,8 +32,8 @@ function getThemeName($themeID, $all = false)
         0 => 'default',
         1 => 'blue',
         2 => 'ice',
-		3 => 'augenkrebs',
-		4 => 'green'
+		3 => 'green',
+		4 => 'augenkrebs'
     );
 	if($all){
 		return $themeArray;

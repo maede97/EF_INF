@@ -22,5 +22,5 @@
     <hr />
     <li><a href="?site=about">About</a></li>
     <hr />
-    <li><a href="http://localhost/phpmyadmin" target="_blank">PHPmyAdmin</a></li>
+    <li><a href="../phpmyadmin" target="_blank">PHPmyAdmin</a></li>
 </ul>

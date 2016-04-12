@@ -7,7 +7,7 @@ class PDF extends FPDF {
 
     //Kopfzeile
     function Header() {
-        $this->Image("http://localhost/EF_INF/res/icon.png", 15, 5, 20);
+        $this->Image("../res/icon.png", 15, 5, 20);
         $this->SetFont('Arial', 'B', 15);
         //nach rechts gehen
         $this->Cell(80);
@@ -71,7 +71,7 @@ if (isset($_SESSION['user_id']) && isset($_GET['liste'])) {
     }
     $pdf->Output("$title.pdf", "I");
 } else {
-    header("Location: http://localhost/EF_INF/index.php?site=login&error=4");
+    header("Location: ../index.php?site=login&error=4");
     exit;
 }
 ?>

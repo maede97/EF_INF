@@ -33,7 +33,7 @@
     position: fixed;
 }
 
-a, input, select {
+a, input, select, button, #item_Container {
     border-radius: 5px;
 }
 

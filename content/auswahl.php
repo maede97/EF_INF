@@ -4,7 +4,7 @@ include("functions.php");
 session_start();
 if (!isset($_SESSION['user_id'])) {
     //Funktioniert noch nicht!
-    header("Location: http://localhost/EF_INF/index.php?site=login&error=4");
+    header("Location: ?site=login&error=4");
     exit;
 } else {
     $id = $_SESSION['user_id'];
@@ -17,13 +17,13 @@ if (!isset($_SESSION['user_id'])) {
         echo "<hr />";
         echo "<p>Du besitzt noch keine Tabellen.</p>";
         echo "<p>Du kannst sie hier hinzufügen:</p>";
-        echo "<a href='http://localhost/EF_INF/index.php?site=manage#addList'>Liste hinzufügen</a>";
+        echo "<a href='?site=manage#addList'>Liste hinzufügen</a>";
         exit;
     }
     echo "<h1>Vorbereitung</h1>";
     echo "<hr />";
     echo "<h2>Bitte wähle eine Tabelle</h2>";
-    echo "<form method='post' name='form' action='http://localhost/EF_INF/content/startList.php'>";
+    echo "<form method='post' name='form' action='content/startList.php'>";
     echo "<select name='listen'>";
     foreach ($result as $row) {
         //Print voci-tables into html table

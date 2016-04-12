@@ -14,31 +14,31 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && isset($_POST["username"]) &&
     $db = new DB();
     if (!count($db->selectIdFromUsername($username_data)) == 0) {
         unset($_SESSION['user_id']);
-        header("Location: http://localhost/EF_INF/index.php?site=createAccount&error=5");
+        header("Location: ../index.php?site=createAccount&error=5");
         exit;
     }
     $db->addUser($username_data, $password_data);
     $result = $db->selectIdFromUsername($username_data);
     if (count($result) == 1) {
         $_SESSION['user_id'] = $result[0]['user_id'];
-        header("Location: http://localhost/EF_INF/index.php?site=home");
+        header("Location: ../index.php?site=home");
         exit;
     } else if (count($result) == 0) {
         //Kein Benutzer gefunden.
         unset($_SESSION['user_id']);
-        header("Location: http://localhost/EF_INF/index.php?site=createAccount&error=0");
+        header("Location: ../index.php?site=createAccount&error=0");
         exit;
     } else {
         unset($_SESSION['user_id']);
-        header("Location: http://localhost/EF_INF/index.php?site=login&error=0");
+        header("Location: ../index.php?site=login&error=0");
         exit;
     }
     $db->closeConnection();
-    header("Location: http://localhost/EF_INF/index.php?site=home");
+    header("Location: ../index.php?site=home");
     exit;
 } else {
     unset($_SESSION['user_id']);
-    header("Location: http://localhost/EF_INF/index.php?site=createAccount&error=1");
+    header("Location: ../index.php?site=createAccount&error=1");
     exit;
 }
 ?>

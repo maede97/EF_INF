@@ -1,9 +1,8 @@
 <?php
-
 include("functions.php");
 session_start();
 if (!isset($_SESSION['user_id'])) {
-    header("Location: http://localhost/EF_INF/index.php?site=login");
+    header("Location: ../index.php?site=login");
     exit;
 }
 $user_id = $_SESSION['user_id'];
@@ -21,6 +20,6 @@ foreach ($result as $liste) {
 $db->deleteLists($user_id);
 $db->deleteUser($user_id);
 $db->closeConnection();
-header("Location: http://localhost/EF_INF/content/logout.php");
+header("Location: logout.php");
 exit;
 ?>

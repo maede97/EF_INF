@@ -64,6 +64,7 @@ if (isset($_GET['error'])) {
     </head>
     <body>
         <div id="back"></div>
+        <div id="right"></div>
         <div id="menu"></div>
         <div id="header"></div>
         <div id="main"></div>

@@ -27,10 +27,10 @@ if (isset($_SESSION) && isset($_SESSION['user_id'])) {
 <p>Hier steht noch nichts.</p>
 <p>Ausser deinem Benutzernamen:</p>
 <p><b><?php echo $username; ?></b></p>
-<p>Und deinem Theme:</p>
-<p><b><?php echo $theme; ?></b></p>
+<p>Und deine Darstellung:</p>
+<p><b><?php echo ucfirst($theme); ?></b></p>
 <hr />
-<h2>Theme wählen</h2>
+<h2>Darstellung wählen</h2>
 <?php
 $themes = getThemeName("", true);
 echo "<form method='post' name='form' action='content/changeTheme.php'>";
@@ -43,7 +43,7 @@ foreach ($themes as $th) {
 		echo " selected";
 	}
 	$db->closeConnection();
-	echo ">".$th."</option>";
+	echo ">".ucfirst($th)."</option>";
 	$counter++;
 }
 echo "</select>";

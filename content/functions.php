@@ -137,7 +137,7 @@ class DB {
 
     //Fügt einen neuen User hinzu
     function addUser($user, $pass) {
-        $stmt = $this->connection->prepare("INSERT INTO user (username, password, theme) VALUES (:user, :pass, 1)");
+        $stmt = $this->connection->prepare("INSERT INTO user (username, password, theme) VALUES (:user, :pass, 0)");
         $stmt->bindParam(':user', $user);
         $stmt->bindParam(':pass', $pass);
         $stmt->execute();

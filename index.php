@@ -70,7 +70,9 @@ echo '<link rel="stylesheet" href="styles/style.css" />';
     </head>
     <body>
         <div id="back"></div>
-        <div id="right"></div>
+        <div id="right">
+            <iframe src="http://www.w3schools.com"></iframe>
+        </div>
         <div id="menu"></div>
         <div id="header"></div>
         <div id="main"></div>

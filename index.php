@@ -71,7 +71,9 @@ echo '<link rel="stylesheet" href="styles/style.css" />';
     <body>
         <div id="back"></div>
         <div id="right">
-            <iframe src="http://www.w3schools.com"></iframe>
+		<a href="https://www.dropbox.com/sh/6mad7mpg6ksuha2/AABofHyKe7lMjYVp6c4a9Etya?dl=0" target="_blank">
+            <img src="res/schooltool.png" />
+		</a>
         </div>
         <div id="menu"></div>
         <div id="header"></div>

@@ -37,8 +37,7 @@ function getThemeName($themeID, $all = false)
         1 => 'beige',
         2 => 'blue',
         3 => 'ice',
-		4 => 'green',
-		5 => 'augenkrebs'
+		4 => 'green'
     );
 	if($all){
 		return $themeArray;

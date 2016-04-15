@@ -13,15 +13,20 @@ if (!isset($_SESSION['user_id'])) {
 
     $result = $db->selectListsFromId($id);
     if (count($result) == 0) {
+		echo "<div class='title-content'>";
         echo "<h1>Achtung!</h1>";
-        echo "<hr />";
+		echo "</div>";
+		echo "<div class='single-content'>";
         echo "<p>Du besitzt noch keine Tabellen.</p>";
         echo "<p>Du kannst sie hier hinzufügen:</p>";
-        echo "<a href='?site=manage#addList'>Liste hinzufügen</a>";
+        echo "<p><a href='?site=manage#addList'>Liste hinzufügen</a></p>";
+		echo "</div>";
         exit;
     }
-    echo "<h1>Vorbereitung</h1>";
-    echo "<hr />";
+    echo "<div class='title-content'>";
+	echo "<h1>Vorbereitung</h1>";
+	echo "</div>";
+    echo "<div class='single-content'>";
     echo "<h2>Bitte wähle eine Tabelle</h2>";
     echo "<form method='post' name='form' action='content/startList.php'>";
     echo "<select name='listen'>";
@@ -32,7 +37,9 @@ if (!isset($_SESSION['user_id'])) {
     }
     echo "</select>";
     echo "<input type='submit' value='Lernen'>";
+	echo "<p>&nbsp;</p>";
     echo "</form>";
+	echo "</div>";
     $db->closeConnection();
 }
 ?>

@@ -54,10 +54,10 @@ function getTranslations() {
 <script src="scripts/jquery.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#next").click(function () {
-            showSolution();
-        });
-
+		$("#item_Container").click(function () {
+			showSolution();
+		});
+		$("#sol").focus();
         $("#sol").keypress(function (e) {
             if (e.which == 13) {
                 //Check here if correct
@@ -66,7 +66,7 @@ function getTranslations() {
                 if (solutions[aktuell - 1] == document.getElementById("sol").value) {
                     //Correct
                     document.getElementById("sol").value = "";
-                    document.getElementById("sol").style.background = "beige";
+                    document.getElementById("sol").style.background = "var(--button-color)";
                     getNextCard();
                 } else {
                     //Not correct
@@ -95,11 +95,11 @@ function getTranslations() {
     var wrong = 0;
 
     function moveLeft(a) {
-        $("#item_Container").animate({left: '15%', opacity: '0', fontSize: "100%", height: "200px", width: "350px"}, a);
+        $("#item_Container").animate({left: '18%', opacity: '0', fontSize: "100%", height: "200px", width: "350px"}, a);
     }
 
     function moveMiddle(a) {
-        $("#item_Container").animate({left: '30%', opacity: '1', fontSize: "120%", height: "240px", width: "420px"}, a);
+        $("#item_Container").animate({left: '34%', opacity: '1', fontSize: "120%", height: "240px", width: "420px"}, a);
     }
 
     function moveRight(a) {
@@ -133,7 +133,9 @@ function getTranslations() {
         $("#item_Container").promise().done(function () {
             //wait until card is left and invisible, then new one
             if (aktuell > texts.length - 1) {
-                aktuell = 0;
+                //Einmal fertig gelernt
+				alert("Du bist fertig.\nIch starte nun mal neu.\nVielleicht folgt mal noch eine Statistik.")
+				aktuell = 0;
             }
             var text = texts[aktuell];
             aktuell++;
@@ -145,12 +147,14 @@ function getTranslations() {
         wrong = 0;
     }
 </script>
-
-<h1>Trainer</h1>
-<hr />
-
-<p><div id="item_Container">
-    <span id="item"></span>
-</div></p>
-<p><button id="next">Karte drehen</button></p>
-<p><input type="text" name="solution" id="sol"></p>
+<div class="title-content">
+	<h1>Trainer</h1>
+</div>
+<div class="single-content" style="height: 400px;">
+	<div id="item_Container">
+		<span id="item"></span>
+	</div>
+	<div class="centered">
+		<input type="text" name="solution" id="sol">
+	</div>
+</div>

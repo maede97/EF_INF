@@ -28,6 +28,7 @@ echo '<link rel="stylesheet" href="styles/style.css" />';
 
 <!DOCTYPE html>
 <script src="scripts/jquery.js"></script>
+<script src="scripts/customAlert.js"></script>
 <script type="text/javascript">
     function getParamGET(param) {
         //Die GET-Parameter extrahieren, den Paramter der der Variable param entspricht zurückgeben

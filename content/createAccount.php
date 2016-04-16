@@ -15,8 +15,14 @@
             <label>Passwort wiederholen:</label>
             <input type="password" name="password2" maxlength="30">
         </p>
+		<p>Bitte gib folgende Zahl unten ein: <span class="captcha"><img src="content/captcha.php" /></span></p>
+		<p>
+			<input name="captcha" type="text">
+		</p>
+		
         <p>
-            <button type="submit" name="go" value="los">Login</button>
+            <input type="submit" name="go" value="Login">
+        </p>
         </p>
     </form>
 	<p>&nbsp;</p>

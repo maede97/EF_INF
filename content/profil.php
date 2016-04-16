@@ -57,7 +57,7 @@ if (isset($_SESSION) && isset($_SESSION['user_id'])) {
 	echo "</form>";
 	?>
 </div>
-<div id="newPassForm" class="double-content-left" style="height: 510px;">
+<div id="newPassForm" class="double-content-left" style="height: 630px;">
 	<form action="content/changePassword.php" method="POST">
 		<h2>Neues Passwort wählen</h2>
 		<p>
@@ -72,14 +72,23 @@ if (isset($_SESSION) && isset($_SESSION['user_id'])) {
 			<label>Neues Passwort wiederholen:</label>
 			<input type="password" name="new2" maxlength="30">
 		</p>
+		<p>Bitte gib folgende Zahl unten ein: <span class="captcha"><img src="content/captcha.php" /></span></p>
+		<p>
+			<input name="captcha" type="text">
+		</p>
 		<p>
 			<button type="submit" name="go" value="los">Bestätigen</button>
 		</p>
 	</form>
 	<p>&nbsp;</p>
 </div>
-<div class="double-content-right" style="height: 510px;">
+<div class="double-content-right" style="height: 630px;">
 	<h2>Account löschen</h2>
 	<p>Willst du deinen Account endgültig löschen?</p>
-	<p><a href="content/deleteAccount.php">Bestätigen</a></p>
+	<form action="content/deleteAccount.php" method="post">
+		<p>Bitte gib folgende Zahl unten ein: <span class="captcha"><img src="content/captcha.php" /></span></p>
+		<p><input name="captcha" type="text"></p>
+		<p><input type="submit" value="Bestätigen"></p>
+	</form>
+	<p>&nbsp;</p>
 </div>

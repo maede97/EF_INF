@@ -10,5 +10,6 @@
 		<li>Export zu PDF</li>
 		<li>Online-Voci-Trainer</li>
 		<li>Verschiedene Designs</li>
+		<li>Captcha-Verfahren gegen Bot's</li>
 	</ul>
 </div>

@@ -20,7 +20,8 @@ function getErrorMessage($errorParam) {
         9 => 'Du besitzt schon eine Liste mit demselben Titel.\nBitte wähle einen anderen.',
         10 => 'Bitte füge eine Datei hinzu.',
         11 => 'Du besitzt noch keine Tabellen.',
-		12 => 'Die Passwörter stimmen nicht überein.'
+		12 => 'Die Passwörter stimmen nicht überein.',
+		13 => 'Du hast das Captcha falsch ausgefüllt.\nBitte versuche es erneut.'
     );
     if ($errorParam == null || $errorParam > count($errorMessages)) {
         return "";

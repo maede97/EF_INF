@@ -1,10 +1,27 @@
 <?php
-
 //Include Database-Function-PHP-File
 include('functions.php');
 session_start();
 if (($_SERVER["REQUEST_METHOD"] == "POST") && isset($_POST["username"]) &&
-        isset($_POST["password"]) && isset($_POST["password2"]) && ($_POST['password'] == $_POST['password2'])) {
+        isset($_POST["password"]) && isset($_POST["password2"])) {
+	//Testen ob irgendwas leer ist
+	if($_POST['password'] == "" || $_POST['password2']=="" || $_POST['username'] == ""){
+		header("Location: ../index.php?site=createAccount&error=1");
+		exit;
+	}
+	
+	//Testen ob Passwörter richtig sind
+	if($_POST['password'] != $_POST['password2']){
+		header("Location: ../index.php?site=createAccount&error=12");
+		exit;
+	}
+	//Testen ob Captcha richtig ist
+	if(!isset($_POST["captcha"])||$_POST["captcha"]==""||$_SESSION["code"]!=$_POST["captcha"])
+	{
+		header("Location: ../index.php?site=createAccount&error=13");
+		exit;
+	}
+			
     //Und strings filtern!
     $username_data = trim($_POST['username']);
     $username_data = htmlspecialchars($username_data);

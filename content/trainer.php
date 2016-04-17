@@ -66,7 +66,7 @@ function getTranslations() {
                 if (solutions[aktuell - 1] == document.getElementById("sol").value) {
                     //Correct
                     document.getElementById("sol").value = "";
-                    document.getElementById("sol").style.background = "var(--button-color)";
+                    //document.getElementById("sol").style.background = "var(--button-color)";
                     getNextCard();
                 } else {
                     //Not correct
@@ -75,7 +75,7 @@ function getTranslations() {
                         showSolution();
                     }
                     document.getElementById("sol").value = "";
-                    document.getElementById("sol").style.background = "red";
+                    //document.getElementById("sol").style.background = "red";
                 }
             }
         });
@@ -84,7 +84,7 @@ function getTranslations() {
         moveLeft(0);
         getCards();
         //show first card
-        getNextCard();
+        getNextCard(false);
         startTimer();
     });
 
@@ -128,13 +128,39 @@ function getTranslations() {
         });
     }
 
-    function getNextCard() {
+    function getNextCard(addTable = true) {
+		if(aktuell == 1){
+			//If reset: delete all lines of the table
+			//except the first one (=header with the titles of the rows)
+			var table = document.getElementById("done");
+			var tableRows = table.getElementsByTagName("tr");
+			var rowCount = tableRows.length;
+			for(var x=rowCount-1; x>0; x--){
+				table.removeChild(tableRows[x]);
+			}
+			
+		}
+		if(addTable){
+			//Add the just learned word to the table at the bottom of the page,
+			//including some sort of kinda-statistics
+			tableRow = document.getElementById("done").appendChild(document.createElement("tr"));
+			tableWort = tableRow.appendChild(document.createElement("td"));
+			tableWort.innerHTML = texts[aktuell-1];
+			tableSol = tableRow.appendChild(document.createElement("td"));
+			tableSol.innerHTML = solutions[aktuell-1];
+			tableWas = tableRow.appendChild(document.createElement("td"));
+			if(wrong > 0){
+				tableWas.innerHTML = wrong + " mal falsch";
+			} else {
+				tableWas.innerHTML = "Richtig";
+			}
+		}
         moveLeft("middle");
         $("#item_Container").promise().done(function () {
             //wait until card is left and invisible, then new one
             if (aktuell > texts.length - 1) {
                 //Einmal fertig gelernt
-				alert("Du bist fertig.\nIch starte nun mal neu.\nVielleicht folgt mal noch eine Statistik.")
+				alert("Du bist fertig.\nIch starte nun mal neu.\nUnten siehst du eine Statistik.");
 				aktuell = 0;
             }
             var text = texts[aktuell];
@@ -157,4 +183,10 @@ function getTranslations() {
 	<div class="centered">
 		<input type="text" name="solution" id="sol">
 	</div>
+</div>
+<div class="single-content centered">
+	<h2>Gelernt</h2>
+	<table id="done">
+		<tr><th width="150px">Wort</th><th width="250px">Übersetzung</th><th width="100px">Ergebnis</th></tr>
+	</table>
 </div>

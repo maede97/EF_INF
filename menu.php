@@ -21,7 +21,4 @@
     ?>
     <hr />
     <li><a href="?site=about">About</a></li>
-    <hr />
-	<!-- wird wieder entfernt -->
-    <li><a href="../phpmyadmin" target="_blank">PHPmyAdmin</a></li>
 </ul>

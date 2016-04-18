@@ -21,7 +21,7 @@
 		</p>
 		
         <p>
-            <input type="submit" name="go" value="Login">
+            <input type="submit" name="go" value="Erstellen">
         </p>
         </p>
     </form>

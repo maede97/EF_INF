@@ -17,11 +17,21 @@ function hex2rgb($hex) {
    return $rgb; // returns an array with the rgb values
 }
 
+function generateRandomString($length = 6) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
 
 session_start();
-$code=rand(1000,9999);
+
+$code = generateRandomString();
 $_SESSION["code"]=$code;
-$im = imagecreatetruecolor(50, 20);
+$im = imagecreatetruecolor(90, 20);
 imagesavealpha($im,true);
 $trans_colour = imagecolorallocatealpha($im, 0, 0, 0, 127);
 imagefill($im, 0, 0, $trans_colour);
@@ -44,7 +54,7 @@ if($style_file){
 			$col_array = hex2rgb($text_color);
 			$fg = imagecolorallocate($im, $col_array[0], $col_array[1], $col_array[2]);
 			//imagestring($im, 5, 7, 0,  $code, $fg);
-			imagettftext($im, 15, 5, 5, 19, $fg, "font/captcha.ttf", $code);
+			imagettftext($im, 15, 0, 2, 18, $fg, "font/captcha.ttf", $code);
 			header("Cache-Control: no-cache, must-revalidate");
 			header('Content-type: image/png');
 			imagepng($im);

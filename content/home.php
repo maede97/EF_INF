@@ -3,7 +3,7 @@
 </div>
 <div class="single-content">
 	<h2>Features</h2>
-	<ul style="list-style-type:disc; padding-left:15px;">
+	<ul style="list-style-type:disc; padding-left: 30px;">
 		<li>Kontos</li>
 		<li>Unbegrenzte Anzahl Vocabular-Listen</li>
 		<li>Import aus Excel-Dateien (<em>*.xls</em> / <em>*.xlsx</em>)</li>

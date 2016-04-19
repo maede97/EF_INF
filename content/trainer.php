@@ -185,8 +185,8 @@ function getTranslations() {
 	</div>
 </div>
 <div class="single-content centered">
-	<h2>Gelernt</h2>
+	<h2>Aktuelle Session</h2>
 	<table id="done">
-		<tr><th width="150px">Wort</th><th width="250px">Übersetzung</th><th width="100px">Ergebnis</th></tr>
+		<tr><th width="150px">Wort</th><th width="250px">Übersetzung</th><th width="150px">Ergebnis</th></tr>
 	</table>
 </div>

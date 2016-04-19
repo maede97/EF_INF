@@ -6,7 +6,7 @@
  */
 
 function getErrorMessage($errorParam) {
-	// Gibt eine Fehler-Nachricht zum jeweiligen Parameter zurück
+    // Gibt eine Fehler-Nachricht zum jeweiligen Parameter zurück
     $errorMessages = array(
         0 => 'Ein Fehler ist aufgetreten.',
         1 => 'Du musst alle Felder ausfüllen.',
@@ -20,8 +20,8 @@ function getErrorMessage($errorParam) {
         9 => 'Du besitzt schon eine Liste mit demselben Titel.\nBitte wähle einen anderen.',
         10 => 'Bitte füge eine Datei hinzu.',
         11 => 'Du besitzt noch keine Tabellen.',
-		12 => 'Die Passwörter stimmen nicht überein.',
-		13 => 'Du hast das Captcha falsch ausgefüllt.\nBitte versuche es erneut.'
+        12 => 'Die Passwörter stimmen nicht überein.',
+        13 => 'Du hast das Captcha falsch ausgefüllt.\nBitte versuche es erneut.'
     );
     if ($errorParam == null || $errorParam > count($errorMessages)) {
         return "";
@@ -29,24 +29,25 @@ function getErrorMessage($errorParam) {
     return $errorMessages[$errorParam];
 }
 
-function getThemeName($themeID, $all = false)
-{
-	//Gibt den Theme-Namen zurück
-	//Falls $all==true: der ganze Array wird zurückgegeben
+function getThemeName($themeID, $all = false) {
+    //Gibt den Theme-Namen zurück
+    //Falls $all==true: der ganze Array wird zurückgegeben
     $themeArray = array(
-		0 => 'default',
+        0 => 'default',
         1 => 'beige',
         2 => 'blue',
         3 => 'ice',
-		4 => 'green'
+        4 => 'green',
+        5 => 'vampire',
+        6 => 'gold'
     );
-	if($all){
-		return $themeArray;
-	}
-    if($themeID == null || $themeID > count($themeArray)){
+    if ($all) {
+        return $themeArray;
+    }
+    if ($themeID == null || $themeID > count($themeArray)) {
         return "default";
     }
-    
+
     return $themeArray[$themeID];
 }
 
@@ -278,5 +279,7 @@ class DB {
         $stmt->execute();
         return true;
     }
+
 }
+
 ?>

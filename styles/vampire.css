@@ -1,0 +1,20 @@
+:root {
+    /* Kind-of variables
+    Allow us to simply change the whole color-schema */
+    --main-text-color: #8b1414;
+    --main-background-color: #2f2f2f;
+    --hover-color: #5c5c5c;
+    --hover-text-color: #8b1414;
+    --border-all: 1px solid black;
+    --footer-background-color: #242424;
+    --footer-text-color: #8b1414;
+    --header-background-color: #242424;
+    --header-text-color: #8b1414;
+    --menu-text-color: #8b1414;
+    --menu-background-color: #3a3a3a;
+    --menu-width: 200px;
+    --font: Calibri, cursive;
+    --button-color: #727272;
+    --button-text-color: #8b1414;
+    --div-color: #4f4f4f;
+}.

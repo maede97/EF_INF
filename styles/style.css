@@ -1,25 +1,25 @@
 /* Text-Sizes */
 h1 {
-    font-size: 200%;
+    font-size: 2em;
 }
 
 h2 {
-    font-size: 150%;
+    font-size: 1.5em;
 }
 
 body {
-    font-size: 150%;
+    font-size: 1.2em;
 }
 
 input, select {
-    font-size: 100%;
+    font-size: 1em;
 }
 
 /* All Stlyes for the Main-Section */
 #main {
     margin-top: 50px;
     margin-bottom: 50px;
-    margin-right: 150px;
+    margin-right: var(--menu-width)	;
     right: 0;
     left: var(--menu-width);
     display: inline-block;
@@ -156,7 +156,13 @@ input, select {
     color: var(--menu-text-color);
     font-family: var(--font);
     z-index: 4;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 1), 0px 1px 2px rgba(0, 0, 0, 0);
+}
+
+#menu hr {
+	color: var(--menu-background-color);
+	height: 1px;
+	border-bottom: var(--border-all);
+	margin: 0 5px;
 }
 
 #menu img {
@@ -182,7 +188,6 @@ input, select {
     z-index: 6;
     color: var(--header-text-color);
     font-family: var(--font);
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 1), 0px 1px 2px rgba(0, 0, 0, 0);
 }
 
 #header a {
@@ -316,48 +321,56 @@ form button {
 /* Content-Divs */
 .single-content {
     clear: both;
-    border: var(--border-all);
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 1), 0px 1px 2px rgba(0, 0, 0, 0);
     padding: 15px;
     background-color: var(--div-color);
     margin: 10px 50px 10px 10px;
     height: auto;
     border-radius: 15px;
+	display: block;
+	border-bottom: var(--border-all);
+	border-top: var(--border-all)
 }
 
 .double-content-left {
-    border: var(--border-all);
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 1), 0px 1px 2px rgba(0, 0, 0, 0);
     padding: 15px;
-    background-color: var(--div-color);
-    width: 45%;
+	padding-bottom: 20px;
+    width: 40%;
     float: left;
     margin: 10px;
-    border-radius: 15px;
+	margin-top: 30px;
+	display: inline-block;
 }
 
 .double-content-right {
-    border: var(--border-all);
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 1), 0px 1px 2px rgba(0, 0, 0, 0);
     padding: 15px;
-    background-color: var(--div-color);
-    width: 45%;
+	padding-bottom: 20px;
+    width: 40%;
     float: right;
     margin: 10px;
     margin-right: 50px;
-    border-radius: 15px;
+	margin-top: 30px;
+	display: inline-block;
 }
 
 .title-content {
     clear: both;
-    border: var(--border-all);
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 1), 0px 1px 2px rgba(0, 0, 0, 0);
-    padding: 10px;
-    background-color: var(--header-background-color);
+	padding: 10px;
+    background-color: var(--main-background-color);
     color: var(--header-text-color);
     margin: 10px 50px 10px 10px;
-    height: auto;
-    border-radius: 15px;
+	display: block;
+}
+
+.double-content-row {
+	display:block;
+	clear: both;
+	border-bottom: var(--border-all);
+	border-top: var(--border-all);
+}
+
+.double-content-row h2 {
+	text-align: left;
+	font-weight: 500;
 }
 
 /* Content in this div is centered as the name says */

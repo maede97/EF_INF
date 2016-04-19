@@ -39,7 +39,8 @@ function getThemeName($themeID, $all = false) {
         3 => 'ice',
         4 => 'green',
         5 => 'vampire',
-        6 => 'gold'
+        6 => 'gold',
+		7 => 'dominic'
     );
     if ($all) {
         return $themeArray;

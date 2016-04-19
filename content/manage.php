@@ -61,32 +61,34 @@ function showSelectionDialog() {
     $db->closeConnection();
 }
 ?>
-<div class="double-content-left" style="height: 650px;">
-    <a name="printList"></a>
-    <h2>Tabellen ausdrucken</h2>
-    <p>Hier können Tabellen in PDF's verwandelt werden, um sie dann auszudrucken.</p>
-    <?php showSelectionDialog(); ?>
-</div>
-<div class="double-content-right" style="height: 650px;">
-    <a name="addList"></a>
-    <h2>Tabelle hinzufügen</h2>
-    <p>Vorlage: &nbsp; <a href="content/uploads/example.xls" title="Vorlage herunterladen">Hier klicken</a></p>
-    <form action="content/upload.php" method="post" enctype="multipart/form-data">
-        <p>Sprache:</p>
-        <p>
-            <input type="text" name="language" placeholder="Sprache" maxlength="30">
-        </p>
-        <p>Titel:</p>
-        <p>
-            <input type="text" name="title" placeholder="Titel" maxlength="30">
-        </p>
-        <p>Wähle die Datei:</p>
-        <p>
-            <input type="file" name="fileToUpload" accept="spreadsheet/xls">
-        </p>
-        <p>
-            <input type="submit" value="Upload" title="Hochladen">
-        </p>
-    </form>
-    <p>&nbsp;</p>
+<div class=double-content-row">
+	<div class="double-content-left" style="height: 650px;">
+		<a name="printList"></a>
+		<h2>Tabellen ausdrucken</h2>
+		<p>Hier können Tabellen in PDF's verwandelt werden, um sie dann auszudrucken.</p>
+		<?php showSelectionDialog(); ?>
+	</div>
+	<div class="double-content-right" style="height: 650px;">
+		<a name="addList"></a>
+		<h2>Tabelle hinzufügen</h2>
+		<p>Vorlage: &nbsp; <a href="content/uploads/example.xls" title="Vorlage herunterladen">Hier klicken</a></p>
+		<form action="content/upload.php" method="post" enctype="multipart/form-data">
+			<p>Sprache:</p>
+			<p>
+				<input type="text" name="language" placeholder="Sprache" maxlength="30">
+			</p>
+			<p>Titel:</p>
+			<p>
+				<input type="text" name="title" placeholder="Titel" maxlength="30">
+			</p>
+			<p>Wähle die Datei:</p>
+			<p>
+				<input type="file" name="fileToUpload" accept="spreadsheet/xls">
+			</p>
+			<p>
+				<input type="submit" value="Upload" title="Hochladen">
+			</p>
+		</form>
+		<p>&nbsp;</p>
+	</div>
 </div>

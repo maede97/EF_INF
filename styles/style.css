@@ -159,10 +159,10 @@ input, select {
 }
 
 #menu hr {
-	color: var(--menu-background-color);
-	height: 1px;
-	border-bottom: var(--border-all);
-	margin: 0 5px;
+    color: var(--menu-background-color);
+    height: 1px;
+    border-bottom: var(--border-all);
+    margin: 0 5px;
 }
 
 #menu img {
@@ -323,54 +323,50 @@ form button {
     clear: both;
     padding: 15px;
     background-color: var(--div-color);
-    margin: 10px 50px 10px 10px;
+    margin: 10px;
     height: auto;
-    border-radius: 15px;
-	display: block;
-	border-bottom: var(--border-all);
-	border-top: var(--border-all)
+    display: block;
+    border-bottom: var(--border-all);
+    border-top: var(--border-all);
 }
 
 .double-content-left {
     padding: 15px;
-	padding-bottom: 20px;
+    padding-bottom: 20px;
     width: 40%;
     float: left;
     margin: 10px;
-	margin-top: 30px;
-	display: inline-block;
+    display: inline-block;
 }
 
 .double-content-right {
     padding: 15px;
-	padding-bottom: 20px;
+    padding-bottom: 20px;
     width: 40%;
     float: right;
     margin: 10px;
-    margin-right: 50px;
-	margin-top: 30px;
-	display: inline-block;
+    display: inline-block;
 }
 
 .title-content {
     clear: both;
-	padding: 10px;
+    padding: 10px;
     background-color: var(--main-background-color);
     color: var(--header-text-color);
     margin: 10px 50px 10px 10px;
-	display: block;
+    display: block;
 }
 
 .double-content-row {
-	display:block;
-	clear: both;
-	border-bottom: var(--border-all);
-	border-top: var(--border-all);
+    display:block;
+    clear: both;
+    border-bottom: var(--border-all);
+    border-top: var(--border-all);
 }
 
 .double-content-row h2 {
-	text-align: left;
-	font-weight: 500;
+    text-align: left;
+    font-weight: 500;
 }
 
 /* Content in this div is centered as the name says */
@@ -414,8 +410,6 @@ form button {
     min-height: 100px;
     margin-top: 100px;
     background-color: var(--div-color);
-    background-repeat: no-repeat;
-    background-position: 20px 30px;
     border: var(--border-all);
     border-radius: 10px;
     padding: 10px;
@@ -433,4 +427,8 @@ form button {
     color: var(--header-text-color);
     border-bottom:1px solid #000;
     padding:2px 0 2px 5px;
+}
+
+#alertBox a {
+    float: right;
 }

@@ -1,18 +1,18 @@
 /* Text-Sizes */
 h1 {
-	font-size: 200%;
+    font-size: 200%;
 }
 
 h2 {
-	font-size: 150%;
+    font-size: 150%;
 }
 
 body {
-	font-size: 150%;
+    font-size: 150%;
 }
 
 input, select {
-	font-size: 100%;
+    font-size: 100%;
 }
 
 /* All Stlyes for the Main-Section */
@@ -69,17 +69,17 @@ input, select {
 }
 
 #main select, select option {
-	background-color: var(--button-color);
-	color: var(--button-text-color);
-	border: var(--border-all);
-	height: 50px;
-	width: auto;
+    background-color: var(--button-color);
+    color: var(--button-text-color);
+    border: var(--border-all);
+    height: 50px;
+    width: auto;
 }
 
 #main select:hover {
-	background-color: var(--hover-color);
-	color: var(--hover-text-color);
-	box-shadow: 0px 1px 3px rgba(0, 0, 0, 1), 0px 1px 2px rgba(0, 0, 0, 0);
+    background-color: var(--hover-color);
+    color: var(--hover-text-color);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 1), 0px 1px 2px rgba(0, 0, 0, 0);
 }
 
 #main #item_Container {
@@ -118,17 +118,17 @@ input, select {
 }
 
 #right img {
-	width: var(--menu-width);
-	height: auto;
-	position: relative;
-	margin: -150px 2px 0 2px;
-	top: 50%;
-	border: var(--border-all);
+    width: var(--menu-width);
+    height: auto;
+    position: relative;
+    margin: -150px 2px 0 2px;
+    top: 50%;
+    border: var(--border-all);
 }
 
 #right img:hover {
-	box-shadow: 0px 1px 3px rgba(0, 0, 0, 1), 0px 1px 2px rgba(0, 0, 0, 0);
-	opacity: 0.75;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 1), 0px 1px 2px rgba(0, 0, 0, 0);
+    opacity: 0.75;
 }
 
 /* The Style for the background-div */
@@ -198,11 +198,11 @@ input, select {
 
 #header #logBut {
     right: var(--menu-width);
-	margin-right: 10px;
+    margin-right: 10px;
 }
 #header #homeBut {
     right: var(--menu-width);
-	margin-right: 140px;
+    margin-right: 140px;
 }
 
 #header a:hover {
@@ -232,26 +232,26 @@ input, select {
 
 /* The Style for the table (manage.php) */
 table {
-	color: var(--main-text-color);
-	border-color: var(--main-text-color);
-	border-style: solid;
-	border-width: 1px;
-	border-radius: 5px;
+    color: var(--main-text-color);
+    border-color: var(--main-text-color);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
 }
 
 table th
 {
-	text-align: left;
-	border-bottom-style: solid;
-	border-bottom-width: 2px;
+    text-align: left;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
 }
 
 table td
 {
-	text-align: left;
-	padding: 4px;
-	border-bottom-style: solid;
-	border-bottom-width: 1px;
+    text-align: left;
+    padding: 4px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
 }
 
 /* Style for round corners */
@@ -299,9 +299,9 @@ form button {
     background-color: var(--button-color);
     width: 98%;
     border: var(--border-all);
-	text-align: center;
-	position: relative;
-	top: 300px;
+    text-align: center;
+    position: relative;
+    top: 300px;
 }
 #sol:hover, #item_Container:hover {
     background-color: var(--hover-color);
@@ -310,70 +310,76 @@ form button {
 }
 
 #item_Container {
-	background-color: var(--button-color);
+    background-color: var(--button-color);
 }
 
 /* Content-Divs */
 .single-content {
-	clear: both;
-	border: var(--border-all);
-	box-shadow: 0px 1px 3px rgba(0, 0, 0, 1), 0px 1px 2px rgba(0, 0, 0, 0);
-	padding: 10px;
-	background-color: var(--div-color);
-	margin: 10px 50px 10px 10px;
-	height: auto;
-	border-radius: 15px;
+    clear: both;
+    border: var(--border-all);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 1), 0px 1px 2px rgba(0, 0, 0, 0);
+    padding: 15px;
+    background-color: var(--div-color);
+    margin: 10px 50px 10px 10px;
+    height: auto;
+    border-radius: 15px;
 }
 
 .double-content-left {
-	border: var(--border-all);
-	box-shadow: 0px 1px 3px rgba(0, 0, 0, 1), 0px 1px 2px rgba(0, 0, 0, 0);
-	padding: 10px;
-	background-color: var(--div-color);
-	width: 45%;
-	float: left;
-	margin: 10px;
-	border-radius: 15px;
+    border: var(--border-all);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 1), 0px 1px 2px rgba(0, 0, 0, 0);
+    padding: 15px;
+    background-color: var(--div-color);
+    width: 45%;
+    float: left;
+    margin: 10px;
+    border-radius: 15px;
 }
 
 .double-content-right {
-	border: var(--border-all);
-	box-shadow: 0px 1px 3px rgba(0, 0, 0, 1), 0px 1px 2px rgba(0, 0, 0, 0);
-	padding: 10px;
-	background-color: var(--div-color);
-	width: 45%;
-	float: right;
-	margin: 10px;
-	margin-right: 50px;
-	border-radius: 15px;
+    border: var(--border-all);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 1), 0px 1px 2px rgba(0, 0, 0, 0);
+    padding: 15px;
+    background-color: var(--div-color);
+    width: 45%;
+    float: right;
+    margin: 10px;
+    margin-right: 50px;
+    border-radius: 15px;
 }
 
 .title-content {
-	clear: both;
-	border: var(--border-all);
-	box-shadow: 0px 1px 3px rgba(0, 0, 0, 1), 0px 1px 2px rgba(0, 0, 0, 0);
-	padding: 10px;
-	background-color: var(--div-color);
-	margin: 10px 50px 10px 10px;
-	height: auto;
-	border-radius: 15px;
+    clear: both;
+    border: var(--border-all);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 1), 0px 1px 2px rgba(0, 0, 0, 0);
+    padding: 10px;
+    background-color: var(--div-color);
+    margin: 10px 50px 10px 10px;
+    height: auto;
+    border-radius: 15px;
 }
 
 /* Content in this div is centered as the name says */
 .centered {
-	text-align: center;
+    text-align: center;
 }
 
 .centered table {
-	margin: 0 auto;
-	text-align: left;
+    margin: 0 auto;
+    text-align: left;
 }
 
 /* Style for the Captcha-Class */
 .captcha {
-	border: var(--border-all);
-	border-radius: 5px;
-	background-color: var(--button-color);
+    border: var(--border-all);
+    border-radius: 5px;
+    background-color: var(--button-color);
+}
+
+.captcha:hover {
+    background-color: var(--hover-color);
+    color: var(--hover-text-color);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 1), 0px 1px 2px rgba(0, 0, 0, 0);
 }
 
 /* Custom-Styled alert-box */
@@ -395,10 +401,10 @@ form button {
     background-color: var(--div-color);
     background-repeat: no-repeat;
     background-position: 20px 30px;
-	border: var(--border-all);
-	border-radius: 10px;
-	padding: 10px;
-	font: var(--font);
+    border: var(--border-all);
+    border-radius: 10px;
+    padding: 10px;
+    font: var(--font);
 }
 
 #modalContainer > #alertBox {

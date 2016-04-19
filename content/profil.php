@@ -22,73 +22,96 @@ if (isset($_SESSION) && isset($_SESSION['user_id'])) {
     exit;
 }
 ?>
+<script type="text/javascript">
+    function reloadImage(id) {
+        if(id==1){
+            document.getElementById("captcha_picture").src = "content/captcha.php?" + new Date().getTime();
+        }
+        else {
+            document.getElementById("captcha_picture2").src = "content/captcha.php?" + new Date().getTime();
+        }
+    }
+</script>
+
 <div class="title-content">
-	<h1>Profil</h1>
+    <h1>Profil</h1>
 </div>
 <div class="double-content-left" style="height: 300px">
-	<p>Hier steht noch nichts.</p>
-	<p>Ausser deinem Benutzernamen:</p>
-	<p><b><?php echo $username; ?></b></p>
-	<p>Und deine Darstellung:</p>
-	<!-- Erster Buchstabe gross -->
-	<p><b><?php echo ucfirst($theme); ?></b></p>
+    <p>Hier steht noch nichts.</p>
+    <p>Ausser deinem Benutzernamen:</p>
+    <p><b><?php echo $username; ?></b></p>
+    <p>Und deine Darstellung:</p>
+    <!-- Erster Buchstabe gross -->
+    <p><b><?php echo ucfirst($theme); ?></b></p>
 </div>
 <div class="double-content-right" style="height: 300px">
-	<h2>Darstellung wählen</h2>
-	<?php
-	//Den Spinner für das Theme printen
-	$themes = getThemeName("", true);
-	echo "<form method='post' name='form' action='content/changeTheme.php'>";
-	echo "<select name='theme'>";
-	$counter = 0;
-	foreach ($themes as $th) {
-		echo "<option value=" . $counter;
-		$db = new DB();
-		if($db->getTheme($id)[0]['theme']==$counter){
-			echo " selected";
-		}
-		$db->closeConnection();
-		//Erster Buchstabe des Theme-Namens gross
-		echo ">".ucfirst($th)."</option>";
-		$counter++;
-	}
-	echo "</select>";
-	echo "<input type='submit' value='Ändern'>";
-	echo "</form>";
-	?>
+    <h2>Darstellung wählen</h2>
+    <?php
+    //Den Spinner für das Theme printen
+    $themes = getThemeName("", true);
+    echo "<form method='post' name='form' action='content/changeTheme.php'>";
+    echo "<select name='theme'>";
+    $counter = 0;
+    foreach ($themes as $th) {
+        echo "<option value=" . $counter;
+        $db = new DB();
+        if ($db->getTheme($id)[0]['theme'] == $counter) {
+            echo " selected";
+        }
+        $db->closeConnection();
+        //Erster Buchstabe des Theme-Namens gross
+        echo ">" . ucfirst($th) . "</option>";
+        $counter++;
+    }
+    echo "</select>";
+    echo "<input type='submit' value='Ändern'>";
+    echo "</form>";
+    ?>
 </div>
 <div id="newPassForm" class="double-content-left" style="height: 630px;">
-	<form action="content/changePassword.php" method="POST">
-		<h2>Neues Passwort wählen</h2>
-		<p>
-			<label>Altes Passwort:</label>
-			<input type="password" name="old" maxlength="30">
-		</p>
-		<p>
-			<label>Neues Passwort:</label>
-			<input type="password" name="new" maxlength="30">
-		</p>
-		<p>
-			<label>Neues Passwort wiederholen:</label>
-			<input type="password" name="new2" maxlength="30">
-		</p>
-		<p>Bitte gib folgende Zahl unten ein: <span class="captcha"><img src="content/captcha.php" /></span></p>
-		<p>
-			<input name="captcha" type="text">
-		</p>
-		<p>
-			<button type="submit" name="go" value="los">Bestätigen</button>
-		</p>
-	</form>
-	<p>&nbsp;</p>
+    <form action="content/changePassword.php" method="POST">
+        <h2>Neues Passwort wählen</h2>
+        <p>
+            <label>Altes Passwort:</label>
+            <input type="password" name="old" placeholder=" Altes Passwort" maxlength="30">
+        </p>
+        <p>
+            <label>Neues Passwort:</label>
+            <input type="password" name="new" placeholder="Neues Passwort" maxlength="30">
+        </p>
+        <p>
+            <label>Neues Passwort wiederholen:</label>
+            <input type="password" name="new2" placeholder="Neues Passwort" maxlength="30">
+        </p>
+        <p>Bitte gib folgenden Code unten ein:
+            <span class="captcha" onclick="reloadImage(1)">
+                <img id="captcha_picture" src="content/captcha.php" />
+            </span>
+        </p>
+        <p>
+            <input name="captcha" placeholder="Captcha" type="text">
+        </p>
+        <p>
+            <button type="submit" name="go" value="los">Bestätigen</button>
+        </p>
+    </form>
+    <p>&nbsp;</p>
 </div>
 <div class="double-content-right" style="height: 630px;">
-	<h2>Account löschen</h2>
-	<p>Willst du deinen Account endgültig löschen?</p>
-	<form action="content/deleteAccount.php" method="post">
-		<p>Bitte gib folgende Zahl unten ein: <span class="captcha"><img src="content/captcha.php" /></span></p>
-		<p><input name="captcha" type="text"></p>
-		<p><input type="submit" value="Bestätigen"></p>
-	</form>
-	<p>&nbsp;</p>
+    <h2>Account löschen</h2>
+    <p>Willst du deinen Account endgültig löschen?</p>
+    <form action="content/deleteAccount.php" method="post">
+        <p>Bitte gib folgenden Code unten ein:
+            <span class="captcha" onclick="reloadImage(2)">
+                <img id="captcha_picture2" src="content/captcha.php" />
+            </span>
+        </p>
+        <p>
+            <input name="captcha" placeholder="Captcha" type="text">
+        </p>
+        <p>
+            <input type="submit" value="Bestätigen">
+        </p>
+    </form>
+    <p>&nbsp;</p>
 </div>

@@ -40,7 +40,7 @@ function getThemeName($themeID, $all = false) {
         4 => 'green',
         5 => 'vampire',
         6 => 'gold',
-		7 => 'dominic'
+		7 => 'light'
     );
     if ($all) {
         return $themeArray;

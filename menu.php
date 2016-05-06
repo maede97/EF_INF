@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- KZO-Logo: Bei Klick geht in neuem Fenster (target="_blank") die KZO-Seite auf. -->
 <img src="res/icon.png">
 <hr />
 <ul>

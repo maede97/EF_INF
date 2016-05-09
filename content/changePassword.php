@@ -1,5 +1,5 @@
 <?php
-
+//Diese Datei wechselt das Passwort des Benutzers. Wird von der Profil-Seite aufgerufen
 include("functions.php");
 session_start();
 if (($_SERVER["REQUEST_METHOD"] == "POST") && isset($_POST["old"]) &&

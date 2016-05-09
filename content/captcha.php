@@ -1,6 +1,8 @@
 <?php
+//Diese Datei erzeugt ein kleines PNG, das Captcha
 include("functions.php");
 function hex2rgb($hex) {
+	//aus dem Internet geklaut, aber angepasst
    $hex = str_replace("#", "", $hex);
    $hex = str_replace(",","",$hex);
 
@@ -18,6 +20,7 @@ function hex2rgb($hex) {
 }
 
 function generateRandomString($length = 6) {
+	//Aus dem Internet geklaut. Aber angepasst auf Länge
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
     $randomString = '';
@@ -38,6 +41,8 @@ imagefill($im, 0, 0, $trans_colour);
 
 //We need now a Text-Color corresponding to our chosen style:
 //Idea: get the theme-id, then the theme-style-file, open it and extract the corresponding hex color
+//Dies passiert, indem das Theme-file mit einem text-leser geöffnet wird, die richtige zeile gesucht wird
+//danach wird die farbe (ein hex-wert) in rgb umgewandelt
 $theme = 0;
 if(isset($_SESSION['user_id'])){
 	//Das vom Benutzer gewählte Theme abfragen
@@ -50,6 +55,7 @@ $style_file = fopen("../styles/".$theme_name.".css", "r");
 if($style_file){
 	while(($line = fgets($style_file)) !== false) {
 		if(strstr($line, '--button-text-color')){
+			//DIe richttige Farbe auslesen
 			$text_color = strstr($line, '#');
 			$col_array = hex2rgb($text_color);
 			$fg = imagecolorallocate($im, $col_array[0], $col_array[1], $col_array[2]);

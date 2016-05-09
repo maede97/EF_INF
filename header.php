@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <span>
     SchoolTool - Trainer<br />
     PHP-Projekt von Jeremy und Matthias

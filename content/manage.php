@@ -1,12 +1,20 @@
+<!--Die Verwalten-Seite
+
+Ja, diese HTML-Zeilen unten sollten der Übersicht halber unter dem PHP-Teil stehen.
+Sie sind aber hier oben, da sonst mit der DB-Funktionsaufrufen Probleme auftraten mit dem includen
+-->
 <div class="title-content">
     <h1>Verwalten</h1>
 </div>
 <?php
+//Funktions-Datei einbinden (für DB)
 include("functions.php");
 session_start();
 if (isset($_SESSION['user_id'])) {
+	//Falls der User eingeloggt ist, werden all seine Listen geprinted.
     $id = $_SESSION['user_id'];
-
+	
+	//DB-Verbindung aufbauen
     $db = new DB();
     $result = $db->selectListsFromId($id);
     //Alle Tabellen eines Users (falls vorhanden) ausgeben
@@ -38,7 +46,7 @@ if (isset($_SESSION['user_id'])) {
 }
 
 function showSelectionDialog() {
-    //Gibt Spinner für PDF-Maker aus
+    //Gibt Item-Spinner für PDF-Maker aus
     $id = $_SESSION['user_id'];
 
     $db = new DB();
@@ -71,6 +79,7 @@ function showSelectionDialog() {
 	<div class="double-content-right" style="height: 650px;">
 		<a name="addList"></a>
 		<h2>Tabelle hinzufügen</h2>
+		<!--Die Upload-Form-->
 		<p>Vorlage: &nbsp; <a href="content/uploads/example.xls" title="Vorlage herunterladen">Hier klicken</a></p>
 		<form action="content/upload.php" method="post" enctype="multipart/form-data">
 			<p>Sprache:</p>

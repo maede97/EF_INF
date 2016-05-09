@@ -1,4 +1,5 @@
 <?php
+//Löscht den Account des Benutzers
 include("functions.php");
 session_start();
 if (!isset($_SESSION['user_id'])) {

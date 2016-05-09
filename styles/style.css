@@ -1,4 +1,24 @@
-/* Text-Sizes */
+/*
+Dies ist das Haupt-Style-File.
+Es ist gegliedert in folgende Abschnitte:
+
+Aller Code in dieser Datei ist von uns HAND-geschrieben. WIr haben keinen Generator verwendet!
+Hier folgt eine kleine Tabelle über die einzelnen Zeilen:
+Was?        | Zeile
+------------|-------
+Textgrössen |  21
+Main (div)	|  39
+Right (div)	| 130
+Back (div)	| 155
+Menu (div)	| 164
+Header (div)| 198
+Footer (div)| 243
+Table		| 260
+Varia		| 283
+Klassen		| 343
+AlertBox	| 418 */
+
+/* Text-Sizes */ 
 h1 {
     font-size: 2em;
 }
@@ -205,6 +225,7 @@ input, select {
     right: var(--menu-width);
     margin-right: 10px;
 }
+
 #header #homeBut {
     right: var(--menu-width);
     margin-right: 140px;
@@ -308,6 +329,7 @@ form button {
     position: relative;
     top: 300px;
 }
+
 #sol:hover, #item_Container:hover {
     background-color: var(--hover-color);
     color: var(--main-text-color);

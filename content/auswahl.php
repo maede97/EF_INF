@@ -1,9 +1,9 @@
 <?php
-
+//Diese Datei lässt den User eine Datei zum Lernen auswählen (d.h. startet dann den Trainer)
 include("functions.php");
 session_start();
 if (!isset($_SESSION['user_id'])) {
-    //Funktioniert noch nicht!
+    //Funktioniert nicht!
     header("Location: ?site=login&error=4");
     exit;
 } else {
@@ -13,6 +13,7 @@ if (!isset($_SESSION['user_id'])) {
 
     $result = $db->selectListsFromId($id);
     if (count($result) == 0) {
+		//Keine Tabellen, Link zum hinzufügen
 		echo "<div class='title-content'>";
         echo "<h1>Achtung!</h1>";
 		echo "</div>";

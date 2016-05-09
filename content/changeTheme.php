@@ -1,4 +1,5 @@
 <?php
+//Diese Datei wechselt das Theme des Users. Wird von der Theme-Seite aufgerufen
 include("functions.php");
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["theme"]) && isset($_SESSION['user_id'])) {

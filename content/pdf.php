@@ -1,5 +1,6 @@
 <?php
-
+//Die Grundlage dieses Codes ist nicht von uns!
+//Wir haben nur unsere Daten angepasst und am richtigen Ort eingefügt.
 include("functions.php");
 require_once("fpdf.php");
 
@@ -31,7 +32,7 @@ class PDF extends FPDF {
     }
 
 }
-
+//Ab hier ist der Code von uns.
 session_start();
 if (isset($_SESSION['user_id']) && isset($_GET['liste'])) {
     $id = $_SESSION['user_id'];
@@ -55,7 +56,7 @@ if (isset($_SESSION['user_id']) && isset($_GET['liste'])) {
 
     $db->closeConnection();
 
-    //Instanciation of inherited class
+    //Ab hier auch wieder angepasst.
     $pdf = new PDF();
     $pdf->AliasNbPages();
     $pdf->AddPage();

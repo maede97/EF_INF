@@ -2,36 +2,13 @@
 
 /*
   Zuerst folgen ein paar vereinzelte Funktionen,
-  danach folgt die Klasse DB.
+  danach folgt die Klasse DB (für das Handling der ganzen Datenbank-Funktionen)
  */
-
-function getErrorMessage($errorParam) {
-    // Gibt eine Fehler-Nachricht zum jeweiligen Parameter zurück
-    $errorMessages = array(
-        0 => 'Ein Fehler ist aufgetreten.',
-        1 => 'Du musst alle Felder ausfüllen.',
-        2 => 'Dein Passwort ist falsch.',
-        3 => 'Dieser Benutzer existiert nicht.\nDu kannst nun einen neuen Benutzer anlegen.',
-        4 => 'Du musst eingeloggt sein, um diese Funktion nützen zu können.',
-        5 => 'Dieser Benutzer existiert bereits.',
-        6 => 'Du kannst nur XLS- und XLSX-Dateien hochladen.',
-        7 => 'Deine Datei ist zu gross.',
-        8 => 'Wir unterstützen im Moment nur Listen mit bis zu 100 Wörter.',
-        9 => 'Du besitzt schon eine Liste mit demselben Titel.\nBitte wähle einen anderen.',
-        10 => 'Bitte füge eine Datei hinzu.',
-        11 => 'Du besitzt noch keine Tabellen.',
-        12 => 'Die Passwörter stimmen nicht überein.',
-        13 => 'Du hast das Captcha falsch ausgefüllt.\nBitte versuche es erneut.'
-    );
-    if ($errorParam == null || $errorParam > count($errorMessages)) {
-        return "";
-    }
-    return $errorMessages[$errorParam];
-}
 
 function getThemeName($themeID, $all = false) {
     //Gibt den Theme-Namen zurück
-    //Falls $all==true: der ganze Array wird zurückgegeben
+    //Falls $all==true:
+	//	der ganze Array wird zurückgegeben
     $themeArray = array(
         0 => 'default',
         1 => 'beige',
@@ -46,6 +23,7 @@ function getThemeName($themeID, $all = false) {
         return $themeArray;
     }
     if ($themeID == null || $themeID > count($themeArray)) {
+		//Falls nichts oder eine zu hohe Theme-ID übergeben wird
         return "default";
     }
 
@@ -58,14 +36,16 @@ function getThemeName($themeID, $all = false) {
 
 class DB {
 
-    //Variabeln der Klasse
+    //Variabeln der Klasse DB
+	//Diese Daten sollten nicht hier stehen (sondern auswärts gelagert werden),
+	//sind es aber, um die leserfreundlichkeit zu erhöhen
     var $host = "localhost";
     var $username = "root";
-    var $password = "";
+    var $password = ""; //Ja, ist nicht optimal. Geht aber im localhost
     var $database = "schooltool";
     var $connection;
 
-    //Konstruktor
+    //Konstruktor, verbindet automatisch mit Datenbank
     function __construct() {
         $this->connectToDatabase();
     }
@@ -280,7 +260,5 @@ class DB {
         $stmt->execute();
         return true;
     }
-
 }
-
 ?>

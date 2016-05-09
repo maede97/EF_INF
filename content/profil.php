@@ -1,4 +1,5 @@
 <?php
+//Den Benutzernamen holen
 include("functions.php");
 session_start();
 if (isset($_SESSION) && isset($_SESSION['user_id'])) {
@@ -23,16 +24,14 @@ if (isset($_SESSION) && isset($_SESSION['user_id'])) {
 }
 ?>
 <script type="text/javascript">
-    function reloadImage(id) {
-        if(id==1){
-            document.getElementById("captcha_picture").src = "content/captcha.php?" + new Date().getTime();
-        }
-        else {
-            document.getElementById("captcha_picture2").src = "content/captcha.php?" + new Date().getTime();
-        }
+	//Funktion, um das Captcha neu zu laden
+    function reloadImage() {
+		//Ein neues Captcha laden, bei beiden dasselbe Bild einfügen
+		document.getElementById("captcha_picture").src = "content/captcha.php?" + new Date().getTime();
+		document.getElementById("captcha_picture2").src = document.getElementById("captcha_picture").src;
     }
 </script>
-
+<!--Die Profil-Seite-->
 <div class="title-content">
     <h1>Profil</h1>
 </div>
@@ -69,7 +68,8 @@ if (isset($_SESSION) && isset($_SESSION['user_id'])) {
 		echo "</form>";
 		?>
 	</div>
-</div>	
+</div>
+<!--Neues Passwort-Form-->	
 <div class="double-content-row">
 	<div id="newPassForm" class="double-content-left">
 		<form action="content/changePassword.php" method="POST">
@@ -100,6 +100,7 @@ if (isset($_SESSION) && isset($_SESSION['user_id'])) {
 		</form>
 		<p>&nbsp;</p>
 	</div>
+	<!--Account-löschen-Form-->
 	<div class="double-content-right">
 		<h2>Account löschen</h2>
 		<p>Willst du deinen Account endgültig löschen?</p>

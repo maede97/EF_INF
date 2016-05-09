@@ -2,7 +2,7 @@
 include("functions.php");
 
 function getTexts() {
-    //Default-Werte
+    //Die Wörter, die Übersetzungen werden weiter unten übergeben
     $id = null;
     $liste = null;
     if (isset($_SESSION) && isset($_SESSION['user_id']) && isset($_SESSION['listen'])) {
@@ -28,6 +28,7 @@ function getTexts() {
 }
 
 function getTranslations() {
+	//Die Übersetzungen
     $id = null;
     $liste = null;
     if (isset($_SESSION) && isset($_SESSION['user_id']) && isset($_SESSION['listen'])) {
@@ -53,20 +54,19 @@ function getTranslations() {
 
 <script src="scripts/jquery.js"></script>
 <script type="text/javascript">
+	//Funktionen sind am Ende vom JS-Teil
     $(document).ready(function () {
 		$("#item_Container").click(function () {
+			//Falls auf die Karte geklickt wurde, zeige die Lösung
 			showSolution();
 		});
-		$("#sol").focus();
+		$("#sol").focus(); //Setze den Tastaturfokus wieder auf das Eingabe-Feld
         $("#sol").keypress(function (e) {
-            if (e.which == 13) {
+            if (e.which == 13) { //Enter
                 //Check here if correct
-                //solutions[aktuell-1]
-                //texts[aktuell-1]
                 if (solutions[aktuell - 1] == document.getElementById("sol").value) {
                     //Correct
                     document.getElementById("sol").value = "";
-                    //document.getElementById("sol").style.background = "var(--button-color)";
                     getNextCard();
                 } else {
                     //Not correct
@@ -75,12 +75,11 @@ function getTranslations() {
                         showSolution();
                     }
                     document.getElementById("sol").value = "";
-                    //document.getElementById("sol").style.background = "red";
                 }
             }
         });
 
-        //Hide first card
+        //Hide first card (called when the page loads)
         moveLeft(0);
         getCards();
         //show first card
@@ -88,31 +87,37 @@ function getTranslations() {
         startTimer();
     });
 
+	//Variabeln
     var aktuell = 0;
     var solutions = null;
     var texts = null;
     var isShownSolution = false;
     var wrong = 0;
 
+	//Bei den folgenden 3 Funktionen: a ist die Geschwindigkeit
+	//Karte nach Links bewegen
     function moveLeft(a) {
         $("#item_Container").animate({left: '18%', opacity: '0', fontSize: "100%", height: "200px", width: "350px"}, a);
     }
 
+	//Karte in die Mitte bewegen
     function moveMiddle(a) {
         $("#item_Container").animate({left: '34%', opacity: '1', fontSize: "120%", height: "240px", width: "420px"}, a);
     }
 
+	//Karte nach rechts bewegen
     function moveRight(a) {
         $("#item_Container").animate({left: '50%', opacity: '0', fontSize: "100%", height: "200px", width: "350px"}, a);
     }
 
+	//Ich will alle Karten die in der Session stehen
     function getCards() {
-<?php session_start(); //Start the Session ?>
+		<?php session_start(); //Start the Session ?>
         solutions = <?php echo json_encode(getTranslations()); ?>;
         texts = <?php echo json_encode(getTexts()); ?>;
     }
-
     function showSolution() {
+		//Zeige die Lösung zu einer Karte (=Karte drehen)
         $("#item_Container").animate({opacity: '0'}, "middle");
         $("#item_Container").promise().done(function () {
             //Wait until card ist done turning
@@ -130,7 +135,7 @@ function getTranslations() {
 
     function getNextCard(addTable = true) {
 		if(aktuell == 1){
-			//If reset: delete all lines of the table
+			//If reset (aktuelle Karte = 1 = erste Karte): delete all lines of the table
 			//except the first one (=header with the titles of the rows)
 			var table = document.getElementById("done");
 			var tableRows = table.getElementsByTagName("tr");
@@ -173,6 +178,7 @@ function getTranslations() {
         wrong = 0;
     }
 </script>
+<!--Trainer-Seite-->
 <div class="title-content">
 	<h1>Trainer</h1>
 </div>

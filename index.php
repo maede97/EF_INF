@@ -77,6 +77,7 @@ echo '<link rel="stylesheet" href="styles/style.css" />';
         }
     });
 </script>
+<!--All DIV's, diese werden dann mit Content geladen.-->
 <html>
     <head>
         <title>SchoolTool</title>

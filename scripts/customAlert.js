@@ -1,7 +1,6 @@
 //This code is not from us!
 //Source: http://stackoverflow.com/questions/7853130/how-to-change-the-style-of-alert-box
-//We did only change the corresponding css and add the line 43 to this script
-//Matthias Busenhart & Jeremy Roth
+//We did only change the corresponding css and add the line 42 to this script for better style
 
 var ALERT_TITLE = "Mitteilung";
 var ALERT_BUTTON_TEXT = "Verstanden";

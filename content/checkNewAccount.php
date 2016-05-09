@@ -1,5 +1,6 @@
 <?php
-//Include Database-Function-PHP-File
+//Diese Datei überprüft einen neuen Account
+//Include Database-Function-PHP-File:
 include('functions.php');
 session_start();
 if (($_SERVER["REQUEST_METHOD"] == "POST") && isset($_POST["username"]) &&
@@ -23,6 +24,7 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && isset($_POST["username"]) &&
 	}
 			
     //Und strings filtern!
+	//Ist aber glaubs "unnötig", da mit PDO gearbeitet wird, und diese dort eh gefiltert werden
     $username_data = trim($_POST['username']);
     $username_data = htmlspecialchars($username_data);
     $username_data = mysql_real_escape_string($username_data);

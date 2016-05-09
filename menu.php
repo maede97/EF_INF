@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <img src="res/icon.png">
 <hr />
 <ul>

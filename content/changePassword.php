@@ -1,4 +1,5 @@
 <?php
+
 //Diese Datei wechselt das Passwort des Benutzers. Wird von der Profil-Seite aufgerufen
 include("functions.php");
 session_start();
@@ -8,17 +9,16 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && isset($_POST["old"]) &&
         header("Location: ../index.php?site=profil&error=12");
         exit;
     }
-	//Testen ob irgendwas leer ist
-	if($_POST['new'] == ""){
-		header("Location: ../index.php?site=profil&error=1");
-		exit;
-	}
-	//Testen ob Captcha richtig ist
-	if(!isset($_POST["captcha"])||$_POST["captcha"]==""||$_SESSION["code"]!=$_POST["captcha"])
-	{
-		header("Location: ../index.php?site=profil&error=13");
-		exit;
-	}
+    //Testen ob irgendwas leer ist
+    if ($_POST['new'] == "") {
+        header("Location: ../index.php?site=profil&error=1");
+        exit;
+    }
+    //Testen ob Captcha richtig ist
+    if (!isset($_POST["captcha"]) || $_POST["captcha"] == "" || $_SESSION["code"] != $_POST["captcha"]) {
+        header("Location: ../index.php?site=profil&error=13");
+        exit;
+    }
 
     $user_id = $_SESSION['user_id'];
 

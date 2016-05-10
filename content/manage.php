@@ -11,10 +11,10 @@ Sie sind aber hier oben, da sonst mit der DB-Funktionsaufrufen Probleme auftrate
 include("functions.php");
 session_start();
 if (isset($_SESSION['user_id'])) {
-	//Falls der User eingeloggt ist, werden all seine Listen geprinted.
+    //Falls der User eingeloggt ist, werden all seine Listen geprinted.
     $id = $_SESSION['user_id'];
-	
-	//DB-Verbindung aufbauen
+
+    //DB-Verbindung aufbauen
     $db = new DB();
     $result = $db->selectListsFromId($id);
     //Alle Tabellen eines Users (falls vorhanden) ausgeben
@@ -70,34 +70,34 @@ function showSelectionDialog() {
 }
 ?>
 <div class=double-content-row">
-	<div class="double-content-left" style="height: 650px;">
-		<a name="printList"></a>
-		<h2>Tabellen ausdrucken</h2>
-		<p>Hier können Tabellen in PDF's verwandelt werden, um sie dann auszudrucken.</p>
-		<?php showSelectionDialog(); ?>
-	</div>
-	<div class="double-content-right" style="height: 650px;">
-		<a name="addList"></a>
-		<h2>Tabelle hinzufügen</h2>
-		<!--Die Upload-Form-->
-		<p>Vorlage: &nbsp; <a href="content/uploads/example.xls" title="Vorlage herunterladen">Hier klicken</a></p>
-		<form action="content/upload.php" method="post" enctype="multipart/form-data">
-			<p>Sprache:</p>
-			<p>
-				<input type="text" name="language" placeholder="Sprache" maxlength="30">
-			</p>
-			<p>Titel:</p>
-			<p>
-				<input type="text" name="title" placeholder="Titel" maxlength="30">
-			</p>
-			<p>Wähle die Datei:</p>
-			<p>
-				<input type="file" name="fileToUpload" accept="spreadsheet/xls">
-			</p>
-			<p>
-				<input type="submit" value="Upload" title="Hochladen">
-			</p>
-		</form>
-		<p>&nbsp;</p>
-	</div>
+    <div class="double-content-left" style="height: 650px;">
+        <a name="printList"></a>
+        <h2>Tabellen ausdrucken</h2>
+        <p>Hier können Tabellen in PDF's verwandelt werden, um sie dann auszudrucken.</p>
+        <?php showSelectionDialog(); ?>
+    </div>
+    <div class="double-content-right" style="height: 650px;">
+        <a name="addList"></a>
+        <h2>Tabelle hinzufügen</h2>
+        <!--Die Upload-Form-->
+        <p>Vorlage: &nbsp; <a href="content/uploads/example.xls" title="Vorlage herunterladen">Hier klicken</a></p>
+        <form action="content/upload.php" method="post" enctype="multipart/form-data">
+            <p>Sprache:</p>
+            <p>
+                <input type="text" name="language" placeholder="Sprache" maxlength="30">
+            </p>
+            <p>Titel:</p>
+            <p>
+                <input type="text" name="title" placeholder="Titel" maxlength="30">
+            </p>
+            <p>Wähle die Datei:</p>
+            <p>
+                <input type="file" name="fileToUpload" accept="spreadsheet/xls">
+            </p>
+            <p>
+                <input type="submit" value="Upload" title="Hochladen">
+            </p>
+        </form>
+        <p>&nbsp;</p>
+    </div>
 </div>

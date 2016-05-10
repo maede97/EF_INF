@@ -8,7 +8,7 @@
 function getThemeName($themeID, $all = false) {
     //Gibt den Theme-Namen zurück
     //Falls $all==true:
-	//	der ganze Array wird zurückgegeben
+    //	der ganze Array wird zurückgegeben
     $themeArray = array(
         0 => 'default',
         1 => 'beige',
@@ -17,13 +17,13 @@ function getThemeName($themeID, $all = false) {
         4 => 'green',
         5 => 'vampire',
         6 => 'gold',
-		7 => 'light'
+        7 => 'light'
     );
     if ($all) {
         return $themeArray;
     }
     if ($themeID == null || $themeID > count($themeArray)) {
-		//Falls nichts oder eine zu hohe Theme-ID übergeben wird
+        //Falls nichts oder eine zu hohe Theme-ID übergeben wird
         return "default";
     }
 
@@ -37,8 +37,8 @@ function getThemeName($themeID, $all = false) {
 class DB {
 
     //Variabeln der Klasse DB
-	//Diese Daten sollten nicht hier stehen (sondern auswärts gelagert werden),
-	//sind es aber, um die leserfreundlichkeit zu erhöhen
+    //Diese Daten sollten nicht hier stehen (sondern auswärts gelagert werden),
+    //sind es aber, um die leserfreundlichkeit zu erhöhen
     var $host = "localhost";
     var $username = "root";
     var $password = ""; //Ja, ist nicht optimal. Geht aber im localhost
@@ -260,5 +260,7 @@ class DB {
         $stmt->execute();
         return true;
     }
+
 }
+
 ?>

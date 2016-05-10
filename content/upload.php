@@ -30,7 +30,7 @@ if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isse
     $result = $db->selectListId($u_id, $titel);
 
     if (count($result) != 0) {
-		//Falls irgendein Fehler (in der DB) aufgetreten ist
+        //Falls irgendein Fehler (in der DB) aufgetreten ist
         $uploadOk = 0;
         unlink($target_file);
         header("Location: ../index.php?site=manage&error=0#addList");
@@ -63,8 +63,8 @@ if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isse
                 header("Location: ../index.php?site=manage&error=6#addList");
                 exit;
             }
-			
-			//Init PHPExcel
+
+            //Init PHPExcel
             $reader = PHPExcel_IOFactory::createReader($excelFileType);
 
             $reader->setReadDataOnly(true);
@@ -76,8 +76,8 @@ if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isse
             //rowCount = Alle Zeilen
             $rowCount = $objPHPExcel->getActiveSheet()->getHighestRow();
 
-			//Falls zuviele Zeilen
-			//Gab ein Problem früher im Trainer
+            //Falls zuviele Zeilen
+            //Gab ein Problem früher im Trainer
             if ($rowCount > 100) {
                 unlink($target_file);
                 header("Location: ../index.php?site=manage&error=8#addList");
@@ -98,14 +98,14 @@ if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isse
             if (count($result) == 1) {
                 $listen_id = $result[0]['listen_id'];
             } else {
-				//Somesinge wrente wronge
+                //Somesinge wrente wronge
                 header("Location: ../index.php?site=manage&error=0#addList");
                 exit;
             }
 
             //Daten in Tabelle einfügen
             for ($i = 1; $i <= $rowCount; $i++) {
-				//Daten holen
+                //Daten holen
                 $wort = $objPHPExcel->getActiveSheet()->getCellByColumnAndRow(0, $i);
                 $translation = $objPHPExcel->getActiveSheet()->getCellByColumnAndRow(1, $i);
                 $wort = utf8_decode($wort);
@@ -123,13 +123,13 @@ if (isset($_POST) && isset($_POST["title"]) && isset($_POST["language"]) && isse
             header("Location: ../index.php?site=manage");
             exit;
         } else {
-			//Falls uploadOK = 0
+            //Falls uploadOK = 0
             header("Location: ../index.php?site=manage&error=0#addList");
             exit;
         }
     }
 } else {
-	//Irgend ein Fehler im POST-Array oder so
+    //Irgend ein Fehler im POST-Array oder so
     if (!isset($_SESSION['user_id'])) {
         header("Location: ../index.php?site=login&error=4");
         exit;

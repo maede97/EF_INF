@@ -1,4 +1,5 @@
 <?php
+
 //Diese Datei lässt den User eine Datei zum Lernen auswählen (d.h. startet dann den Trainer)
 include("functions.php");
 session_start();
@@ -13,20 +14,20 @@ if (!isset($_SESSION['user_id'])) {
 
     $result = $db->selectListsFromId($id);
     if (count($result) == 0) {
-		//Keine Tabellen, Link zum hinzufügen
-		echo "<div class='title-content'>";
+        //Keine Tabellen, Link zum hinzufügen
+        echo "<div class='title-content'>";
         echo "<h1>Achtung!</h1>";
-		echo "</div>";
-		echo "<div class='single-content'>";
+        echo "</div>";
+        echo "<div class='single-content'>";
         echo "<p>Du besitzt noch keine Tabellen.</p>";
         echo "<p>Du kannst sie hier hinzufügen:</p>";
         echo "<p><a href='?site=manage#addList'>Liste hinzufügen</a></p>";
-		echo "</div>";
+        echo "</div>";
         exit;
     }
     echo "<div class='title-content'>";
-	echo "<h1>Vorbereitung</h1>";
-	echo "</div>";
+    echo "<h1>Vorbereitung</h1>";
+    echo "</div>";
     echo "<div class='single-content'>";
     echo "<h2>Bitte wähle eine Tabelle</h2>";
     echo "<form method='post' name='form' action='content/startList.php'>";
@@ -38,9 +39,9 @@ if (!isset($_SESSION['user_id'])) {
     }
     echo "</select>";
     echo "<input type='submit' value='Lernen'>";
-	echo "<p>&nbsp;</p>";
+    echo "<p>&nbsp;</p>";
     echo "</form>";
-	echo "</div>";
+    echo "</div>";
     $db->closeConnection();
 }
 ?>

@@ -1,8 +1,8 @@
 <!--Neuen Account-Form-->
 <script type="text/javascript">
-	//Lädt das Captcha neu
-    function reloadImage(){
-        document.getElementById("captcha_picture").src="content/captcha.php?" + new Date().getTime();
+    //Lädt das Captcha neu
+    function reloadImage() {
+        document.getElementById("captcha_picture").src = "content/captcha.php?" + new Date().getTime();
     }
 </script>
 <div class="title-content">

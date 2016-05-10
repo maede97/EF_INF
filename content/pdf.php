@@ -1,4 +1,5 @@
 <?php
+
 //Die Grundlage dieses Codes ist nicht von uns!
 //Wir haben nur unsere Daten angepasst und am richtigen Ort eingefügt.
 include("functions.php");
@@ -32,6 +33,7 @@ class PDF extends FPDF {
     }
 
 }
+
 //Ab hier ist der Code von uns.
 session_start();
 if (isset($_SESSION['user_id']) && isset($_GET['liste'])) {
@@ -67,7 +69,7 @@ if (isset($_SESSION['user_id']) && isset($_GET['liste'])) {
         //Fett:
         $pdf->SetFont('Times', 'B', 12);
         $pdf->Cell(95, 10, $woerter[$i], 0, 0, '', $filler);
-		//Nicht Fett
+        //Nicht Fett
         $pdf->SetFont('Times', '', 12);
         $pdf->Cell(95, 10, $translations[$i], 0, 1, '', $filler);
     }

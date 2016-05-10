@@ -7,14 +7,14 @@
     --hover-text-color: white;
     --border-all: 1px solid black;
     --footer-background-color: black;
-	--footer-text-color: white;
+    --footer-text-color: white;
     --header-background-color: #404040;
     --header-text-color: white;
     --menu-text-color: white;
     --menu-background-color: gray;
-	--menu-width: 200px;
+    --menu-width: 200px;
     --font: Calibri, cursive;
     --button-color: #b9b9b9;
-	--button-text-color: #000000;
-	--div-color: #d6d6d6;
+    --button-text-color: #000000;
+    --div-color: #d6d6d6;
 }
